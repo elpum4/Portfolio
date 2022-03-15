@@ -12,14 +12,16 @@ import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectComponent} from './components/project/project.component';
 
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatCardModule} from '@angular/material/card';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     EducationComponent,
     SkillComponent,
     ProjectComponent,
-    HomeComponent
+    HomeComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatSliderModule,
     FormsModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

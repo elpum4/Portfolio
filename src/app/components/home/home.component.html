@@ -1,33 +1,32 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
+<div class="home">
+  <div id ="hero" class="header">
+    <mat-card>    
+      <mat-card>
+        <app-header></app-header>
+        <app-about></app-about>
+      </mat-card>  
+    </mat-card>
+  </div>
 
-<mat-card>    
-  <mat-card>
-    <app-header></app-header>
-    <app-about></app-about>
-  </mat-card>  
-</mat-card>
+  <div id ="experiencia">
+    <mat-card>      
+      <app-exp></app-exp>
+      <app-education></app-education>
+      <app-skill></app-skill>
+    </mat-card>
+  </div>
 
-<mat-card>      
-  <app-exp></app-exp>
-  <app-education></app-education>
-  <app-skill></app-skill>
-</mat-card>
+  <div id = "proyectos">
+    <mat-card>
+      <mat-card>
+      <app-project></app-project>
+      </mat-card>
+    </mat-card>
+  </div>
+</div>
 
-<mat-card>
-  <mat-card>
-  <app-project></app-project>
-  </mat-card>
-</mat-card>
+
+
+
+
 
