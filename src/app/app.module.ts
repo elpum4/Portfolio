@@ -8,9 +8,9 @@ import { AboutComponent } from './components/about/about.component';
 import { ExpComponent } from './components/exp/exp.component';
 import { EducationComponent } from './components/education/education.component';
 import { SkillComponent } from './components/skill/skill.component';
-import { ProyectComponent } from './components/proyect/proyect.component';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProjectComponent} from './components/project/project.component';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -29,7 +29,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ExpComponent,
     EducationComponent,
     SkillComponent,
-    ProyectComponent,
+    ProjectComponent,
     HomeComponent
   ],
   imports: [

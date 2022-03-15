@@ -8,15 +8,15 @@
         display: grid;
         position: relative;
         img {
-            position: absolute;
-            top: -100px;    
+            position: relative;
+            top: -85px;    
             width: 150px;
             height: 150px;
             border-radius: 50%;}
     }
     .container__feature {
         /* Take the remaining width */
-        flex-basis: 50%;
+        flex: 1;
     }
 }
 
