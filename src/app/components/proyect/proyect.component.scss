@@ -1,6 +1,8 @@
 
 .cards {
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     /* Put a card in the next row when previous cards take all width */
     flex-wrap: wrap;
@@ -10,7 +12,7 @@
     .cards__item {
         /* There will be 4 cards per row */
         flex-basis: 25%;
-    
+        margin: 5px;
         padding-left: 8px;
         padding-right: 8px;
         

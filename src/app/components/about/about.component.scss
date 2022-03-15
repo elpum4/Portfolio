@@ -4,11 +4,19 @@
     /* OPTIONAL: Spacing between items */
     margin: 16px 0;
     .container__image {
-        width: 128px;
+                
+        display: grid;
+        position: relative;
+        img {
+            position: absolute;
+            top: -100px;    
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;}
     }
     .container__feature {
         /* Take the remaining width */
-        flex: 1;
+        flex-basis: 50%;
     }
 }
 
