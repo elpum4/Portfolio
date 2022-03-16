@@ -1,17 +1,10 @@
 <mat-toolbar>
     <p>Logos</p>
-    <span class="barra-spacer"></span>
-    <button mat-icon-button class="barra-icon favorite-icon" aria-label="Favorito">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="barra-icon" aria-label="Share">
-      <mat-icon>share</mat-icon>
-    </button>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="openDialog()">
         <mat-icon>account_circle</mat-icon>
         <span>Iniciar Sesion</span>
       </button>

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Iniciar Sesion</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input  matInput  placeholder="Tu email" [(ngModel)]="email"  type="email" name="email"  required>
+        </mat-form-field>
+        <mat-form-field>
+        <input  matInput  placeholder="Tu password" [(ngModel)]="password"  type="password"  name="password"  required>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Iniciar Sesion</button>
+</div>

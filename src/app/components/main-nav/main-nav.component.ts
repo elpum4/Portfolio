@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { LoginComponent } from '../login/login.component';
+
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -19,11 +22,18 @@ export class MainNavComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(LoginComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   navigateTo($event) {
 
