@@ -1,4 +1,7 @@
-.example-h2 {
+/*
+.mat-card{
+  display: flex;
+  .example-h2 {
     margin: 10px;
   }
   
@@ -12,3 +15,34 @@
   .example-margin {
     margin: 0 10px;
   }
+}
+*/
+
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Put a card in the next row when previous cards take all width */
+  flex-wrap: wrap;
+
+  margin-left: -8px;
+  margin-right: -8px;
+  .cards__item {
+      /* There will be 4 cards per row */
+      flex-basis: 25%;
+      margin: 5px;
+      padding-left: 8px;
+      padding-right: 8px;
+      
+      .example-card {
+          max-width: 400px;
+
+          .example-header-image {
+              background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+              background-size: cover;
+          }
+      }
+  }
+}
+

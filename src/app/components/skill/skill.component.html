@@ -35,30 +35,89 @@
         <mat-slider class="example-margin" [(ngModel)]="value"></mat-slider>
       </section>
     </mat-card-content>
-  </mat-card>
-  <mat-card>
-    <mat-card-content>
-      <h2 class="example-h2">Result</h2>
-  
-      <mat-progress-spinner
-          class="example-margin"
-          [color]="color"
-          [mode]="mode"
-          [value]="value">
-      </mat-progress-spinner>
-      
+
+    <div class="cards">
+      <!-- A card with given width -->
+      <div class="cards__item">
+          <mat-card class="example-card">
+            <mat-card-content>
+              <h2 class="example-h2">Ingles</h2>
+          
+              <mat-progress-spinner
+                  class="example-margin"
+                  [color]="color"
+                  [mode]="mode"
+                  [value]="value">
+              </mat-progress-spinner>
+              
+              <mat-card-actions class="edicion">
+                <button mat-button>
+                  <mat-icon>create</mat-icon>
+                </button>
+                <button mat-button>
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card-content>
+          </mat-card>
+      </div>
+    
+      <div class="cards__item">
+          <mat-card class="example-card">
+            <mat-card-content>
+              <h2 class="example-h2">Italiano</h2>
+          
+              <mat-progress-spinner
+                  class="example-margin"
+                  [color]="color"
+                  [mode]="mode"
+                  [value]="value">
+              </mat-progress-spinner>
+              
+              <mat-card-actions class="edicion">
+                <button mat-button>
+                  <mat-icon>create</mat-icon>
+                </button>
+                <button mat-button>
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card-content>
+          </mat-card>
+      </div>
+    
+      <div class="cards__item">
+          <mat-card class="example-card">
+            <mat-card-content>
+              <h2 class="example-h2">Ingles</h2>
+          
+              <mat-progress-spinner
+                  class="example-margin"
+                  [color]="color"
+                  [mode]="mode"
+                  [value]="value">
+              </mat-progress-spinner>
+              
+              <mat-card-actions class="edicion">
+                <button mat-button>
+                  <mat-icon>create</mat-icon>
+                </button>
+                <button mat-button>
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card-content>
+          </mat-card>
+      </div>
       <mat-card-actions class="edicion">
         <button mat-button>
-          <mat-icon>create</mat-icon>
+          <mat-icon>add</mat-icon>
         </button>
-        <button mat-button>
-          <mat-icon>clear</mat-icon>
-        </button>
+    
       </mat-card-actions>
-    </mat-card-content>
-    <mat-card-actions class="edicion">
-      <button mat-button>
-        <mat-icon>add</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
+    </div>
+</mat-card>
+
+
+
+
