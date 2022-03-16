@@ -22,6 +22,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,8 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
     SkillComponent,
     ProjectComponent,
     HomeComponent,
-    MainNavComponent
+    MainNavComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,11 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
     FormsModule,
     MatIconModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

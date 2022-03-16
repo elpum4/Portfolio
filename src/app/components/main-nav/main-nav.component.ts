@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-main-nav',
@@ -27,8 +27,8 @@ export class MainNavComponent implements OnInit {
 
   navigateTo($event) {
 
-    console.log($event.target.id);
-    const element = document.querySelector($event.target.id);
+    console.log($event.target.hash);
+    const element = document.querySelector($event.target.hash);
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 

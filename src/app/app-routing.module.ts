@@ -3,23 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 import { HomeComponent } from './components/home/home.component';
-import { ExpComponent} from './components/exp/exp.component';
-import {ProjectComponent} from './components/project/project.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
 
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    pathMatch: 'full'
   },
+  
   {
-    path: 'projects',
-    component: ProjectComponent
-  },
-  {
-    path: 'experiencia',
-    component: ExpComponent
-  },
+    path: 'contact',
+    component: ContactComponent
+  }
 
 ];
 

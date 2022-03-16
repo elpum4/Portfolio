@@ -11,19 +11,17 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      
-      
       <button mat-menu-item>
         <mat-icon>account_circle</mat-icon>
-        <a (click)="navigateTo($event)" [routerLink]="''" fragment="hero" >Iniciar Sesion</a>
+        <span>Iniciar Sesion</span>
       </button>
-      <button mat-menu-item mat-menu-item id="#experiencia" (click)="navigateTo($event)" [routerLink]="''" fragment="experiencia">
-        <mat-icon>assignment</mat-icon>
-        <span >Experiencia</span>
+      <button mat-menu-item (click)="navigateTo($event)" [routerLink]="''" fragment="hero">
+        <mat-icon>home</mat-icon>
+        <span >Home</span>
       </button>
-      <button mat-menu-item id="#proyectos" (click)="navigateTo($event)" [routerLink]="''" fragment="proyectos" >
-        <mat-icon>build</mat-icon>
-        <span>Proyectos</span>
+      <button mat-menu-item [routerLink]="['/contact']">
+        <mat-icon>contact_mail</mat-icon>
+        <span>Contacto</span>
       </button>
     </mat-menu>
 </mat-toolbar>
