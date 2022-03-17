@@ -27,6 +27,7 @@ export class MainNavComponent implements OnInit {
 
   ngOnInit() {
   }
+
   openDialog() {
     const dialogRef = this.dialog.open(LoginComponent);
 
@@ -36,9 +37,8 @@ export class MainNavComponent implements OnInit {
   }
 
   navigateTo($event) {
-
-    console.log($event.target.hash);
-    const element = document.querySelector($event.target.hash);
+    const element = document.querySelector($event.target.id);
+    console.log(element);
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 

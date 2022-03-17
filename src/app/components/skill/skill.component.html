@@ -1,50 +1,50 @@
 <mat-card>
     <mat-card-content>
       <p>La idea aca es recibir las skills / porcentaje de la base y poder meterle ese hermoso ciculito</p>
-      <h2 class="example-h2">Skill y Hablidades</h2>
+      <h2 class="tih2">Skill y Hablidades</h2>
   
-      <section class="example-section">
-        <label class="example-margin">Color:</label>
+      <section class="section">
+        <label class="margin">Color:</label>
         <mat-radio-group [(ngModel)]="color">
-          <mat-radio-button class="example-margin" value="primary">
+          <mat-radio-button class="margin" value="primary">
             Primary
           </mat-radio-button>
-          <mat-radio-button class="example-margin" value="accent">
+          <mat-radio-button class="margin" value="accent">
             Accent
           </mat-radio-button>
-          <mat-radio-button class="example-margin" value="warn">
+          <mat-radio-button class="margin" value="warn">
             Warn
           </mat-radio-button>
         </mat-radio-group>
       </section>
   
-      <section class="example-section">
-        <label class="example-margin">Mode:</label>
+      <section class="section">
+        <label class="margin">Mode:</label>
         <mat-radio-group [(ngModel)]="mode">
-          <mat-radio-button class="example-margin" value="determinate">
+          <mat-radio-button class="margin" value="determinate">
             Determinate
           </mat-radio-button>
-          <mat-radio-button class="example-margin" value="indeterminate">
+          <mat-radio-button class="margin" value="indeterminate">
             Indeterminate
           </mat-radio-button>
         </mat-radio-group>
       </section>
   
-      <section class="example-section" *ngIf="mode === 'determinate'">
-        <label class="example-margin">Progress:</label>
-        <mat-slider class="example-margin" [(ngModel)]="value"></mat-slider>
+      <section class="section" *ngIf="mode === 'determinate'">
+        <label class="margin">Progress:</label>
+        <mat-slider class="margin" [(ngModel)]="value"></mat-slider>
       </section>
     </mat-card-content>
 
     <div class="cards">
       <!-- A card with given width -->
       <div class="cards__item">
-          <mat-card class="example-card">
+          <mat-card class="card">
             <mat-card-content>
-              <h2 class="example-h2">Ingles</h2>
+              <h2 class="tih2">Ingles</h2>
           
               <mat-progress-spinner
-                  class="example-margin"
+                  class="margin"
                   [color]="color"
                   [mode]="mode"
                   [value]="value">
@@ -63,12 +63,12 @@
       </div>
     
       <div class="cards__item">
-          <mat-card class="example-card">
+          <mat-card class="card">
             <mat-card-content>
-              <h2 class="example-h2">Italiano</h2>
+              <h2 class="tih2">Italiano</h2>
           
               <mat-progress-spinner
-                  class="example-margin"
+                  class="margin"
                   [color]="color"
                   [mode]="mode"
                   [value]="value">
@@ -87,12 +87,12 @@
       </div>
     
       <div class="cards__item">
-          <mat-card class="example-card">
+          <mat-card class="card">
             <mat-card-content>
-              <h2 class="example-h2">Ingles</h2>
+              <h2 class="tih2">Ingles</h2>
           
               <mat-progress-spinner
-                  class="example-margin"
+                  class="margin"
                   [color]="color"
                   [mode]="mode"
                   [value]="value">

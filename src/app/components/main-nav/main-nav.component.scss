@@ -1,9 +1,14 @@
-.barra-spacer {
-    flex: 1 1 auto;
-  }
-
-.mat-toolbar{
+mat-toolbar{
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  margin-bottom: 40px;
+}
+
+button{
+  display: block;
+  z-index: 2000 !important;
 }
 
     

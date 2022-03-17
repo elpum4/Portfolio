@@ -8,9 +8,17 @@
         <mat-icon>account_circle</mat-icon>
         <span>Iniciar Sesion</span>
       </button>
-      <button mat-menu-item (click)="navigateTo($event)" [routerLink]="''" fragment="hero">
+      <button mat-menu-item id="#hero" (click)="navigateTo($event)" [routerLink]="''" fragment="hero">
         <mat-icon>home</mat-icon>
         <span >Home</span>
+      </button>
+      <button mat-menu-item id="#experiencia" (click)="navigateTo($event)" [routerLink]="''" fragment="experiencia">
+        <mat-icon>extension</mat-icon>
+        <span >Skills Y Habilidades</span>
+      </button>
+      <button mat-menu-item  id="#proyectos" (click)="navigateTo($event)" [routerLink]="''" fragment="proyectos">
+        <mat-icon>build</mat-icon>
+        <span >Proyectos</span>
       </button>
       <button mat-menu-item [routerLink]="['/contact']">
         <mat-icon>contact_mail</mat-icon>
