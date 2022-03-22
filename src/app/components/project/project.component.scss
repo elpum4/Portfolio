@@ -15,11 +15,11 @@
         padding-left: 8px;
         padding-right: 8px;
         
-        .example-card {
+        .proyecto-card {
             max-width: 400px;
 
-            .example-header-image {
-                background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+            .proyecto-header-image {
+                //background-image: url({{proyecto.proy_urlimg}});
                 background-size: cover;
             }
         }
