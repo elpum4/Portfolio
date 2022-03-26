@@ -1,5 +1,6 @@
+
+    <!-- A card with given width 
 <div class="cards">
-    <!-- A card with given width -->
     <div class="cards__item" *ngFor="let proyecto of arrProyectos">
         <mat-card class="proyecto-card">
             <mat-card-header>
@@ -30,4 +31,38 @@
       </button>
 
     </mat-card-actions>
+</div>
+
+-->
+
+<div class="cards">
+  <div class="cards__item" *ngFor="let proyecto of arrProyectos">
+      <mat-card class="proyecto-card">
+          <mat-card-header>
+            <mat-card-title>{{proyecto.titulo}}</mat-card-title>
+            <mat-card-subtitle>{{proyecto.cliente}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="https://cdn.pixabay.com/photo/2014/05/27/23/32/matrix-356024_1280.jpg" alt={{proyecto.titulo}}>
+          <mat-card-content>
+            <p>
+              {{proyecto.descripcion}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="edicion">
+            <button mat-button>
+              <mat-icon>create</mat-icon>
+            </button>
+            <button mat-button>
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+  </div>
+
+  <mat-card-actions class="edicion">
+    <button mat-button>
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </mat-card-actions>
 </div>

@@ -12,7 +12,7 @@ export class ProjectService {
   baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'https:/localhost:8080/';
+    this.baseUrl = 'https://cvback-elpum4.herokuapp.com/api/proyectos/';
     this.getToken();
   }
 
@@ -25,16 +25,14 @@ export class ProjectService {
     return valores;
 
   }
-  
-  
   getToken(): void {
     let objetoToken;
-    this.httpClient.get(this.baseUrl +' api/token').subscribe(valor => {
+    this.httpClient.get('https://cvback-elpum4.herokuapp.com/api/token').subscribe(valor => {
       objetoToken = valor;
       localStorage.setItem('token' ,objetoToken.token)
     });
   }
-  
+
   getAllProjects(): Promise<Project[]> {
     const httpOptions = this.getOptions();
     return this.httpClient.get<Project[]>(this.baseUrl, httpOptions).toPromise(); 
