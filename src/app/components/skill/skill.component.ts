@@ -23,7 +23,6 @@ export class SkillComponent implements OnInit {
 
   async obtenerSkills() {
     this.arrSkills = await this.skillservices.getAllSkills();
-    console.log(this.arrSkills);
   }
 
  
