@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Project } from '../../models/project';
-import { ProjectService } from '../../services/project.service';
+import { ImportallService } from '../../services/importall.service';
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -9,7 +9,7 @@ import { ProjectService } from '../../services/project.service';
 })
 export class ProjectComponent implements OnInit {
   arrProyectos: Project[];
-  constructor(private projectservices: ProjectService) { }
+  constructor(private projectservices: ImportallService) { }
 
   ngOnInit(): void {
     this.obtenerProyectos();
@@ -17,6 +17,5 @@ export class ProjectComponent implements OnInit {
 
   async obtenerProyectos() {
     this.arrProyectos = await this.projectservices.getAllProjects();
-    //console.log(this.arrProyectos);
   }
 }

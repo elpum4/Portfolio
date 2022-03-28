@@ -1,22 +1,19 @@
 <mat-accordion>
-  <mat-expansion-panel hideToggle>
+  <mat-card-content>
+    <h2 class="tih2">Experiencias Laborales</h2>
+  </mat-card-content>
+  <mat-expansion-panel hideToggle *ngFor="let experiencia of arrExperiencias">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        SOBRE MI
+        <div> {{experiencia.exp_titulo}}</div>
       </mat-panel-title>
       <mat-panel-description>
-        Cambio de paradigma
+        {{experiencia.exp_sitio}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>Soy técnico electrónico, recibido del ITS Villada, aqui comienzo a programar por primera vez en microcontroladores
-      y embebbed. Esto continuó hasta años avanzados de la carrera electrónica industrial, manteniéndose al dia de la fecha.
-    </p>
-    
-    <p>Si bien mis trabajos me llevaron a especializarme en otras áreas, nunca dejé la pasión por la programación, 
-      de hecho , mi casa esta automatizada con placas que yo mismo he diseñado y programado. Recien en 2021 gracias a la pandemia, es que decidí darle un giro a mi profesión por lo que me dedique de lleno a capacitarme en eso que tanto me gusta.
-    </p>
-    <p>Espero puedan ver en este curriculum, un poco de lo que soy, y mucho de lo que puedo ofrecer.</p>
-
+        {{experiencia.exp_descripcion}}
+        <div  class="fecha" *ngIf=!experiencia.exp_final>{{experiencia.exp_comienzo |date:"yyyy"}} Actual</div> 
+        <div  class="fecha" *ngIf=experiencia.exp_final>{{experiencia.exp_comienzo |date:"yyyy"}} {{experiencia.exp_final |date:"yyyy"}}</div>    
     <mat-card-actions class="edicion">
       <button mat-button>
         <mat-icon>create</mat-icon>
@@ -27,86 +24,6 @@
     </mat-card-actions>
   </mat-expansion-panel>
 
-  
-  
-
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Experiencia Laboral
-      </mat-panel-title>
-      <mat-panel-description>
-        Tecnico Electrónico.
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>[2004 - 2011] Telvent Argentina S.A.</p>
-    
-    <p>Mantenimiento de redes semafóricas, CCTV, Fibra Optica. Busqueda de fallas, analisis y resolución.</p>
-
-    <p>[2011 - 2011] JazzPlatt Argentina S.A.</p>
-    
-    <p>Centro de atencion técnica, para tecnicos de TV e internet. Robots de analisis para busqueda de fallas.</p>
-
-    <p>[2011 - Actual] ECOGAS</p>
-    
-    <p>Soporte informatico primer y segundo nivel. Administracion de AD, Echange, HyperV y VDIs.</p>
-    
-    <p>Administracion y uso de herramientas Manage Engine (DC, MDM, SD).</p>
-
-    <p>Gestion de proyectos, implementación y mejora de procesos.</p>
-
-    <p>[2011 - Actual] COMPUTELV (Propia)</p>
-    
-    <p>Soporte informatico primer y segundo nivel. Pequeñas redes CISCO. Servidores de impresion, CCTV, monitoreo..</p>
-    
-    <p>Desarrollos de Python para gestion de juicios masivos, en actual trabajo de mantenimiento y expanción de módulos.
-      Web Scrapping + MySql
-    </p>
-    <mat-card-actions class="edicion">
-      <button mat-button>
-        <mat-icon>create</mat-icon>
-      </button>
-      <button mat-button>
-        <mat-icon>clear</mat-icon>
-      </button>
-    </mat-card-actions>
-
-  </mat-expansion-panel>
-
-  
-  
-
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Skills y habilidades
-      </mat-panel-title>
-      <mat-panel-description>
-        Fullstack
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>Visual, C++, C, Python, Perl, Assembler, Js, Node, React, Angular, bootstrap, AWS, MySql</p>
-    <p>Web Scrapping, IA (google core), Arduino, Esp8266, HA.</p>
-    <p>Virtualización, testing y busqueda de fallas.</p>
-    <p>Cursando en este momento el programa "Argentina Programa #2".</p>
-    <label for="file">Ingles Técnico: </label>
-    <progress id="file" max="100" value="40"></progress>
-    <p></p>
-    <label for="file">Italiano: </label>
-    <progress id="file" max="100" value="50"></progress>
-    <p></p>
-    <p>Te invito a que veas un poco de lo que hice en la seccion Proyectos. Ya que hay cosas que se me pueden escapar.</p>
-    
-    <mat-card-actions class="edicion">
-      <button mat-button>
-        <mat-icon>create</mat-icon>
-      </button>
-      <button mat-button>
-        <mat-icon>clear</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-expansion-panel>
-  
   <mat-card-actions class="edicion">
     <button mat-button>
       <mat-icon>add</mat-icon>

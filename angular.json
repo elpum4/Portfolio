@@ -77,6 +77,10 @@
             },
             "development": {
               "browserTarget": "Porfolio:build:development"
+            },
+            "options": {
+              "browserTarget": "<application-name>:build",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

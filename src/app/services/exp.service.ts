@@ -1,6 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Project } from '../models/project';
+import { Exp } from '../models/exp';
 import { HttpClient} from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ExpService {
+  
+  arrExperiencias!: Exp[];
+  baseUrl: string;
+  constructor(private httpClient: HttpClient) { 
+    this.baseUrl = 'http://localhost:8080/api';
+  }
+}
+
+
 
 
 @Injectable({

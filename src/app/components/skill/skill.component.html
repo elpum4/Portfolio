@@ -1,54 +1,21 @@
 <mat-card>
     <mat-card-content>
-      <p>La idea aca es recibir las skills / porcentaje de la base y poder meterle ese hermoso ciculito</p>
-      <h2 class="tih2">Skill y Hablidades</h2>
-  
-      <section class="section">
-        <label class="margin">Color:</label>
-        <mat-radio-group [(ngModel)]="color">
-          <mat-radio-button class="margin" value="primary">
-            Primary
-          </mat-radio-button>
-          <mat-radio-button class="margin" value="accent">
-            Accent
-          </mat-radio-button>
-          <mat-radio-button class="margin" value="warn">
-            Warn
-          </mat-radio-button>
-        </mat-radio-group>
-      </section>
-  
-      <section class="section">
-        <label class="margin">Mode:</label>
-        <mat-radio-group [(ngModel)]="mode">
-          <mat-radio-button class="margin" value="determinate">
-            Determinate
-          </mat-radio-button>
-          <mat-radio-button class="margin" value="indeterminate">
-            Indeterminate
-          </mat-radio-button>
-        </mat-radio-group>
-      </section>
-  
-      <section class="section" *ngIf="mode === 'determinate'">
-        <label class="margin">Progress:</label>
-        <mat-slider class="margin" [(ngModel)]="value"></mat-slider>
-      </section>
+      <h2 class="tih2">Skills y Hablidades</h2>
     </mat-card-content>
 
     <div class="cards">
       <!-- A card with given width -->
-      <div class="cards__item">
+      <div class="cards__item"*ngFor="let skill of arrSkills">
           <mat-card class="card">
             <mat-card-content>
-              <h2 class="tih2">Ingles</h2>
+              <h2 class="tih2">{{skill.sk_titulo}}</h2>
           
-              <mat-progress-spinner
+              <mat-spinner
                   class="margin"
                   [color]="color"
                   [mode]="mode"
-                  [value]="value">
-              </mat-progress-spinner>
+                  value= {{skill.sk_habilidad}} >
+              </mat-spinner>
               
               <mat-card-actions class="edicion">
                 <button mat-button>
@@ -62,53 +29,7 @@
           </mat-card>
       </div>
     
-      <div class="cards__item">
-          <mat-card class="card">
-            <mat-card-content>
-              <h2 class="tih2">Italiano</h2>
-          
-              <mat-progress-spinner
-                  class="margin"
-                  [color]="color"
-                  [mode]="mode"
-                  [value]="value">
-              </mat-progress-spinner>
-              
-              <mat-card-actions class="edicion">
-                <button mat-button>
-                  <mat-icon>create</mat-icon>
-                </button>
-                <button mat-button>
-                  <mat-icon>clear</mat-icon>
-                </button>
-              </mat-card-actions>
-            </mat-card-content>
-          </mat-card>
-      </div>
-    
-      <div class="cards__item">
-          <mat-card class="card">
-            <mat-card-content>
-              <h2 class="tih2">Ingles</h2>
-          
-              <mat-progress-spinner
-                  class="margin"
-                  [color]="color"
-                  [mode]="mode"
-                  [value]="value">
-              </mat-progress-spinner>
-              
-              <mat-card-actions class="edicion">
-                <button mat-button>
-                  <mat-icon>create</mat-icon>
-                </button>
-                <button mat-button>
-                  <mat-icon>clear</mat-icon>
-                </button>
-              </mat-card-actions>
-            </mat-card-content>
-          </mat-card>
-      </div>
+      
       <mat-card-actions class="edicion">
         <button mat-button>
           <mat-icon>add</mat-icon>

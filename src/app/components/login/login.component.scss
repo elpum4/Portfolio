@@ -4,9 +4,14 @@ mat-card-header{
 
 mat-card-title, mat-form-field, mat-card-actions{
     margin:auto;
-    text-align: center;
 }
 
 mat-form-field{
     width: 100%;
 }
+
+mat-card-actions{
+    text-align: center;
+}
+
+

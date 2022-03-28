@@ -3,17 +3,29 @@
       <mat-card-title>INICIAR SESION</mat-card-title>
   </mat-card-header>
     <mat-card-content>
-      <form>
+      <form [formGroup]="myForm" novalidate (ngSubmit)="onEnviar($event)"
+      fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
         <mat-form-field>
-          <input  matInput  placeholder="Tu email" [(ngModel)]="email"  type="email" name="email"  required>
+          <mat-label>Ingresa tu email</mat-label>
+          <input matInput placeholder="email@ejemplo.com" formControlName="email" id="email" required>
+          <mat-error *ngIf="myError('email', 'required')">El mail es requerido</mat-error>
+          <mat-error *ngIf="myError('email', 'email')">Email inválido</mat-error>
         </mat-form-field>
+        <mat-divider>
+          
+        </mat-divider>
         <mat-form-field>
-          <input  matInput  placeholder="Tu password" [(ngModel)]="password"  type="password"  name="password"  required>
+          <input  matInput  [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" id="password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="myError('password', 'required')">La clave es requerida</mat-error>
+          <mat-error *ngIf="myError('password', 'minlength')">Debe tener mas de 8 dígitos</mat-error>
         </mat-form-field>
       </form>
     </mat-card-content>
     
     <mat-card-actions>
-      <button  mat-raised-button (click)="login()"  color="primary">Logueo</button>
+      <button  mat-raised-button color="primary">Logueo</button>
     </mat-card-actions>
 </mat-card>
