@@ -5,6 +5,7 @@ import { Project } from '../models/project';
 import { Exp } from '../models/exp';
 import { Skill} from '../models/skill'
 import { Education } from '../models/education'
+import { Header } from '../models/header'
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,7 @@ export class ImportallService {
   arrExperiencias!: Exp[];
   arrSkills!: Skill[];
   arrEdu!: Education[];
+  arrHead!: Header[];
 
   constructor(private httpClient: HttpClient) { 
     this.baseUrl = 'http://localhost:8080/api';
@@ -36,4 +38,7 @@ export class ImportallService {
     return this.httpClient.get<Education[]>(this.baseUrl + "/ver/educacion").toPromise(); 
   }
 
+  getAllHeader(): Promise<Header[]> {
+    return this.httpClient.get<Header[]>(this.baseUrl + "/ver/header").toPromise(); 
+  }
 }
