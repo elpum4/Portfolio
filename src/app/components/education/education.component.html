@@ -1,33 +1,42 @@
-<mat-accordion>
+<mat-card>
+  <mat-card-title-group class="title-general">
+    <mat-card-title>
+      INSTRUCCION ACADEMICA
+    </mat-card-title>
+  </mat-card-title-group>
+  
+</mat-card>
+
+<mat-card class="exp-card" *ngFor="let educacion of arrEducacion">
+  <mat-card-title-group>
+    <mat-card-title>
+      {{educacion.ed_titulo}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{educacion.ed_institucion}}
+    </mat-card-subtitle>
+    <img mat-card-sm-image src={{educacion.ed_urllogo}} >
+  </mat-card-title-group>
   <mat-card-content>
-    <h2 class="tih2">Instrucción Académica</h2>
+    {{educacion.ed_descripcion}}
   </mat-card-content>
-  <mat-expansion-panel hideToggle *ngFor="let educacion of arrEducacion">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <div> {{educacion.ed_titulo}}</div>
-      </mat-panel-title>
-      <mat-panel-description>
-        {{educacion.ed_institucion}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-        {{educacion.ed_descripcion}}
-        <div  class="fecha" *ngIf=!educacion.ed_final>{{educacion.ed_comienzo |date:"yyyy"}} Actual</div> 
-        <div  class="fecha" *ngIf=educacion.ed_final>{{educacion.ed_comienzo |date:"yyyy"}} {{educacion.ed_final |date:"yyyy"}}</div>    
-    <mat-card-actions class="edicion">
-      <button mat-button>
-        <mat-icon>create</mat-icon>
-      </button>
-      <button mat-button>
-        <mat-icon>clear</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-expansion-panel>
+  <mat-card-subtitle>
+    <div  class="fecha" *ngIf=educacion.ed_final>{{educacion.ed_comienzo |date:"yyyy"}} Actual</div> 
+    <div  class="fecha" *ngIf=!educacion.ed_final>{{educacion.ed_comienzo |date:"yyyy"}} {{educacion.ed_final |date:"yyyy"}}</div>   
+  </mat-card-subtitle>
 
   <mat-card-actions class="edicion">
     <button mat-button>
-      <mat-icon>add</mat-icon>
+      <mat-icon>create</mat-icon>
+    </button>
+    <button mat-button>
+      <mat-icon>clear</mat-icon>
     </button>
   </mat-card-actions>
-  
-</mat-accordion>
+</mat-card>
+
+<mat-card-actions class="edicion">
+<button mat-button>
+  <mat-icon>add</mat-icon>
+</button>
+</mat-card-actions>

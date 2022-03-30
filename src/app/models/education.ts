@@ -3,10 +3,11 @@ export class Education {
     ed_titulo: string;
     ed_descripcion: string;
     ed_institucion: string;
+    ed_urllogo: string;
     ed_comienzo: Date;
     ed_final: Date;
-    ed_actual: String;
-    ed_tipo: String;
+    ed_actual: string;
+    ed_tipo: string;
 
     
 }
