@@ -1,34 +1,43 @@
 <div class="home">
-  <div id ="hero">
-    <mat-card>    
-      <mat-card>
-        <app-header></app-header>
-        <app-about></app-about>
-      </mat-card>  
-    </mat-card>
-  </div>
-
-  <div id ="experiencia">
-    <mat-card>      
-      <app-exp></app-exp>
-      <app-education></app-education>
-      <app-skill></app-skill>
-    </mat-card>
-  </div>
-
-  <div id ="skill">
-    <mat-card>      
-      <app-skill></app-skill>
-    </mat-card>
-  </div>
-
-  <div id = "proyectos">
-    <mat-card>
-      <mat-card>
-      <app-project></app-project>
+  <section  class="secciones hero">
+    <div id ="hero">
+      <mat-card>    
+        <mat-card>
+          <app-header></app-header>
+          <app-about></app-about>
+        </mat-card>  
       </mat-card>
-    </mat-card>
-  </div>
+    </div>
+  </section>
+  
+  
+  <section  class="secciones experiencia">
+    <div id ="experiencia">
+      <mat-card>      
+        <app-exp></app-exp>
+        <app-education></app-education>
+      </mat-card>
+    </div>
+  </section>
+  
+  <section  class="secciones skill">
+    <div id ="skill">
+      <mat-card>      
+        <app-skill></app-skill>
+      </mat-card>
+    </div>
+  </section>
+  
+  <section  class="secciones proyectos">
+    <div id = "proyectos">
+      <mat-card>
+        <mat-card>
+        <app-project></app-project>
+        </mat-card>
+      </mat-card>
+    </div>
+  </section>
+  
 </div>
 
 

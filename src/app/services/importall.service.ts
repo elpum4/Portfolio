@@ -20,6 +20,8 @@ export class ImportallService {
 
   constructor(private httpClient: HttpClient) { 
     this.baseUrl = 'https://backapp-elpum4.herokuapp.com/api';
+    //this.baseUrl = 'http://localhost:8080/api';
+
   }
 
   getAllProjects(): Promise<Project[]> {
