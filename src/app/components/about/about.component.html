@@ -1,21 +1,23 @@
 
 <div class="container"*ngFor="let header of arrHead">
     <div class="container__image" >
-        <img src={{header.hd_urlperfil}} />
-        
-        <h2>{{header.hd_nombre}}</h2>
-        <h3>{{header.hd_profesion}}</h3>
-        
+        <img src={{header.hd_urlperfil}}/>
+        <mat-card-title-group>
+          <mat-card-title>
+            {{header.hd_nombre}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{header.hd_profesion}}
+          </mat-card-subtitle>
+        </mat-card-title-group>
+
         <mat-card-actions class="edicion">
             <button mat-button>
               <mat-icon>create</mat-icon>
             </button>
-      
         </mat-card-actions>
     </div>
     
-
-    <!-- Right side -->
     <div class="container__feature">
       <div>
         <p>{{header.hd_sobremi}}</p>

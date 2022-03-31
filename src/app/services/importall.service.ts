@@ -19,7 +19,7 @@ export class ImportallService {
   arrHead!: Header[];
 
   constructor(private httpClient: HttpClient) { 
-    this.baseUrl = 'https://backapp-elpum4/api';
+    this.baseUrl = 'https://backapp-elpum4.herokuapp.com/api';
   }
 
   getAllProjects(): Promise<Project[]> {
