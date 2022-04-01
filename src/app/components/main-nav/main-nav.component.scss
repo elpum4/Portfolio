@@ -5,9 +5,9 @@ mat-toolbar{
   z-index: 1;
 }
 
-button{
-  display: block;
-  z-index: 2000 !important;
+
+.spacer {
+  flex: 1 1 auto!important;
 }
 
     

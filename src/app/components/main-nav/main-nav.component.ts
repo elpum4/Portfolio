@@ -42,5 +42,14 @@ export class MainNavComponent implements OnInit {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  onNavigate(url){
+    //this.router.navigateByUrl("https://www.google.com");
+    if (url==1){
+      window.open("https://github.com/elpum4", "_blank");
+    }else {
+      window.open("https://www.linkedin.com/in/fcerionie", "_blank");
+    }
+}
+
 
 }

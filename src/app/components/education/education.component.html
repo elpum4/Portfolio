@@ -21,8 +21,8 @@
     {{educacion.ed_descripcion}}
   </mat-card-content>
   <mat-card-subtitle>
-    <div  class="fecha" *ngIf=educacion.ed_final>{{educacion.ed_comienzo |date:"yyyy"}} Actual</div> 
-    <div  class="fecha" *ngIf=!educacion.ed_final>{{educacion.ed_comienzo |date:"yyyy"}} {{educacion.ed_final |date:"yyyy"}}</div>   
+      <div  class="fecha" *ngIf=educacion.ed_actual>{{educacion.ed_comienzo |date:"yyyy"}} Actual</div> 
+      <div  class="fecha" *ngIf=!educacion.ed_actual>{{educacion.ed_comienzo |date:"yyyy"}} {{educacion.ed_final |date:"yyyy"}}</div>   
   </mat-card-subtitle>
 
   <mat-card-actions class="edicion">

@@ -1,5 +1,12 @@
 <mat-toolbar>
     <p>Logos</p>
+    <span class="spacer"></span>
+    <button mat-icon-button class="icon favorite-icon" aria-label="GitHub" (click)="onNavigate(1)">
+      <mat-icon><img class="png-icon" src="./assets/icons/git.png" style="width: 24px; height: 24px;"></mat-icon>
+    </button>
+    <button mat-icon-button class="icon" aria-label="Linkedin" (click)="onNavigate(2)">
+      <mat-icon><img class="png-icon" src="./assets/icons/linkedin.png" style="width: 24px; height: 24px;"></mat-icon>
+    </button>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
