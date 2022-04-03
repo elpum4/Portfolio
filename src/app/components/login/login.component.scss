@@ -1,17 +1,24 @@
-mat-card-header{
-    justify-content: center;
+mat-card{
+    width: 250px;
+    margin: auto;
+    margin-top: 200px;
+    mat-card-header{
+        justify-content: center;
+    }
+    
+    mat-card-title, mat-form-field, mat-card-actions{
+        margin:auto;
+    }
+    
+    mat-form-field{
+        width: 100%;
+    }
+    
+    mat-card-actions{
+        text-align: center;
+    }
 }
 
-mat-card-title, mat-form-field, mat-card-actions{
-    margin:auto;
-}
 
-mat-form-field{
-    width: 100%;
-}
-
-mat-card-actions{
-    text-align: center;
-}
 
 

@@ -19,21 +19,21 @@ export class ImportallService {
   arrHead!: Header[];
 
   constructor(private httpClient: HttpClient) { 
-    this.baseUrl = 'https://backapp-elpum4.herokuapp.com/api';
-    //this.baseUrl = 'http://localhost:8080/api';
+    //this.baseUrl = 'https://backapp-elpum4.herokuapp.com/api';
+    this.baseUrl = 'http://localhost:8080/api';
 
   }
 
   getAllProjects(): Promise<Project[]> {
-    return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyectos").toPromise(); 
+    return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyecto").toPromise(); 
   }
 
   getAllExp(): Promise<Exp[]> {
-    return this.httpClient.get<Exp[]>(this.baseUrl + "/ver/experiencias").toPromise(); 
+    return this.httpClient.get<Exp[]>(this.baseUrl + "/ver/experiencia").toPromise(); 
   }
 
   getAllSkills(): Promise<Skill[]> {
-    return this.httpClient.get<Skill[]>(this.baseUrl + "/ver/skills").toPromise(); 
+    return this.httpClient.get<Skill[]>(this.baseUrl + "/ver/skill").toPromise(); 
   }
 
   getAllEdu(): Promise<Education[]> {

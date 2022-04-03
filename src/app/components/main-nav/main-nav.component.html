@@ -1,17 +1,17 @@
 <mat-toolbar>
-  <img class="png-icon" src="https://i.ibb.co/SrzvKXG/argprogr.jpg" style="width: 150px; height:60px">
+  <img class="png-logo" src="https://i.ibb.co/SrzvKXG/argprogr.jpg" style="width: 150px; height:60px">
   <span class="spacer"></span>
   <button mat-icon-button class="icon favorite-icon" aria-label="GitHub" (click)="onNavigate(1)">
-    <mat-icon><img class="png-icon" src="./assets/icons/git.png" style="width: 24px; height: 24px;"></mat-icon>
+    <mat-icon><img class="png-icon" src="./assets/icons/git.png" ></mat-icon>
   </button>
   <button mat-icon-button class="icon" aria-label="Linkedin" (click)="onNavigate(2)">
-    <mat-icon><img class="png-icon" src="./assets/icons/linkedin.png" style="width: 24px; height: 24px;"></mat-icon>
+    <mat-icon><img class="png-icon" src="./assets/icons/linkedin.png" ></mat-icon>
   </button>
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="openDialog()">
+    <button mat-menu-item [routerLink]="'/login'">
       <mat-icon>account_circle</mat-icon>
       <span>Iniciar Sesion</span>
     </button>

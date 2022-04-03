@@ -35,6 +35,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
+import { authInterceptorProviders } from '../helpers/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +52,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MainNavComponent,
     ContactComponent,
     MessageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     MatDividerModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

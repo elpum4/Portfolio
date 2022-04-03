@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service'
 import { Router} from '@angular/router';
 
+import { TokenStorageService } from '../../services/token-storage.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,28 +12,48 @@ import { Router} from '@angular/router';
 export class LoginComponent  implements OnInit {
   myForm: FormGroup;
   hide = true;
-  constructor(private authService: AuthService, private router: Router) {
+
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) {
     
    }
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required, Validators.minLength(8)]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
 
     });
+
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
   public myError = (controlName: string, errorName: string) =>{
     return this.myForm.controls[controlName].hasError(errorName);
     }
 
-  onEnviar(event:Event){
-    event.preventDefault;
-    this.authService.IniciarSesion(this.myForm.value).subscribe(data=>{
-      console.log("DATA: " + JSON.stringify(data));
-      this.router.navigate(['']);
-    })
-
+  onSubmit(): void {
+    this.authService.login(JSON.stringify(this.myForm.value)).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.router.navigate(['']);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
   }
-
 }
+  
+
