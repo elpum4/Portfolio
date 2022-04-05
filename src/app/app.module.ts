@@ -41,6 +41,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { EditEducationComponent } from './edition/edit-education/edit-education.component';
 import { EditProjectComponent } from './edition/edit-project/edit-project.component';
 import { EditSkillComponent } from './edition/edit-skill/edit-skill.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { EditSkillComponent } from './edition/edit-skill/edit-skill.component';
     RegisterComponent,
     EditEducationComponent,
     EditProjectComponent,
-    EditSkillComponent
+    EditSkillComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

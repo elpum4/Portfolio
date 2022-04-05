@@ -22,7 +22,14 @@ export class SkillComponent implements OnInit {
   }
 
   async obtenerSkills() {
-    this.arrSkills = await this.skillservices.getAllSkills();
+    await this.skillservices.getAllSkills().subscribe(
+      data => {
+        this.arrSkills = data;
+      },
+      err => {
+        this.arrSkills = JSON.parse(err.error).message;
+      }
+    );
   }
 
  

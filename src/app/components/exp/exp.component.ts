@@ -17,7 +17,14 @@ export class ExpComponent implements OnInit {
   }
 
   async obtenerExperiencia() {
-    this.arrExperiencias = await this.expservices.getAllExp();
+    await this.expservices.getAllExp().subscribe(
+      data => {
+        this.arrExperiencias = data;
+      },
+      err => {
+        this.arrExperiencias = JSON.parse(err.error).message;
+      }
+    );
   }
 
 }

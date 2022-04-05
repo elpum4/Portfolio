@@ -31,7 +31,14 @@ export class ProjectComponent implements OnInit {
   }
 
   async obtenerProyectos() {
-    this.arrProyectos = await this.projectservices.getAllProjects();
+    this.projectservices.getAllProjects().subscribe(
+      data => {
+        this.arrProyectos = data;
+      },
+      err => {
+        this.arrProyectos = JSON.parse(err.error).message;
+      }
+    );
   }
 
   editarProyecto(id: string){

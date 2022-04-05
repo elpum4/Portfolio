@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service'
 import { Router} from '@angular/router';
-
-import { TokenStorageService } from '../../services/token-storage.service'
+import { MatDialogRef, MatDialog } from  '@angular/material/dialog';
+import { MessageComponent } from '../message/message.component' ;
+import { TokenStorageService } from '../../services/token-storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +19,11 @@ export class LoginComponent  implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) {
+  constructor(private authService: AuthService, 
+    private tokenStorage: TokenStorageService, 
+    private router: Router, 
+    private dialogRef:  MatDialogRef<LoginComponent>, 
+    private  dialog:  MatDialog) {
     
    }
 
@@ -46,13 +51,20 @@ export class LoginComponent  implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
+        this.dialog.closeAll();
         this.router.navigate(['']);
       },
       err => {
         this.errorMessage = err.error.message;
+          this.dialog.open(MessageComponent,{ data: {
+            message:  "ERROR!!"
+            }});
         this.isLoginFailed = true;
       }
     );
+  }
+  public  closeMe() {
+    this.dialogRef.close();
   }
 }
   

@@ -6,6 +6,9 @@ import { Exp } from '../models/exp';
 import { Skill} from '../models/skill'
 import { Education } from '../models/education'
 import { Header } from '../models/header'
+
+
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,42 +27,31 @@ export class ImportallService {
 
   }
 
-  //  Ava veremos esta parte como la hacemos
-  getOptions(){
-    const valores = {
-      headers: new HttpHeaders({
-        'Authorization': "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcnVlYmFkZTgiLCJpYXQiOjE2NDkwNzc2NjQsImV4cCI6MTY0OTE2NDA2NH0.bC87d9wHjMORiDgWxqZOnm837Ci-_Dc2hatWjkQyTUZSoZAMrACFohGk01u9cbtFRw_hxk6BHBI5T8uGefDIsA"
-      })
-    };
-    return valores;
 
-  }
   //Proyectos
 
-  getProjectById(pId: number): Promise<Project> {
-    const httpOptions = this.getOptions();
-
-    this.httpClient.get(this.baseUrl + "/buscar/proyecto/"+ pId, httpOptions).subscribe(datos =>{
+  getProjectById(pId: number): Observable<Project> {
+    this.httpClient.get(this.baseUrl + "/buscar/proyecto/"+ pId).subscribe(datos =>{
     });
-    return this.httpClient.get<Project>(this.baseUrl + "/buscar/proyecto/"+ pId, httpOptions).toPromise();
+    return this.httpClient.get<Project>(this.baseUrl + "/buscar/proyecto/"+ pId);
   }
-  getAllProjects(): Promise<Project[]> {
-    return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyecto").toPromise(); 
-  }
-
-  getAllExp(): Promise<Exp[]> {
-    return this.httpClient.get<Exp[]>(this.baseUrl + "/ver/experiencia").toPromise(); 
+  getAllProjects(): Observable<Project[]> {
+    return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyecto"); 
   }
 
-  getAllSkills(): Promise<Skill[]> {
-    return this.httpClient.get<Skill[]>(this.baseUrl + "/ver/skill").toPromise(); 
+  getAllExp(): Observable<Exp[]> {
+    return this.httpClient.get<Exp[]>(this.baseUrl + "/ver/experiencia"); 
   }
 
-  getAllEdu(): Promise<Education[]> {
-    return this.httpClient.get<Education[]>(this.baseUrl + "/ver/educacion").toPromise(); 
+  getAllSkills(): Observable<Skill[]> {
+    return this.httpClient.get<Skill[]>(this.baseUrl + "/ver/skill"); 
   }
 
-  getAllHeader(): Promise<Header[]> {
-    return this.httpClient.get<Header[]>(this.baseUrl + "/ver/header").toPromise(); 
+  getAllEdu(): Observable<Education[]> {
+    return this.httpClient.get<Education[]>(this.baseUrl + "/ver/educacion"); 
+  }
+
+  getAllHeader(): Observable<Header[]> {
+    return this.httpClient.get<Header[]>(this.baseUrl + "/ver/header"); 
   }
 }

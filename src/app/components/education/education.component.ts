@@ -20,7 +20,14 @@ export class EducationComponent implements OnInit {
   }
 
   async obtenerEducacion() {
-    this.arrEducacion = await this.edservices.getAllEdu();
+    await this.edservices.getAllEdu().subscribe(
+      data => {
+        this.arrEducacion = data;
+      },
+      err => {
+        this.arrEducacion = JSON.parse(err.error).message;
+      }
+    );
   }
 
 }

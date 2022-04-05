@@ -18,9 +18,14 @@ export class HeaderComponent implements OnInit {
   	
    
   async obtenerHeader() {
-    this.arrHead = await this.headerservices.getAllHeader();
-    //this.banner = this.arrHead[0].hd_urlbanner;
-    //console.log(this.banner);
+    await this.headerservices.getAllHeader().subscribe(
+      data => {
+        this.arrHead = data;
+      },
+      err => {
+        this.arrHead = JSON.parse(err.error).message;
+      }
+    );
   }
 
 }

@@ -17,6 +17,13 @@ export class AboutComponent implements OnInit {
 
   
   async obtenerHeader() {
-    this.arrHead = await this.headerservices.getAllHeader();
+    await this.headerservices.getAllHeader().subscribe(
+      data => {
+        this.arrHead = data;
+      },
+      err => {
+        this.arrHead = JSON.parse(err.error).message;
+      }
+    );
   }
 }
