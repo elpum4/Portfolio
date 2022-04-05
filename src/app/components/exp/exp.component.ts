@@ -16,8 +16,8 @@ export class ExpComponent implements OnInit {
     this.obtenerExperiencia();
   }
 
-  async obtenerExperiencia() {
-    await this.expservices.getAllExp().subscribe(
+  obtenerExperiencia() {
+    this.expservices.getAllExp().subscribe(
       data => {
         this.arrExperiencias = data;
       },

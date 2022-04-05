@@ -19,8 +19,8 @@ export class EducationComponent implements OnInit {
     this.obtenerEducacion();
   }
 
-  async obtenerEducacion() {
-    await this.edservices.getAllEdu().subscribe(
+  obtenerEducacion() {
+    this.edservices.getAllEdu().subscribe(
       data => {
         this.arrEducacion = data;
       },

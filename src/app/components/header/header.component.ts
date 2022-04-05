@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit {
   }
   	
    
-  async obtenerHeader() {
-    await this.headerservices.getAllHeader().subscribe(
+  obtenerHeader() {
+    this.headerservices.getAllHeader().subscribe(
       data => {
         this.arrHead = data;
       },

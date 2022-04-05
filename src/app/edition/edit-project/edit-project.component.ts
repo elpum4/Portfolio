@@ -15,8 +15,7 @@ export class EditProjectComponent implements OnInit {
   constructor(private projectservices: ImportallService) { }
 
   ngOnInit(): void {
-    this.buscarProyecto("1")
-    console.log(this.buscarProyecto("1"))
+    this.buscarProyecto("1");
     this.myForm = new FormGroup({
       proy_titulo: new FormControl('', [Validators.required, Validators.minLength(8),Validators.maxLength(40)] ),
       proy_descripcion: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(400)]),
@@ -37,7 +36,7 @@ export class EditProjectComponent implements OnInit {
     }
 
   async buscarProyecto(id:string){
-      await this.projectservices.getProjectById(parseInt(id)).subscribe(
+      this.projectservices.getProjectById(parseInt(id)).subscribe(
         data => {
           this.arrProject = data;
         },

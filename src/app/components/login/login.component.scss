@@ -1,20 +1,18 @@
 mat-card{
-    width: 250px;
     margin: auto;
     mat-card-header{
         justify-content: center;
     }
     
-    mat-card-title, mat-form-field, mat-card-actions{
-        margin:auto;
-    }
+    
     
     mat-form-field{
-        width: 100%;
+        width: 90%;
     }
     
     mat-card-actions{
         text-align: center;
+        justify-content: center;
     }
 }
 

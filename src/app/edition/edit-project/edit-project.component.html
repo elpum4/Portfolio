@@ -7,68 +7,51 @@
         fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
           <mat-form-field>
             <mat-label>Titulo del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_titulo" id="proy_titulo" required value={{arrProject.proy_titulo}}>
-            <mat-error *ngIf="myError('user', 'minlength')">Demasiado corto</mat-error>
-            <mat-error *ngIf="myError('user', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('user', 'maxlength')">Demasiado largo</mat-error>
+            <input matInput placeholder="" formControlName="proy_titulo" id="proy_titulo" required [ngModel]="arrProject.proy_titulo">
+            <mat-error *ngIf="myError('proy_titulo', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('proy_titulo', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('proy_titulo', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
-          <mat-divider>
-            
-          </mat-divider>
           <mat-form-field>
             <mat-label>Descripción del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_descripcion" id="proy_descripcion" required value={{arrProject.proy_descripcion}}>
-            <mat-error *ngIf="myError('user', 'minlength')">Demasiado corto</mat-error>
-            <mat-error *ngIf="myError('user', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('user', 'maxlength')">Demasiado largo</mat-error>
+            <input matInput placeholder="" formControlName="proy_descripcion" id="proy_descripcion" required [ngModel]="arrProject.proy_descripcion">
+            <mat-error *ngIf="myError('proy_descripcion', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('proy_descripcion', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('proy_descripcion', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
-          <mat-divider>
-            
-          </mat-divider>
           <mat-form-field>
             <mat-label>Url del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_url" id="proy_url" required value={{arrProject.proy_url}}>
-            <mat-error *ngIf="myError('user', 'minlength')">Demasiado corto</mat-error>
-            <mat-error *ngIf="myError('user', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('user', 'maxlength')">Demasiado largo</mat-error>
+            <input matInput placeholder="" formControlName="proy_url" id="proy_url" required [ngModel]="arrProject.proy_url">
+            <mat-error *ngIf="myError('proy_url', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('proy_url', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('proy_url', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
-          <mat-divider>
-            
-          </mat-divider>
           <mat-form-field>
             <mat-label>Cliente del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_cliente" id="proy_cliente" required value={{arrProject.proy_cliente}}>
-            <mat-error *ngIf="myError('user', 'minlength')">Demasiado corto</mat-error>
-            <mat-error *ngIf="myError('user', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('user', 'maxlength')">Demasiado largo</mat-error>
+            <input matInput placeholder="" formControlName="proy_cliente" id="proy_cliente" required [ngModel]="arrProject.proy_cliente">
+            <mat-error *ngIf="myError('proy_cliente', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('proy_cliente', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('proy_cliente', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
-          <mat-divider>
-            
-          </mat-divider>
           <mat-form-field>
             <mat-label>Url de la imagen del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_urlimg" id="proy_urlimg" required value={{arrProject.proy_urlimg}}>
-            <mat-error *ngIf="myError('user', 'minlength')">Demasiado corto</mat-error>
-            <mat-error *ngIf="myError('user', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('user', 'maxlength')">Demasiado largo</mat-error>
+            <input matInput placeholder="" formControlName="proy_urlimg" id="proy_urlimg" required [ngModel]="arrProject.proy_urlimg">
+            <mat-error *ngIf="myError('proy_urlimg', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('proy_urlimg', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('proy_urlimg', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
-          <mat-divider>
-            
-          </mat-divider>
           <mat-form-field>
             <mat-label>Categoria del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_categoria" id="proy_categoria" required value={{arrProject.proy_categoria}}>
-            <mat-error *ngIf="myError('user', 'minlength')">Demasiado corto</mat-error>
-            <mat-error *ngIf="myError('user', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('user', 'maxlength')">Demasiado largo</mat-error>
+            <input matInput placeholder="" formControlName="proy_categoria" id="proy_categoria" required [ngModel]="arrProject.proy_categoria">
+            <mat-error *ngIf="myError('proy_categoria', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('proy_categoria', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('proy_categoria', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
-          <mat-divider>
-            
-          </mat-divider>
         </form>
       </mat-card-content>
       
       <mat-card-actions>
-        <button  mat-raised-button color="primary">Logueo</button>
+        <button  mat-raised-button color="primary">Aceptar</button>
+        <button  mat-raised-button color="primary">Cancelar</button>
       </mat-card-actions>
   </mat-card>

@@ -11,9 +11,6 @@
           <mat-error *ngIf="myError('username', 'required')">El usuario es requerido</mat-error>
           <mat-error *ngIf="myError('password', 'minlength')">Debe tener mas de 8 dígitos</mat-error>
         </mat-form-field>
-        <mat-divider>
-          
-        </mat-divider>
         <mat-form-field>
           <input  matInput  [type]="hide ? 'password' : 'text'" placeholder="Clave de inicio" formControlName="password" id="password" required>
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -26,6 +23,6 @@
     </mat-card-content>
     
     <mat-card-actions>
-      <button  mat-raised-button color="primary" (click)="onSubmit()">Logueo</button>
+      <button  mat-raised-button color="primary" type="submit">Logueo</button>
     </mat-card-actions>
 </mat-card>
