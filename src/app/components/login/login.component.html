@@ -3,7 +3,7 @@
       <mat-card-title>INICIAR SESION</mat-card-title>
   </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()"
+      <form [formGroup]="myForm" novalidate 
       fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
         <mat-form-field>
           <mat-label>Ingresa tu usuario</mat-label>
@@ -23,6 +23,6 @@
     </mat-card-content>
     
     <mat-card-actions>
-      <button  mat-raised-button color="primary" type="submit">Logueo</button>
+      <button  mat-raised-button color="primary" (click)="onSubmit()">Logueo</button>
     </mat-card-actions>
 </mat-card>
