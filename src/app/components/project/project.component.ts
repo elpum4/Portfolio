@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Project } from '../../models/project';
 import { ImportallService } from '../../services/importall.service';
+
+import iSlider from '../../../../node_modules/islider.js/build/iSlider'
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -14,6 +16,7 @@ export class ProjectComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerProyectos();
   }
+
 
   async obtenerProyectos() {
     this.arrProyectos = await this.projectservices.getAllProjects();
