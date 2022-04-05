@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Project } from '../models/project';
 import { Exp } from '../models/exp';
@@ -24,6 +24,25 @@ export class ImportallService {
 
   }
 
+  //  Ava veremos esta parte como la hacemos
+  getOptions(){
+    const valores = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcnVlYmFkZTgiLCJpYXQiOjE2NDkwNzc2NjQsImV4cCI6MTY0OTE2NDA2NH0.bC87d9wHjMORiDgWxqZOnm837Ci-_Dc2hatWjkQyTUZSoZAMrACFohGk01u9cbtFRw_hxk6BHBI5T8uGefDIsA"
+      })
+    };
+    return valores;
+
+  }
+  //Proyectos
+
+  getProjectById(pId: number): Promise<Project> {
+    const httpOptions = this.getOptions();
+
+    this.httpClient.get(this.baseUrl + "/buscar/proyecto/"+ pId, httpOptions).subscribe(datos =>{
+    });
+    return this.httpClient.get<Project>(this.baseUrl + "/buscar/proyecto/"+ pId, httpOptions).toPromise();
+  }
   getAllProjects(): Promise<Project[]> {
     return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyecto").toPromise(); 
   }

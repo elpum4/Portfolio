@@ -38,6 +38,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { authInterceptorProviders } from '../helpers/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { EditEducationComponent } from './edition/edit-education/edit-education.component';
+import { EditProjectComponent } from './edition/edit-project/edit-project.component';
+import { EditSkillComponent } from './edition/edit-skill/edit-skill.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { RegisterComponent } from './components/register/register.component';
     ContactComponent,
     MessageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditEducationComponent,
+    EditProjectComponent,
+    EditSkillComponent
   ],
   imports: [
     BrowserModule,

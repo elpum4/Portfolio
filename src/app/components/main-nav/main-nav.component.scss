@@ -3,15 +3,28 @@ mat-toolbar{
   position: sticky;
   top: 0;
   z-index: 1;
-  .png-icon{
-    width: 25px;
-    height: 25px;
+  .spacer {
+    flex: 1 1 auto!important;
+  }
+  .neon {
+    font-size: 60%;
+    margin-right: 2%;
+    text-decoration: none;
+    color: #fff;
+    text-shadow:
+      0 0 5px rgba(0,178,255,1),
+      0 0 10px rgba(0,178,255,1),
+      0 0 20px rgba(0,178,255,1),
+      0 0 40px rgba(38,104,127,1),
+      0 0 80px rgba(38,104,127,1),
+      0 0 90px rgba(38,104,127,1),
+      0 0 100px rgba(38,104,127,1),
+      0 0 140px rgba(38,104,127,1),
+      0 0 180px rgba(38,104,127,1);
   }
 }
 
 
-.spacer {
-  flex: 1 1 auto!important;
-}
 
-    
+
+ 

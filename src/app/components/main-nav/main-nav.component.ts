@@ -37,13 +37,12 @@ export class MainNavComponent implements OnInit {
   }
 
   navigateTo($event) {
-    const element = document.querySelector($event.target.id);
+    const element = document.querySelector($event.target.hash);
     console.log(element);
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   onNavigate(url){
-    //this.router.navigateByUrl("https://www.google.com");
     if (url==1){
       window.open("https://github.com/elpum4", "_blank");
     }else {

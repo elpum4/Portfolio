@@ -1,35 +1,24 @@
 <mat-toolbar>
-  <img class="png-logo" src="https://i.ibb.co/SrzvKXG/argprogr.jpg" style="width: 150px; height:60px">
+  <img class="png-icon" src="https://i.ibb.co/SrzvKXG/argprogr.jpg" style="width: 150px; height:60px">
   <span class="spacer"></span>
+  <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="hero">Home</a>
+  <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="experiencia">Experiencia</a>
+  <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="skill">Skills</a>
+  <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="proyectos">Proyectos</a>
+  
   <button mat-icon-button class="icon favorite-icon" aria-label="GitHub" (click)="onNavigate(1)">
-    <mat-icon><img class="png-icon" src="./assets/icons/git.png" ></mat-icon>
+    <mat-icon><img class="png-icon" src="./assets/icons/git.png" style="width: 24px; height: 24px;"></mat-icon>
   </button>
   <button mat-icon-button class="icon" aria-label="Linkedin" (click)="onNavigate(2)">
-    <mat-icon><img class="png-icon" src="./assets/icons/linkedin.png" ></mat-icon>
+    <mat-icon><img class="png-icon" src="./assets/icons/linkedin.png" style="width: 24px; height: 24px;"></mat-icon>
   </button>
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="'/login'">
+    <button mat-menu-item (click)="openDialog()">
       <mat-icon>account_circle</mat-icon>
       <span>Iniciar Sesion</span>
-    </button>
-    <button mat-menu-item id="#hero" (click)="navigateTo($event)" [routerLink]="''" fragment="hero">
-      <mat-icon>home</mat-icon>
-      <span >Home</span>
-    </button>
-    <button mat-menu-item id="#experiencia" (click)="navigateTo($event)" [routerLink]="''" fragment="experiencia">
-      <mat-icon>work</mat-icon>
-      <span >Experiencia y Capacitacion</span>
-    </button>
-    <button mat-menu-item id="#skill" (click)="navigateTo($event)" [routerLink]="''" fragment="skill">
-      <mat-icon>extension</mat-icon>
-      <span >Skills Y Habilidades</span>
-    </button>
-    <button mat-menu-item  id="#proyectos" (click)="navigateTo($event)" [routerLink]="''" fragment="proyectos">
-      <mat-icon>build</mat-icon>
-      <span >Proyectos</span>
     </button>
     <button mat-menu-item [routerLink]="['/contact']">
       <mat-icon>contact_mail</mat-icon>
