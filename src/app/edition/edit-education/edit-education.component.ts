@@ -2,7 +2,7 @@ import { Component, OnInit, Inject} from '@angular/core';
 import { Education } from '../../models/education';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
-import { ProjectService } from '../../../services/project.service';
+import { EducationService } from '../../../services/education.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 @Component({
   selector: 'app-edit-education',
@@ -14,7 +14,7 @@ export class EditEducationComponent implements OnInit {
   myForm: FormGroup;
 
   constructor(private educationservices: ImportallService, 
-            private save: ProjectService, private  dialog:  MatDialog, 
+            private save: EducationService, private  dialog:  MatDialog, 
             @Inject(MAT_DIALOG_DATA) private id: any) { }
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class EditEducationComponent implements OnInit {
       }   
     }
 
-  /*svEducation(){
+  svEducation(){
     this.save.saveEducation(this.myForm.value).subscribe(
       data => {
         this.dialog.closeAll();
@@ -60,7 +60,7 @@ export class EditEducationComponent implements OnInit {
       this.arrEducation = JSON.parse(err.error).message;
       }
     );
-  }*/
+  }
   cerrar(){
      this.dialog.closeAll();
   }

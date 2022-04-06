@@ -1,1 +1,41 @@
-<p>edit-education works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>MODIFICAR PROYECTO</mat-card-title>
+    </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="myForm" novalidate (ngSubmit)="svEducation()"
+        fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field class="id">
+          <mat-label>Id</mat-label>
+          <input matInput placeholder="" formControlName="id" id="id" required>
+        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Institución</mat-label>
+            <input matInput placeholder="" formControlName="ed_titulo" id="ed_titulo" required>
+            <mat-error *ngIf="myError('ed_titulo', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('ed_titulo', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('ed_titulo', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Titulo</mat-label>
+            <input matInput placeholder="" formControlName="ed_descripcion" id="ed_descripcion" required>
+            <mat-error *ngIf="myError('ed_descripcion', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('ed_descripcion', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('ed_descripcion', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>URL Logo</mat-label>
+            <input matInput placeholder="" formControlName="ed_urllogo" id="ed_urllogo" required>
+            <mat-error *ngIf="myError('ed_urllogo', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('ed_urllogo', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('ed_urllogo', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+          <mat-card-actions>
+            <button  mat-raised-button color="primary">Aceptar</button>
+            <button  mat-raised-button color="primary" (click)="cerrar()">Cancelar</button>
+          </mat-card-actions>
+        </form>
+      </mat-card-content>
+      
+      
+  </mat-card>

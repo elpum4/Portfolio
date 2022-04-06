@@ -14,7 +14,7 @@ export class EducationService {
     this.baseUrl = 'http://localhost:8080/api';
   }
 
-  saveProject(education: Education): Observable<Education> {
+  saveEducation(education: Education): Observable<Education> {
     return this.httpClient.post<Education>(this.baseUrl + "/new/educacion",education);
   }
 
