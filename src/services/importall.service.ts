@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Project } from '../models/project';
-import { Exp } from '../models/exp';
-import { Skill} from '../models/skill'
-import { Education } from '../models/education'
-import { Header } from '../models/header'
+import { Project } from '../app/models/project';
+import { Exp } from '../app/models/exp';
+import { Skill} from '../app/models/skill'
+import { Education } from '../app/models//education'
+import { Header } from '../app/models//header'
 @Injectable({
   providedIn: 'root'
 })

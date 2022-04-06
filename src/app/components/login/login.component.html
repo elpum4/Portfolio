@@ -3,7 +3,7 @@
       <mat-card-title>INICIAR SESION</mat-card-title>
   </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="myForm" novalidate 
+      <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()"
       fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
         <mat-form-field>
           <mat-label>Ingresa tu usuario</mat-label>
@@ -19,10 +19,10 @@
           <mat-error *ngIf="myError('password', 'required')">La clave es requerida</mat-error>
           <mat-error *ngIf="myError('password', 'minlength')">Debe tener mas de 8 dígitos</mat-error>
         </mat-form-field>
+        <mat-card-actions>
+          <button  mat-raised-button color="primary">Logueo</button>
+        </mat-card-actions>
       </form>
     </mat-card-content>
     
-    <mat-card-actions>
-      <button  mat-raised-button color="primary" (click)="onSubmit()">Logueo</button>
-    </mat-card-actions>
 </mat-card>

@@ -63,9 +63,6 @@ export class LoginComponent  implements OnInit {
       }
     );
   }
-  public  closeMe() {
-    this.dialogRef.close();
-  }
 }
   
 

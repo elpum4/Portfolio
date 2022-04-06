@@ -24,7 +24,8 @@ export class ProjectComponent implements OnInit {
 
   arrProyectos: Project[];
   constructor(private breakpointObserver: BreakpointObserver,
-    public dialog: MatDialog, private projectservices: ImportallService) { }
+              public dialog: MatDialog, 
+              private projectservices: ImportallService) { }
 
   ngOnInit(): void {
     this.obtenerProyectos();
@@ -41,9 +42,12 @@ export class ProjectComponent implements OnInit {
     );
   }
 
-  editarProyecto(id: string){
-    this.idProyecto = id;
-    const dialogRef = this.dialog.open(EditProjectComponent);
+  editarProyecto($event: any){
+    this.idProyecto = $event;
+    console.log(this.idProyecto);
+    const dialogRef = this.dialog.open(EditProjectComponent, {data: {
+      dataKey: this.idProyecto, formKey:Project}
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

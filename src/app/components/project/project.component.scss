@@ -18,6 +18,9 @@
         }
         .proyecto-card {
             max-width: 400px;
+            .id{
+                display: none !important;
+            }
         }
     }
 }

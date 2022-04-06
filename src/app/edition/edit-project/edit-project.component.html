@@ -3,55 +3,60 @@
         <mat-card-title>MODIFICAR PROYECTO</mat-card-title>
     </mat-card-header>
       <mat-card-content>
-        <form [formGroup]="myForm" novalidate (ngSubmit)="onEnviar($event)"
+        <form [formGroup]="myForm" novalidate (ngSubmit)="svProject()"
         fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field class="id">
+          <mat-label>Id</mat-label>
+          <input matInput placeholder="" formControlName="id" id="id" required>
+        </mat-form-field>
           <mat-form-field>
             <mat-label>Titulo del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_titulo" id="proy_titulo" required [ngModel]="arrProject.proy_titulo">
+            <input matInput placeholder="" formControlName="proy_titulo" id="proy_titulo" required>
             <mat-error *ngIf="myError('proy_titulo', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('proy_titulo', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('proy_titulo', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Descripción del Proyecto</mat-label>
-            <textarea matInput placeholder="" formControlName="proy_descripcion" id="proy_descripcion" required [ngModel]="arrProject.proy_descripcion"></textarea>
+            <textarea matInput placeholder="" formControlName="proy_descripcion" id="proy_descripcion" required></textarea>
             <mat-error *ngIf="myError('proy_descripcion', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('proy_descripcion', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('proy_descripcion', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Url del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_url" id="proy_url" required [ngModel]="arrProject.proy_url">
+            <input matInput placeholder="" formControlName="proy_url" id="proy_url" required>
             <mat-error *ngIf="myError('proy_url', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('proy_url', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('proy_url', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Cliente del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_cliente" id="proy_cliente" required [ngModel]="arrProject.proy_cliente">
+            <input matInput placeholder="" formControlName="proy_cliente" id="proy_cliente" required>
             <mat-error *ngIf="myError('proy_cliente', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('proy_cliente', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('proy_cliente', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Url de la imagen del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_urlimg" id="proy_urlimg" required [ngModel]="arrProject.proy_urlimg">
+            <input matInput placeholder="" formControlName="proy_urlimg" id="proy_urlimg" required>
             <mat-error *ngIf="myError('proy_urlimg', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('proy_urlimg', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('proy_urlimg', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Categoria del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_categoria" id="proy_categoria" required [ngModel]="arrProject.proy_categoria">
+            <input matInput placeholder="" formControlName="proy_categoria" id="proy_categoria" required>
             <mat-error *ngIf="myError('proy_categoria', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('proy_categoria', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('proy_categoria', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
+          <mat-card-actions>
+            <button  mat-raised-button color="primary">Aceptar</button>
+            <button  mat-raised-button color="primary" (click)="cerrar()">Cancelar</button>
+          </mat-card-actions>
         </form>
       </mat-card-content>
       
-      <mat-card-actions>
-        <button  mat-raised-button color="primary" (click)="svProject()">Aceptar</button>
-        <button  mat-raised-button color="primary">Cancelar</button>
-      </mat-card-actions>
+      
   </mat-card>
