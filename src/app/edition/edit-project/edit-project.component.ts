@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../../models/project';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ImportallService } from '../../services/importall.service';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-edit-project',
@@ -12,10 +13,10 @@ export class EditProjectComponent implements OnInit {
   arrProject: Project;
   myForm: FormGroup;
 
-  constructor(private projectservices: ImportallService) { }
+  constructor(private projectservices: ImportallService, private save: ProjectService) { }
 
   ngOnInit(): void {
-    this.buscarProyecto("1");
+    this.buscarProyecto("2");
     this.myForm = new FormGroup({
       proy_titulo: new FormControl('', [Validators.required, Validators.minLength(8),Validators.maxLength(40)] ),
       proy_descripcion: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(400)]),
@@ -23,8 +24,10 @@ export class EditProjectComponent implements OnInit {
       proy_cliente: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(100)]),
       proy_urlimg: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(400)]),
       proy_categoria: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(400)]),
-
+      
     });
+    
+    console.log(this.arrProject.proy_titulo);
   }
 
   public myError = (controlName: string, errorName: string) =>{
@@ -43,11 +46,11 @@ export class EditProjectComponent implements OnInit {
         err => {
           this.arrProject = JSON.parse(err.error).message;
         }
-      );
+      ); return this.arrProject;
     }
 
-  saveProject(project: Project){
-      this.arrProject = project;
+  svProject(){
+    this.save.saveProject(JSON.stringify(this.myForm.value))
     }
 
   

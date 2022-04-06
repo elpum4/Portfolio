@@ -14,7 +14,7 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Descripción del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_descripcion" id="proy_descripcion" required [ngModel]="arrProject.proy_descripcion">
+            <textarea matInput placeholder="" formControlName="proy_descripcion" id="proy_descripcion" required [ngModel]="arrProject.proy_descripcion"></textarea>
             <mat-error *ngIf="myError('proy_descripcion', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('proy_descripcion', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('proy_descripcion', 'maxlength')">Demasiado largo</mat-error>
@@ -51,7 +51,7 @@
       </mat-card-content>
       
       <mat-card-actions>
-        <button  mat-raised-button color="primary">Aceptar</button>
+        <button  mat-raised-button color="primary" (click)="svProject()">Aceptar</button>
         <button  mat-raised-button color="primary">Cancelar</button>
       </mat-card-actions>
   </mat-card>
