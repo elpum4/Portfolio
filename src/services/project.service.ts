@@ -15,17 +15,8 @@ export class ProjectService {
     this.baseUrl = 'http://localhost:8080/api';
   }
 
-  saveProject(project: Project): Observable<Project>  {
-    this.httpClient.post<Project>(this.baseUrl + "/new/proyecto", project ).subscribe(data => {
-        this.projectId = data.id;
-    });return this.httpClient.get<Project>(this.baseUrl + "/new/proyecto");
+  saveProject(project: Project): Observable<Project> {
+    return this.httpClient.post<Project>(this.baseUrl + "/new/proyecto",project);
   }
-
-
-  /*
-  getAllProjects(): Promise<Project[]> {
-    return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyecto").toPromise(); 
-  }*/
-
 
 }

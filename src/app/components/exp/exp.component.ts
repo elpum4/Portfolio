@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Exp } from '../../models/exp';
-import { ImportallService } from '../../services/importall.service';
+import { ImportallService } from '../../../services/importall.service';
 @Component({
   selector: 'app-exp',
   templateUrl: './exp.component.html',

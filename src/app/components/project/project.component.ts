@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Project } from '../../models/project';
-import { ImportallService } from '../../services/importall.service';
+import { ImportallService } from '../../../services/importall.service';
 import { EditProjectComponent } from 'src/app/edition/edit-project/edit-project.component';
 
 import {MatDialog} from '@angular/material/dialog';
@@ -46,7 +46,7 @@ export class ProjectComponent implements OnInit {
     this.idProyecto = $event;
     console.log(this.idProyecto);
     const dialogRef = this.dialog.open(EditProjectComponent, {data: {
-      dataKey: this.idProyecto, formKey:Project}
+      dataKey: this.idProyecto}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

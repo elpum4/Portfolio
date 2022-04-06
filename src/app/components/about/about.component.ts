@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Header } from '../../models/header'
-import { ImportallService } from '../../services/importall.service';
+import { ImportallService } from '../../../services/importall.service';
 
 @Component({
   selector: 'app-about',

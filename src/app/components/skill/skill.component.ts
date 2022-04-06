@@ -3,7 +3,7 @@ import {ThemePalette} from '@angular/material/core';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
 import { Skill } from '../../models/skill'
-import { ImportallService } from '../../services/importall.service';
+import { ImportallService } from '../../../services/importall.service';
 
 @Component({
   selector: 'app-skill',

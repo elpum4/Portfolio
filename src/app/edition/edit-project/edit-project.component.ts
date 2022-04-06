@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { Project } from '../../models/project';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ImportallService } from '../../services/importall.service';
-import { ProjectService } from '../../services/project.service';
+import { ImportallService } from '../../../services/importall.service';
+import { ProjectService } from '../../../services/project.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 @Component({
   selector: 'app-edit-project',
@@ -13,7 +13,9 @@ export class EditProjectComponent implements OnInit {
   arrProject: Project;
   myForm: FormGroup;
 
-  constructor(private projectservices: ImportallService, private save: ProjectService, private  dialog:  MatDialog, @Inject(MAT_DIALOG_DATA) private id: any) { }
+  constructor(private projectservices: ImportallService, 
+              private save: ProjectService, private  dialog:  MatDialog, 
+              @Inject(MAT_DIALOG_DATA) private id: any) { }
 
   ngOnInit(): void {
     this.buscarProyecto(this.id);
@@ -31,10 +33,6 @@ export class EditProjectComponent implements OnInit {
 
   public myError = (controlName: string, errorName: string) =>{
     return this.myForm.controls[controlName].hasError(errorName);
-    }
-
-  onEnviar(event:Event){
-    console.log(this.arrProject);
     }
 
   async buscarProyecto(id?:any){

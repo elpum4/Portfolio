@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { Education } from '../../models/education';
-import { ImportallService } from '../../services/importall.service';
+import { ImportallService } from '../../../services/importall.service';
 
 @Component({
   selector: 'app-education',

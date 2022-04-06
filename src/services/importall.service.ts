@@ -25,31 +25,38 @@ export class ImportallService {
 
   }
 
-  //  Ava veremos esta parte como la hacemos
-  getOptions(){
-    const valores = {
-      headers: new HttpHeaders({
-        'Authorization': "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcnVlYmFkZTgiLCJpYXQiOjE2NDkwNzc2NjQsImV4cCI6MTY0OTE2NDA2NH0.bC87d9wHjMORiDgWxqZOnm837Ci-_Dc2hatWjkQyTUZSoZAMrACFohGk01u9cbtFRw_hxk6BHBI5T8uGefDIsA"
-      })
-    };
-    return valores;
-
-  }
   //Proyectos
 
   getProjectById(pId: number): Observable<Project> {
+    this.httpClient.get(this.baseUrl + "/buscar/proyecto/"+ pId).subscribe(datos =>{
+    });
     return this.httpClient.get<Project>(this.baseUrl + "/buscar/proyecto/"+ pId);
   }
   getAllProjects(): Observable<Project[]> {
     return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyecto"); 
   }
+  //Experiencias
 
   getAllExp(): Observable<Exp[]> {
     return this.httpClient.get<Exp[]>(this.baseUrl + "/ver/experiencia"); 
   }
+  //Skill
 
+  getSkillById(pId: number): Observable<Skill> {
+    this.httpClient.get(this.baseUrl + "/buscar/skill/"+ pId).subscribe(datos =>{
+    });
+    return this.httpClient.get<Skill>(this.baseUrl + "/buscar/skill/"+ pId);
+  }
   getAllSkills(): Observable<Skill[]> {
     return this.httpClient.get<Skill[]>(this.baseUrl + "/ver/skill"); 
+  }
+
+  //Educación
+
+  getEducationById(pId: number): Observable<Education> {
+    this.httpClient.get(this.baseUrl + "/buscar/educacion/"+ pId).subscribe(datos =>{
+    });
+    return this.httpClient.get<Education>(this.baseUrl + "/buscar/educacion/"+ pId);
   }
 
   getAllEdu(): Observable<Education[]> {
