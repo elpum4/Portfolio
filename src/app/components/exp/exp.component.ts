@@ -8,6 +8,8 @@ import {MatDialog} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MessageComponent } from '../../components/message/message.component' ;
+import { ExpService } from '../../../services/exp.service';
 @Component({
   selector: 'app-exp',
   templateUrl: './exp.component.html',
@@ -23,7 +25,8 @@ export class ExpComponent implements OnInit {
   arrExperiencias: Exp[];
   constructor(private breakpointObserver: BreakpointObserver,
     public dialog: MatDialog, 
-    private expservices: ImportallService) { }
+    private expservices: ImportallService,
+    private borrar: ExpService) { }
 
   ngOnInit(): void {
     this.obtenerExperiencia();
@@ -49,6 +52,39 @@ export class ExpComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  eliminarExp($event: any){
+    this.idExp = $event;
+    const dialogRef = this.dialog.open(MessageComponent, {data: {
+    message: "Desea Eliminar el proyecto?", mot: "confirm"}
+    });
+    dialogRef.afterClosed()
+    .subscribe((confirmado: Boolean) => {
+      if (confirmado) {
+        this.borrar.deleteExp(this.idExp).subscribe(
+          data => {
+            this.dialog.closeAll();
+            },
+            err => {
+              this.arrExperiencias = JSON.parse(err.error).message;
+              }
+            );
+        } else {
+          this.cerrar();
+        }
+      });
+  }
+  cerrar(){
+     this.dialog.closeAll();
+  }
+
+  agregarExp(){
+    const dialogRef = this.dialog.open(EditExpComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
   }
 
 }

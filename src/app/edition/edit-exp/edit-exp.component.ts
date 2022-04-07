@@ -44,26 +44,20 @@ ngOnInit(): void {
   async buscarExp(id?:any){
     console.log(id);
     if (id) {
-    this.expservices.getExpById(parseInt(id.dataKey)).subscribe(
-      data => {
-        this.arrExp = data;
-        console.log(this.arrExp);
-        this.myForm.get('id').setValue(this.arrExp.id);
-        this.myForm.get('exp_titulo').setValue(this.arrExp.exp_titulo);
-        this.myForm.get('exp_descripcion').setValue(this.arrExp.exp_descripcion);
-        this.myForm.get('exp_sitio').setValue(this.arrExp.exp_sitio);
-        this.myForm.get('ex_urllogo').setValue(this.arrExp.ex_urllogo);
-        this.myForm.get('exp_comienzo').setValue(this.arrExp.exp_comienzo);
-        this.myForm.get('exp_final').setValue(this.arrExp.exp_final);
-        this.myForm.get('exp_tipo').setValue(this.arrExp.exp_tipo);
+      console.log(id);
+    if (id) {
+      this.expservices.getExpById(parseInt(id.dataKey)).subscribe(
+        data => {
+          this.arrExp = data;
+          this.myForm.setValue(data);
         },
-      err => {
-        this.arrExp = JSON.parse(err.error).message;
+        err => {
+          this.arrExp = JSON.parse(err.error).message;
         }
       );
     }   
   }
-
+}
   svExp(){
     const dialogRef = this.dialog.open(MessageComponent, {data: {
       message: "Desea Aplicar los Cambios?", mot: "confirm"}

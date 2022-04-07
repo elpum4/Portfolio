@@ -18,5 +18,8 @@ export class ExpService {
   saveExp(experiencia: Exp): Observable<Exp> {
     return this.httpClient.post<Exp>(this.baseUrl + "/new/experiencia",experiencia);
   }
+  deleteExp(id: string): Observable<any> {
+    return this.httpClient.delete<any>(this.baseUrl + "/delete/experiencia/"+id);
+  }
 
 }

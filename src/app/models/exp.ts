@@ -1,12 +1,12 @@
 export class Exp {
-    id: string;
-    exp_titulo: string;
-    exp_descripcion: string;
-    exp_sitio: string;
-    ex_urllogo: string;
+    id: String;
+    exp_titulo: String;
+    exp_descripcion: String;
+    exp_sitio: String;
+    ex_urllogo: String;
     exp_comienzo: Date;
     exp_final: Date;
-    exp_actual: String;
+    exp_actual: boolean;
     exp_tipo: String;
 
     

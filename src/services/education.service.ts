@@ -18,4 +18,8 @@ export class EducationService {
     return this.httpClient.post<Education>(this.baseUrl + "/new/educacion",education);
   }
 
+  deleteEducation(id: string): Observable<any> {
+    return this.httpClient.delete<any>(this.baseUrl + "/delete/educacion/"+id);
+  }
+
 }

@@ -26,17 +26,17 @@
   </mat-card-subtitle>
 
   <mat-card-actions class="edicion">
-    <button mat-button group="education" (ngModel)="experiencia.id" (click)="editarExp(experiencia.id)">
+    <button mat-button group="experiencia" (ngModel)="experiencia.id" (click)="editarExp(experiencia.id)">
       <mat-icon>create</mat-icon>
     </button>
-    <button mat-button>
+    <button mat-button group="experiencia" (ngModel)="experiencia.id" (click)="eliminarExp(experiencia.id)">
       <mat-icon>clear</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>
 
 <mat-card-actions class="edicion">
-<button mat-button>
+<button mat-button group="experiencia" (click)="agregarExp()">
   <mat-icon>add</mat-icon>
 </button>
 </mat-card-actions>

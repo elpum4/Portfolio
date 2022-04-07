@@ -44,18 +44,12 @@ export class EditEducationComponent implements OnInit {
   async buscarEducacion(id?:any){
       console.log(id);
       if (id) {
+        console.log(id);
+      if (id) {
         this.educationservices.getEducationById(parseInt(id.dataKey)).subscribe(
           data => {
             this.arrEducation = data;
-            console.log(this.arrEducation);
-            this.myForm.get('id').setValue(this.arrEducation.id);
-            this.myForm.get('ed_titulo').setValue(this.arrEducation.ed_titulo);
-            this.myForm.get('ed_descripcion').setValue(this.arrEducation.ed_descripcion);
-            this.myForm.get('ed_institucion').setValue(this.arrEducation.ed_institucion);
-            this.myForm.get('ed_urllogo').setValue(this.arrEducation.ed_urllogo);
-            this.myForm.get('ed_comienzo').setValue(this.arrEducation.ed_comienzo);
-            this.myForm.get('ed_final').setValue(this.arrEducation.ed_final);
-            this.myForm.get('ed_tipo').setValue(this.arrEducation.ed_tipo);
+            this.myForm.setValue(data);
           },
           err => {
             this.arrEducation = JSON.parse(err.error).message;
@@ -63,7 +57,7 @@ export class EditEducationComponent implements OnInit {
         );
       }   
     }
-
+  }
   svEducation(){
     const dialogRef = this.dialog.open(MessageComponent, {data: {
     message: "Desea Aplicar los Cambios?", mot: "confirm"}
@@ -71,6 +65,7 @@ export class EditEducationComponent implements OnInit {
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
       if (confirmado) {
+        console.log(this.myForm.value);
         this.save.saveEducation(this.myForm.value).subscribe(
           data => {
             this.dialog.closeAll();

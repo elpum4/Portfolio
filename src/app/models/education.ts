@@ -1,13 +1,13 @@
 export class Education {
-    id: string;
-    ed_titulo: string;
-    ed_descripcion: string;
-    ed_institucion: string;
-    ed_urllogo: string;
+    id: String;
+    ed_titulo: String;
+    ed_descripcion: String;
+    ed_institucion: String;
+    ed_urllogo: String;
     ed_comienzo: Date;
     ed_final: Date;
-    ed_actual: string;
-    ed_tipo: string;
+    ed_actual: boolean;
+    ed_tipo: String;
 
     
 }

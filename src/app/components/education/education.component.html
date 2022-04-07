@@ -29,14 +29,14 @@
     <button mat-button group="education" (ngModel)="educacion.id" (click)="editarEducacion(educacion.id)">
       <mat-icon>create</mat-icon>
     </button>
-    <button mat-button>
+    <button mat-button group="education" (ngModel)="educacion.id" (click)="eliminarProyecto(educacion.id)">
       <mat-icon>clear</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>
 
 <mat-card-actions class="edicion">
-<button mat-button>
+<button mat-button group="education" (click)="agregarEducacion()">
   <mat-icon>add</mat-icon>
 </button>
 </mat-card-actions>

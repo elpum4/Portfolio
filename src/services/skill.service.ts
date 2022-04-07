@@ -18,4 +18,8 @@ export class SkillService {
     return this.httpClient.post<Skill>(this.baseUrl + "/new/skill",skill);
   }
 
+  deleteSkill(id: string): Observable<any> {
+    return this.httpClient.delete<any>(this.baseUrl + "/delete/skill/"+id);
+  }
+
 }

@@ -22,14 +22,14 @@
             <button mat-button group="skill" (ngModel)="skill.id" (click)="editarSkill(skill.id)">
               <mat-icon>create</mat-icon>
             </button>
-            <button mat-button>
+            <button mat-button group="skill" (ngModel)="skill.id" (click)="eliminarSkill(skill.id)">
               <mat-icon>clear</mat-icon>
             </button>
           </mat-card-actions>
           </mat-card>
       </div>
       <mat-card-actions class="edicion">
-        <button mat-button>
+        <button mat-button group="skill" (click)="agregarSkill()">
           <mat-icon>add</mat-icon>
         </button>
       </mat-card-actions>
