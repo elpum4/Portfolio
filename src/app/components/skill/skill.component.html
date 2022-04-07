@@ -9,32 +9,29 @@
           <mat-card class="card">
             <mat-card-content>
               <h2 class="tih2">{{skill.sk_titulo}}</h2>
-          
               <mat-spinner
                   class="margin"
                   [color]="color"
                   [mode]="mode"
                   value= {{skill.sk_habilidad}} >
               </mat-spinner>
-              
-              <mat-card-actions class="edicion">
-                <button mat-button>
-                  <mat-icon>create</mat-icon>
-                </button>
-                <button mat-button>
-                  <mat-icon>clear</mat-icon>
-                </button>
-              </mat-card-actions>
             </mat-card-content>
           </mat-card>
+          <mat-card class="card">
+          <mat-card-actions class="edicion">
+            <button mat-button group="skill" (ngModel)="skill.id" (click)="editarSkill(skill.id)">
+              <mat-icon>create</mat-icon>
+            </button>
+            <button mat-button>
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-card-actions>
+          </mat-card>
       </div>
-    
-      
       <mat-card-actions class="edicion">
         <button mat-button>
           <mat-icon>add</mat-icon>
         </button>
-    
       </mat-card-actions>
     </div>
 </mat-card>

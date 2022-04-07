@@ -3,6 +3,7 @@ import { Project } from '../../models/project';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
 import { ProjectService } from '../../../services/project.service';
+import { MessageComponent } from '../../components/message/message.component' ;
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 @Component({
   selector: 'app-edit-project',
@@ -18,7 +19,9 @@ export class EditProjectComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) private id: any) { }
 
   ngOnInit(): void {
-    this.buscarProyecto(this.id);
+    if (this.id){
+      this.buscarProyecto(this.id);
+    }
     this.myForm = new FormGroup({
       id: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(40)] ),
       proy_titulo: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(40)] ),
@@ -51,14 +54,25 @@ export class EditProjectComponent implements OnInit {
     }
 
   svProject(){
-    this.save.saveProject(this.myForm.value).subscribe(
-      data => {
-        this.dialog.closeAll();
-      },
-      err => {
-      this.arrProject = JSON.parse(err.error).message;
-      }
-    );
+    const dialogRef = this.dialog.open(MessageComponent, {data: {
+      message: "Desea Aplicar los Cambios?", mot: "confirm"}
+    });
+    dialogRef.afterClosed()
+    .subscribe((confirmado: Boolean) => {
+      const envio = this.myForm.value;
+      if (confirmado) {
+        this.save.saveProject(envio).subscribe(
+          data => {
+            this.dialog.closeAll();
+            },
+            err => {
+              this.arrProject = JSON.parse(err.error).message;
+              }
+            );
+        } else {
+          this.cerrar();
+          }
+      });
   }
   cerrar(){
      this.dialog.closeAll();

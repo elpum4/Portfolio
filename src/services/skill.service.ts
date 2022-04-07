@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Exp } from '../app/models/exp';
+import { Skill } from '../app/models/skill';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExpService {
+export class SkillService {
+  arrSkill!: Skill[];
   baseUrl: string;
-
+  projectId: string
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:8080/api';
   }
 
-
-
-  saveExp(experiencia: Exp): Observable<Exp> {
-    return this.httpClient.post<Exp>(this.baseUrl + "/new/experiencia",experiencia);
+  saveSkill(skill: Skill): Observable<Skill> {
+    return this.httpClient.post<Skill>(this.baseUrl + "/new/skill",skill);
   }
 
 }

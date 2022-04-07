@@ -36,6 +36,12 @@ export class ImportallService {
     return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyecto"); 
   }
   //Experiencias
+  
+  getExpById(pId: number): Observable<Exp> {
+    this.httpClient.get(this.baseUrl + "/buscar/experiencia/"+ pId).subscribe(datos =>{
+    });
+    return this.httpClient.get<Exp>(this.baseUrl + "/buscar/experiencia/"+ pId);
+  }
 
   getAllExp(): Observable<Exp[]> {
     return this.httpClient.get<Exp[]>(this.baseUrl + "/ver/experiencia"); 

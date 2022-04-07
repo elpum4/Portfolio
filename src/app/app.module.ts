@@ -45,6 +45,7 @@ import { EditSkillComponent } from './edition/edit-skill/edit-skill.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { EditExpComponent } from './edition/edit-exp/edit-exp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     EditEducationComponent,
     EditProjectComponent,
     EditSkillComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditExpComponent
   ],
   imports: [
     BrowserModule,

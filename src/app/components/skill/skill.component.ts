@@ -4,6 +4,12 @@ import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
 import { Skill } from '../../models/skill'
 import { ImportallService } from '../../../services/importall.service';
+import { EditSkillComponent } from 'src/app/edition/edit-skill/edit-skill.component'
+
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-skill',
@@ -13,9 +19,18 @@ import { ImportallService } from '../../../services/importall.service';
 export class SkillComponent implements OnInit {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'determinate';
+
+  idSkill="";
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
   
   arrSkills: Skill[];
-  constructor(private skillservices: ImportallService) { }
+  constructor(private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog,
+    private skillservices: ImportallService) { }
 
   ngOnInit(): void {
     this.obtenerSkills();
@@ -31,6 +46,14 @@ export class SkillComponent implements OnInit {
       }
     );
   }
-
+  editarSkill($event: any){
+    this.idSkill = $event;
+    const dialogRef = this.dialog.open(EditSkillComponent, {data: {
+      dataKey: this.idSkill}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
  
 }

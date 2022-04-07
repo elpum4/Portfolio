@@ -1,7 +1,19 @@
-<h1  mat-dialog-title>Error!!</h1>
+<div *ngIf="data.mot=='error'">
+    <h1  mat-dialog-title>Error!!</h1>
     <mat-dialog-content>  
-        Usuario o Clave Incorrectos!!
+        {{data.message}}
     </mat-dialog-content>
 <mat-dialog-actions>
+    <button  mat-raised-button (click)="closeMe()">Cerrar</button>
+</mat-dialog-actions>
+</div>
+
+<div *ngIf="data.mot=='confirm'">
+    <h1  mat-dialog-title>Confirmación!!</h1>
+    <mat-dialog-content>  
+        {{data.message}}
+    </mat-dialog-content>
+<mat-dialog-actions>
+    <button  mat-raised-button (click)="aceptar()" cdkFocusInitial>Aceptar</button>
     <button  mat-raised-button (click)="closeMe()">Cerrar</button>
 </mat-dialog-actions>

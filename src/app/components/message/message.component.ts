@@ -12,7 +12,13 @@ export class MessageComponent {
     @Inject(MAT_DIALOG_DATA) public  data:  any) {
   }
   public  closeMe() {
-      this.dialogRef.close();
+      this.dialogRef.close(false);
+      
+  }
+
+  public aceptar(){
+    
+    this.dialogRef.close(true);
   }
   ngOnInit(): void {
   }

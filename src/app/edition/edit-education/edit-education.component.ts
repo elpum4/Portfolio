@@ -4,7 +4,8 @@ import { FormControl, FormGroup, Validators, FormBuilder  } from '@angular/forms
 import { ImportallService } from '../../../services/importall.service';
 import { EducationService } from '../../../services/education.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MessageComponent } from '../../components/message/message.component' ;
 
 @Component({
   selector: 'app-edit-education',
@@ -64,14 +65,24 @@ export class EditEducationComponent implements OnInit {
     }
 
   svEducation(){
-    this.save.saveEducation(this.myForm.value).subscribe(
-      data => {
-        this.dialog.closeAll();
-      },
-      err => {
-      this.arrEducation = JSON.parse(err.error).message;
-      }
-    );
+    const dialogRef = this.dialog.open(MessageComponent, {data: {
+    message: "Desea Aplicar los Cambios?", mot: "confirm"}
+    });
+    dialogRef.afterClosed()
+    .subscribe((confirmado: Boolean) => {
+      if (confirmado) {
+        this.save.saveEducation(this.myForm.value).subscribe(
+          data => {
+            this.dialog.closeAll();
+            },
+            err => {
+              this.arrEducation = JSON.parse(err.error).message;
+              }
+            );
+        } else {
+          this.cerrar();
+        }
+      });
   }
   cerrar(){
      this.dialog.closeAll();

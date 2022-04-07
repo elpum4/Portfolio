@@ -18,7 +18,7 @@
         </mat-form-field>
           <mat-form-field>
             <mat-label>Descripcion</mat-label>
-            <input matInput placeholder="" formControlName="ed_descripcion" id="ed_descripcion" required>
+            <textarea matInput placeholder="" formControlName="ed_descripcion" id="ed_descripcion" required></textarea>
             <mat-error *ngIf="myError('ed_descripcion', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('ed_descripcion', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('ed_descripcion', 'maxlength')">Demasiado largo</mat-error>
@@ -65,7 +65,7 @@
           </mat-form-field>
           <mat-card-actions>
             <button  mat-raised-button color="primary">Aceptar</button>
-            <button  mat-raised-button color="primary" (click)="cerrar()">Cancelar</button>
+            <button  mat-raised-button color="primary" [mat-dialog-close]="myForm">Cancelar</button>
           </mat-card-actions>
         </form>
       </mat-card-content>

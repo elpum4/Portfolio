@@ -57,7 +57,7 @@ export class LoginComponent  implements OnInit {
       err => {
         this.errorMessage = err.error.message;
           this.dialog.open(MessageComponent,{ data: {
-            message:  "ERROR!!"
+            message:  "Usuario o clave Incorrectas!!", mot: "error"
             }});
         this.isLoginFailed = true;
       }

@@ -15,8 +15,12 @@ export class ProjectService {
     this.baseUrl = 'http://localhost:8080/api';
   }
 
-  saveProject(project: Project): Observable<Project> {
-    return this.httpClient.post<Project>(this.baseUrl + "/new/proyecto",project);
+  saveProject(project: Project): Observable<any> {
+    return this.httpClient.post<any>(this.baseUrl + "/new/proyecto",project);
+  }
+
+  deleteProject(id: string): Observable<any> {
+    return this.httpClient.delete<any>(this.baseUrl + "/delete/proyecto/"+id);
   }
 
 }

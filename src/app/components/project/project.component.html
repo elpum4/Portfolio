@@ -15,7 +15,7 @@
             <button mat-button group="project" (ngModel)="proyecto.id" (click)="editarProyecto(proyecto.id)">
               <mat-icon >create</mat-icon>
             </button>
-            <button mat-button group="project">
+            <button mat-button group="project" (ngModel)="proyecto.id" (click)="eliminarProyecto(proyecto.id)">
               <mat-icon>clear</mat-icon>
             </button>
           </mat-card-actions>
@@ -23,7 +23,7 @@
   </div>
 
   <mat-card-actions class="edicion">
-    <button mat-button group="project">
+    <button mat-button group="project" (click)="agregarProyecto()">
       <mat-icon>add</mat-icon>
     </button>
 
