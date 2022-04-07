@@ -34,6 +34,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 import { authInterceptorProviders } from '../helpers/auth.interceptor';
@@ -42,7 +43,8 @@ import { EditEducationComponent } from './edition/edit-education/edit-education.
 import { EditProjectComponent } from './edition/edit-project/edit-project.component';
 import { EditSkillComponent } from './edition/edit-skill/edit-skill.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +84,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
