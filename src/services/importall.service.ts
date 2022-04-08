@@ -21,7 +21,7 @@ export class ImportallService {
     
     this.httpClient.get(this.baseUrl + urlAdd + '/' + pId).subscribe(datos =>{
     });
-    return this.httpClient.get<any>(this.baseUrl + urlAdd + '/' + pId);
+    return this.httpClient.get<any>(this.baseUrl + urlAdd + '/' + pId)
   }
 
   getAll(tipo: string): Observable<any[]> {

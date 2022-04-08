@@ -10,7 +10,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 import { MessageComponent } from '../../components/message/message.component';
 import { TokenStorageService } from '../../../services/token-storage.service';
-
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -26,20 +25,49 @@ export class ProjectComponent implements OnInit {
     );
 
   arrProyectos: Project[];
+  proyectos: Project[];
+	responsiveOptions;
+
   constructor(private breakpointObserver: BreakpointObserver,
               public dialog: MatDialog, 
               private services: ImportallService,
-              private tokenStorageService: TokenStorageService) { }
+              private tokenStorageService: TokenStorageService) {
 
-  ngOnInit(): void {
+                this.responsiveOptions = [
+                  {
+                    breakpoint: '2024px',
+                    numVisible: 4,
+                    numScroll: 2
+                },
+                  {
+                      breakpoint: '1360px',
+                      numVisible: 3,
+                      numScroll: 3
+                  },
+                  {
+                      breakpoint: '768px',
+                      numVisible: 2,
+                      numScroll: 2
+                  },
+                  {
+                      breakpoint: '560px',
+                      numVisible: 1,
+                      numScroll: 1
+                  }
+              ];
+               }
+              
+
+  ngOnInit() {
     this.obtener();
     this.logOk();
   }
-
   async obtener() {
     this.services.getAll('proyecto').subscribe(
       data => {
         this.arrProyectos = data;
+        this.proyectos =Object.values(data);
+        console.log(this.proyectos);
       },
       err => {
         this.arrProyectos = JSON.parse(err.error).message;

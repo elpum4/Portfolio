@@ -45,6 +45,9 @@ import { EditSkillComponent } from './edition/edit-skill/edit-skill.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EditExpComponent } from './edition/edit-exp/edit-exp.component';
+import { CarouselModule } from 'primeng/carousel';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -88,7 +91,10 @@ import { EditExpComponent } from './edition/edit-exp/edit-exp.component';
     MatDividerModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CarouselModule,
+    ToastModule,
+    ButtonModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
