@@ -11,6 +11,7 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 export class HeaderComponent implements OnInit {
   banner: string = '';
   arrHead: Header[];
+  header: string = '';
   isLoggedIn = false;
   constructor(private services: ImportallService,
     private tokenStorageService: TokenStorageService) { }
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
     this.services.getAll('header').subscribe(
       data => {
         this.arrHead = data;
+        this.header=this.arrHead[0].hd_urlbanner;
       },
       err => {
         this.arrHead = JSON.parse(err.error).message;
