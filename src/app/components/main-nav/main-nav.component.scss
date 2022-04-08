@@ -6,23 +6,33 @@ mat-toolbar{
   .spacer {
     flex: 1 1 auto!important;
   }
-  .neon {
-    font-size: 60%;
-    margin-right: 2%;
-    text-decoration: none;
-    color: #fff;
-    text-shadow:
-      0 0 5px rgba(0,178,255,1),
-      0 0 10px rgba(0,178,255,1),
-      0 0 20px rgba(0,178,255,1),
-      0 0 40px rgba(38,104,127,1),
-      0 0 80px rgba(38,104,127,1),
-      0 0 90px rgba(38,104,127,1),
-      0 0 100px rgba(38,104,127,1),
-      0 0 140px rgba(38,104,127,1),
-      0 0 180px rgba(38,104,127,1);
+  a.neon {
+    display: none;
+    $layout-breakpoint-small: 670px;
+    @media (min-width: $layout-breakpoint-small) {
+      font-size:65%;
+      display:inline-block;
+      padding:0.35em 1.2em;
+      border:0.1em transparent #8e8e92;
+      margin:0 0.3em 0.3em 0;
+      border-radius:0.22em;
+      box-sizing: border-box;
+      text-decoration:none;
+      font-family:'Roboto',sans-serif;
+      font-weight:300;
+      color:#8e8e92;
+      text-align:center;
+      transition: all 0.2s;
+      
+    }
+    &:hover{
+      color:#000000;
+      background-color:#FFFFFF;
+      }
   }
 }
+
+
 
 
 

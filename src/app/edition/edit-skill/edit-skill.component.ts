@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Skill } from '../../models/skill';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
-import { SkillService } from '../../../services/skill.service';
 import { MessageComponent } from '../../components/message/message.component' ;
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 
@@ -15,8 +14,8 @@ export class EditSkillComponent implements OnInit {
   
   arrSkill: Skill;
   myForm: FormGroup;
-  constructor(private skillservices: ImportallService, 
-    private save: SkillService, private  dialog:  MatDialog, 
+  constructor(private services: ImportallService, 
+    private  dialog:  MatDialog, 
     @Inject(MAT_DIALOG_DATA) private id: any) { }
 
     ngOnInit(): void {
@@ -35,7 +34,7 @@ export class EditSkillComponent implements OnInit {
     async buscarProyecto(id?:any){
         console.log(id);
         if (id) {
-          this.skillservices.getSkillById(parseInt(id.dataKey)).subscribe(
+          this.services.getById(parseInt(id.dataKey), 'skill').subscribe(
             data => {
               this.arrSkill = data;
               this.myForm.setValue(data);
@@ -54,9 +53,10 @@ export class EditSkillComponent implements OnInit {
       dialogRef.afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado) {
-          this.save.saveSkill(this.myForm.value).subscribe(
+          this.services.save('skill' ,this.myForm.value).subscribe(
             data => {
               this.dialog.closeAll();
+              window.location.reload();
               },
               err => {
                 this.arrSkill = JSON.parse(err.error).message;

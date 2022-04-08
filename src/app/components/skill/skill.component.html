@@ -18,7 +18,7 @@
             </mat-card-content>
           </mat-card>
           <mat-card class="card">
-          <mat-card-actions class="edicion">
+          <mat-card-actions class="edicion" *ngIf="isLoggedIn">
             <button mat-button group="skill" (ngModel)="skill.id" (click)="editarSkill(skill.id)">
               <mat-icon>create</mat-icon>
             </button>
@@ -28,7 +28,7 @@
           </mat-card-actions>
           </mat-card>
       </div>
-      <mat-card-actions class="edicion">
+      <mat-card-actions class="edicion" *ngIf="isLoggedIn">
         <button mat-button group="skill" (click)="agregarSkill()">
           <mat-icon>add</mat-icon>
         </button>

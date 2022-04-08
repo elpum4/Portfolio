@@ -1,10 +1,8 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { Education } from '../../models/education';
-import { FormControl, FormGroup, Validators, FormBuilder  } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder  } from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
-import { EducationService } from '../../../services/education.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MessageComponent } from '../../components/message/message.component' ;
 
 @Component({
@@ -16,8 +14,8 @@ export class EditEducationComponent implements OnInit {
   arrEducation: Education;
   myForm: FormGroup;
 
-  constructor(private educationservices: ImportallService, 
-            private save: EducationService, private  dialog:  MatDialog, 
+  constructor(private services: ImportallService,
+            private  dialog:  MatDialog, 
             @Inject(MAT_DIALOG_DATA) private id: any,
             private fb: FormBuilder) { }
 
@@ -46,7 +44,7 @@ export class EditEducationComponent implements OnInit {
       if (id) {
         console.log(id);
       if (id) {
-        this.educationservices.getEducationById(parseInt(id.dataKey)).subscribe(
+        this.services.getById(parseInt(id.dataKey), 'educacion').subscribe(
           data => {
             this.arrEducation = data;
             this.myForm.setValue(data);
@@ -58,6 +56,7 @@ export class EditEducationComponent implements OnInit {
       }   
     }
   }
+  
   svEducation(){
     const dialogRef = this.dialog.open(MessageComponent, {data: {
     message: "Desea Aplicar los Cambios?", mot: "confirm"}
@@ -66,9 +65,10 @@ export class EditEducationComponent implements OnInit {
     .subscribe((confirmado: Boolean) => {
       if (confirmado) {
         console.log(this.myForm.value);
-        this.save.saveEducation(this.myForm.value).subscribe(
+        this.services.save('educacion',this.myForm.value).subscribe(
           data => {
             this.dialog.closeAll();
+            window.location.reload();
             },
             err => {
               this.arrEducation = JSON.parse(err.error).message;

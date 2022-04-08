@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Exp } from '../../models/exp';
-import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
+import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
-import { ExpService } from '../../../services/exp.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 import { MessageComponent } from '../../components/message/message.component' ;
 
@@ -16,8 +15,8 @@ export class EditExpComponent implements OnInit {
   arrExp: Exp;
   myForm: FormGroup;
 
-  constructor(private expservices: ImportallService, 
-    private save: ExpService, private  dialog:  MatDialog, 
+  constructor(private services: ImportallService,
+    private  dialog:  MatDialog, 
     @Inject(MAT_DIALOG_DATA) private id: any,
     private fb: FormBuilder) { }
 
@@ -46,7 +45,7 @@ ngOnInit(): void {
     if (id) {
       console.log(id);
     if (id) {
-      this.expservices.getExpById(parseInt(id.dataKey)).subscribe(
+      this.services.getById(parseInt(id.dataKey), 'experiencia').subscribe(
         data => {
           this.arrExp = data;
           this.myForm.setValue(data);
@@ -65,9 +64,10 @@ ngOnInit(): void {
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
       if (confirmado) {
-        this.save.saveExp(this.myForm.value).subscribe(
+        this.services.save('experiencia',this.myForm.value).subscribe(
           data => {
             this.dialog.closeAll();
+            window.location.reload();
             },
             err => {
               this.arrExp = JSON.parse(err.error).message;

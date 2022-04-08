@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MessageComponent } from '../../components/message/message.component' ;
-import { EducationService } from '../../../services/education.service';
+import { TokenStorageService } from '../../../services/token-storage.service';
 
 @Component({
   selector: 'app-education',
@@ -18,6 +18,7 @@ import { EducationService } from '../../../services/education.service';
   styleUrls: ['./education.component.scss']
 })
 export class EducationComponent implements OnInit {
+  isLoggedIn = false;
   idEducacion="";
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -27,18 +28,18 @@ export class EducationComponent implements OnInit {
   arrEducacion: Education[];
   constructor(private breakpointObserver: BreakpointObserver,
               public dialog: MatDialog, 
-              private edservices: ImportallService,
-              private borrar: EducationService) { }
+              private services: ImportallService,
+              private tokenStorageService: TokenStorageService) { }
 
 
   ngOnInit(): void {
-    this.obtenerEducacion();
+    this.obtener();
+    this.logOk();
   }
 
-  obtenerEducacion() {
-    this.edservices.getAllEdu().subscribe(
+  obtener() {
+    this.services.getAll('educacion').subscribe(
       data => {
-        console.log(data);
         this.arrEducacion = data;
       },
       err => {
@@ -66,9 +67,10 @@ export class EducationComponent implements OnInit {
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
       if (confirmado) {
-        this.borrar.deleteEducation(this.idEducacion).subscribe(
+        this.services.delete(this.idEducacion, 'educacion').subscribe(
           data => {
             this.dialog.closeAll();
+            window.location.reload();
             },
             err => {
               this.arrEducacion = JSON.parse(err.error).message;
@@ -89,5 +91,11 @@ export class EducationComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
 
+  }
+
+  //mostrar edicion
+
+  logOk() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
 }

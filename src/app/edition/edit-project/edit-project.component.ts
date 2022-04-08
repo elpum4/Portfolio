@@ -2,7 +2,6 @@ import { Component, OnInit, Inject} from '@angular/core';
 import { Project } from '../../models/project';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
-import { ProjectService } from '../../../services/project.service';
 import { MessageComponent } from '../../components/message/message.component' ;
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 @Component({
@@ -14,8 +13,8 @@ export class EditProjectComponent implements OnInit {
   arrProject: Project;
   myForm: FormGroup;
 
-  constructor(private projectservices: ImportallService, 
-              private save: ProjectService, private  dialog:  MatDialog, 
+  constructor(private services: ImportallService, 
+              private  dialog:  MatDialog, 
               @Inject(MAT_DIALOG_DATA) private id: any) { }
 
   ngOnInit(): void {
@@ -41,7 +40,7 @@ export class EditProjectComponent implements OnInit {
   async buscarProyecto(id?:any){
       console.log(id);
       if (id) {
-        this.projectservices.getProjectById(parseInt(id.dataKey)).subscribe(
+        this.services.getById(parseInt(id.dataKey), 'proyecto').subscribe(
           data => {
             this.arrProject = data;
             this.myForm.setValue(data);
@@ -61,9 +60,10 @@ export class EditProjectComponent implements OnInit {
     .subscribe((confirmado: Boolean) => {
       const envio = this.myForm.value;
       if (confirmado) {
-        this.save.saveProject(envio).subscribe(
+        this.services.save('proyecto' ,envio).subscribe(
           data => {
             this.dialog.closeAll();
+            window.location.reload();
             },
             err => {
               this.arrProject = JSON.parse(err.error).message;

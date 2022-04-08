@@ -1,11 +1,10 @@
 <mat-toolbar>
   <img class="png-icon" src="https://i.ibb.co/SrzvKXG/argprogr.jpg" style="width: 150px; height:60px">
   <span class="spacer"></span>
-  <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="hero">Home</a>
-  <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="experiencia">Experiencia</a>
-  <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="skill">Skills</a>
-  <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="proyectos">Proyectos</a>
-  
+    <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="hero">HOME</a>
+    <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="experiencia">EXPERIENCIA</a>
+    <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="skill">SKILLS</a>
+    <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="proyectos">PROYECTOS</a>
   <button mat-icon-button class="icon favorite-icon" aria-label="GitHub" (click)="onNavigate(1)">
     <mat-icon><img class="png-icon" src="./assets/icons/git.png" style="width: 24px; height: 24px;"></mat-icon>
   </button>
@@ -16,10 +15,16 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="openDialog()">
+    <button mat-menu-item (click)="openDialog()" *ngIf="!isLoggedIn">
       <mat-icon>account_circle</mat-icon>
       <span>Iniciar Sesion</span>
     </button>
+
+    <button mat-menu-item (click)="logout()" *ngIf="isLoggedIn">
+      <mat-icon>account_circle</mat-icon>
+      <span>Cerrar Sesion</span>
+    </button>
+
     <button mat-menu-item [routerLink]="['/contact']">
       <mat-icon>contact_mail</mat-icon>
       <span>Contacto</span>

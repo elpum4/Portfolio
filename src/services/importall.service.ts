@@ -1,23 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-import { Project } from '../app/models/project';
-import { Exp } from '../app/models/exp';
-import { Skill} from '../app/models/skill'
-import { Education } from '../app/models//education'
-import { Header } from '../app/models//header'
 @Injectable({
   providedIn: 'root'
 })
 export class ImportallService {
   baseUrl: string;
-
-  arrProyectos!: Project[];
-  arrExperiencias!: Exp[];
-  arrSkills!: Skill[];
-  arrEdu!: Education[];
-  arrHead!: Header[];
 
   constructor(private httpClient: HttpClient) { 
     //this.baseUrl = 'https://backapp-elpum4.herokuapp.com/api';
@@ -25,51 +13,29 @@ export class ImportallService {
 
   }
 
-  //Proyectos
 
-  getProjectById(pId: number): Observable<Project> {
-    this.httpClient.get(this.baseUrl + "/buscar/proyecto/"+ pId).subscribe(datos =>{
+  //unificado
+
+  getById(pId: number, tipo: string): Observable<any> {
+    var urlAdd = "/buscar/"+tipo;
+    
+    this.httpClient.get(this.baseUrl + urlAdd + '/' + pId).subscribe(datos =>{
     });
-    return this.httpClient.get<Project>(this.baseUrl + "/buscar/proyecto/"+ pId);
-  }
-  getAllProjects(): Observable<Project[]> {
-    return this.httpClient.get<Project[]>(this.baseUrl + "/ver/proyecto"); 
-  }
-  //Experiencias
-  
-  getExpById(pId: number): Observable<Exp> {
-    this.httpClient.get(this.baseUrl + "/buscar/experiencia/"+ pId).subscribe(datos =>{
-    });
-    return this.httpClient.get<Exp>(this.baseUrl + "/buscar/experiencia/"+ pId);
+    return this.httpClient.get<any>(this.baseUrl + urlAdd + '/' + pId);
   }
 
-  getAllExp(): Observable<Exp[]> {
-    return this.httpClient.get<Exp[]>(this.baseUrl + "/ver/experiencia"); 
-  }
-  //Skill
-
-  getSkillById(pId: number): Observable<Skill> {
-    this.httpClient.get(this.baseUrl + "/buscar/skill/"+ pId).subscribe(datos =>{
-    });
-    return this.httpClient.get<Skill>(this.baseUrl + "/buscar/skill/"+ pId);
-  }
-  getAllSkills(): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(this.baseUrl + "/ver/skill"); 
+  getAll(tipo: string): Observable<any[]> {
+    var urlAdd = "/ver/"+tipo;
+    return this.httpClient.get<any[]>(this.baseUrl + urlAdd); 
   }
 
-  //Educación
-
-  getEducationById(pId: number): Observable<Education> {
-    this.httpClient.get(this.baseUrl + "/buscar/educacion/"+ pId).subscribe(datos =>{
-    });
-    return this.httpClient.get<Education>(this.baseUrl + "/buscar/educacion/"+ pId);
+  save(tipo: any, objeto: any): Observable<any> {
+    var urlAdd = "/new/"+tipo;
+    return this.httpClient.post<any>(this.baseUrl + urlAdd, objeto);
   }
 
-  getAllEdu(): Observable<Education[]> {
-    return this.httpClient.get<Education[]>(this.baseUrl + "/ver/educacion"); 
-  }
-
-  getAllHeader(): Observable<Header[]> {
-    return this.httpClient.get<Header[]>(this.baseUrl + "/ver/header"); 
+  delete(id: string, tipo: any): Observable<any> {
+    var urlAdd = "/delete/"+tipo;
+    return this.httpClient.delete<any>(this.baseUrl + urlAdd + '/' + id);
   }
 }

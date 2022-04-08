@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Header } from '../../models/header'
 import { ImportallService } from '../../../services/importall.service';
+import { TokenStorageService } from '../../../services/token-storage.service';
 
 @Component({
   selector: 'app-about',
@@ -9,15 +10,19 @@ import { ImportallService } from '../../../services/importall.service';
 })
 export class AboutComponent implements OnInit {
   arrHead: Header[];
-  constructor(private headerservices: ImportallService) { }
+  
+  isLoggedIn = false;
+  constructor(private services: ImportallService,
+    private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.obtenerHeader();
+    this.logOk();
   }
 
   
   obtenerHeader() {
-    this.headerservices.getAllHeader().subscribe(
+    this.services.getAll('header').subscribe(
       data => {
         this.arrHead = data;
       },
@@ -25,5 +30,8 @@ export class AboutComponent implements OnInit {
         this.arrHead = JSON.parse(err.error).message;
       }
     );
+  }
+  logOk() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
 }

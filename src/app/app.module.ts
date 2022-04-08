@@ -42,10 +42,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { EditEducationComponent } from './edition/edit-education/edit-education.component';
 import { EditProjectComponent } from './edition/edit-project/edit-project.component';
 import { EditSkillComponent } from './edition/edit-skill/edit-skill.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EditExpComponent } from './edition/edit-exp/edit-exp.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +64,6 @@ import { EditExpComponent } from './edition/edit-exp/edit-exp.component';
     EditEducationComponent,
     EditProjectComponent,
     EditSkillComponent,
-    ProfileComponent,
     EditExpComponent
   ],
   imports: [

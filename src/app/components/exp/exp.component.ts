@@ -8,8 +8,8 @@ import {MatDialog} from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { MessageComponent } from '../../components/message/message.component' ;
-import { ExpService } from '../../../services/exp.service';
+import { MessageComponent } from '../../components/message/message.component';
+import { TokenStorageService } from '../../../services/token-storage.service';
 @Component({
   selector: 'app-exp',
   templateUrl: './exp.component.html',
@@ -23,17 +23,19 @@ export class ExpComponent implements OnInit {
       shareReplay()
     );
   arrExperiencias: Exp[];
+  isLoggedIn = false;
   constructor(private breakpointObserver: BreakpointObserver,
     public dialog: MatDialog, 
-    private expservices: ImportallService,
-    private borrar: ExpService) { }
+    private services: ImportallService,
+    private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.obtenerExperiencia();
+    this.obtener();
+    this.logOk();
   }
 
-  obtenerExperiencia() {
-    this.expservices.getAllExp().subscribe(
+  obtener() {
+    this.services.getAll('experiencia').subscribe(
       data => {
         this.arrExperiencias = data;
       },
@@ -62,9 +64,10 @@ export class ExpComponent implements OnInit {
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
       if (confirmado) {
-        this.borrar.deleteExp(this.idExp).subscribe(
+        this.services.delete(this.idExp, 'experiencia').subscribe(
           data => {
             this.dialog.closeAll();
+            window.location.reload();
             },
             err => {
               this.arrExperiencias = JSON.parse(err.error).message;
@@ -85,6 +88,12 @@ export class ExpComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
 
+  }
+
+  //mostrar edicion
+
+  logOk() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
 
 }

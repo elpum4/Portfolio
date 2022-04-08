@@ -12,7 +12,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 import { MessageComponent } from '../../components/message/message.component' ;
-import { SkillService } from '../../../services/skill.service';
+import { TokenStorageService } from '../../../services/token-storage.service';
 
 @Component({
   selector: 'app-skill',
@@ -24,6 +24,7 @@ export class SkillComponent implements OnInit {
   mode: ProgressSpinnerMode = 'determinate';
 
   idSkill="";
+  isLoggedIn = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -33,15 +34,16 @@ export class SkillComponent implements OnInit {
   arrSkills: Skill[];
   constructor(private breakpointObserver: BreakpointObserver,
     public dialog: MatDialog,
-    private skillservices: ImportallService,
-    private borrar: SkillService) { }
+    private services: ImportallService,
+    private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.obtenerSkills();
+    this.obtener();
+    this.logOk();
   }
 
-  async obtenerSkills() {
-    await this.skillservices.getAllSkills().subscribe(
+  async obtener() {
+    await this.services.getAll('skill').subscribe(
       data => {
         this.arrSkills = data;
       },
@@ -50,6 +52,7 @@ export class SkillComponent implements OnInit {
       }
     );
   }
+
   editarSkill($event: any){
     this.idSkill = $event;
     const dialogRef = this.dialog.open(EditSkillComponent, {data: {
@@ -68,9 +71,10 @@ export class SkillComponent implements OnInit {
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
       if (confirmado) {
-        this.borrar.deleteSkill(this.idSkill).subscribe(
+        this.services.delete(this.idSkill, 'skill').subscribe(
           data => {
             this.dialog.closeAll();
+            window.location.reload();
             },
             err => {
               this.arrSkills = JSON.parse(err.error).message;
@@ -91,5 +95,11 @@ export class SkillComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
 
+  }
+  
+  //mostrar edicion
+
+  logOk() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
 }
