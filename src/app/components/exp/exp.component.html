@@ -1,43 +1,47 @@
-<mat-card>
-  <mat-card-title-group class="title-general">
-    <mat-card-title>
-      EXPERIENCIAS LABORALES
-    </mat-card-title>
-  </mat-card-title-group>
-  
-</mat-card>
+<div>
+  <mat-card>
+    <mat-card-title-group class="title-general">
+      <mat-card-title>
+        EXPERIENCIAS LABORALES
+      </mat-card-title>
+    </mat-card-title-group>
+  </mat-card>
+</div>
 
-<mat-card class="exp-card" *ngFor="let experiencia of arrExperiencias">
-  <mat-card-title-group>
-    <mat-card-title>
-      {{experiencia.exp_titulo}}
-    </mat-card-title>
+<div>
+  <mat-card class="exp-card" *ngFor="let experiencia of arrExperiencias">
+    <mat-card-title-group>
+      <mat-card-title>
+        {{experiencia.exp_titulo}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{experiencia.exp_sitio}}
+      </mat-card-subtitle>
+      <img mat-card-sm-image src={{experiencia.ex_urllogo}} >
+    </mat-card-title-group>
+    <mat-card-content>
+      {{experiencia.exp_descripcion}}
+    </mat-card-content>
     <mat-card-subtitle>
-      {{experiencia.exp_sitio}}
+          <div  class="fecha" *ngIf=experiencia.exp_actual>{{experiencia.exp_comienzo |date:"yyyy"}} Actual</div> 
+          <div  class="fecha" *ngIf=!experiencia.exp_actual>{{experiencia.exp_comienzo |date:"yyyy"}} {{experiencia.exp_final |date:"yyyy"}}</div>    
     </mat-card-subtitle>
-    <img mat-card-sm-image src={{experiencia.ex_urllogo}} >
-  </mat-card-title-group>
-  <mat-card-content>
-    {{experiencia.exp_descripcion}}
-  </mat-card-content>
-  <mat-card-subtitle>
-        <div  class="fecha" *ngIf=experiencia.exp_actual>{{experiencia.exp_comienzo |date:"yyyy"}} Actual</div> 
-        <div  class="fecha" *ngIf=!experiencia.exp_actual>{{experiencia.exp_comienzo |date:"yyyy"}} {{experiencia.exp_final |date:"yyyy"}}</div>    
-  </mat-card-subtitle>
+  
+    <mat-card-actions class="edicion" *ngIf="isLoggedIn">
+      <button mat-mini-fab color="primary" group="experiencia" (ngModel)="experiencia.id" (click)="editarExp(experiencia.id)">
+        <mat-icon>create</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" group="experiencia" (ngModel)="experiencia.id" (click)="eliminarExp(experiencia.id)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 
-  <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-    <button mat-button group="experiencia" (ngModel)="experiencia.id" (click)="editarExp(experiencia.id)">
-      <mat-icon>create</mat-icon>
-    </button>
-    <button mat-button group="experiencia" (ngModel)="experiencia.id" (click)="eliminarExp(experiencia.id)">
-      <mat-icon>clear</mat-icon>
-    </button>
-  </mat-card-actions>
-</mat-card>
+</div>
 
 <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-<button mat-button group="experiencia" (click)="agregarExp()">
-  <mat-icon>add</mat-icon>
-</button>
+  <button mat-mini-fab color="primary" group="experiencia" (click)="agregarExp()">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-card-actions>
 

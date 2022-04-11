@@ -1,0 +1,24 @@
+mat-card{
+    margin: auto;
+    mat-card-header{
+        justify-content: center;
+    }
+    mat-form-field{
+        width: 90%;
+        
+    }
+    .id, 
+    .hd_urlbanner,
+    .hd_urlperfil,
+    .hd_nombre,
+    .hd_profesion,
+    .hd_sobremi{
+        display: none !important;
+    }
+    .view{
+        display: flex !important;
+    }
+    mat-card-actions{
+        text-align: center;
+    }
+}

@@ -67,7 +67,6 @@ export class ProjectComponent implements OnInit {
       data => {
         this.arrProyectos = data;
         this.proyectos =Object.values(data);
-        console.log(this.proyectos);
       },
       err => {
         this.arrProyectos = JSON.parse(err.error).message;

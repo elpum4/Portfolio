@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>MODIFICAR PERFIL</mat-card-title>
+    </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="myForm" novalidate (ngSubmit)="svHeader()"
+        fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field class="id">
+          <mat-label>Id</mat-label>
+          <input matInput placeholder="" formControlName="id" id="id" required>
+        </mat-form-field>
+        <mat-form-field class="hd_urlbanner">
+          <mat-label>URL Banner</mat-label>
+          <input matInput placeholder="" formControlName="hd_urlbanner" id="hd_urlbanner" required>
+          <mat-error *ngIf="myError('hd_urlbanner', 'minlength')">Demasiado corto</mat-error>
+          <mat-error *ngIf="myError('hd_urlbanner', 'required')">El dato requerido</mat-error>
+          <mat-error *ngIf="myError('hd_urlbanner', 'maxlength')">Demasiado largo</mat-error>
+        </mat-form-field>
+          <mat-form-field class="hd_urlperfil">
+            <mat-label>URL Perfil</mat-label>
+            <input matInput placeholder="" formControlName="hd_urlperfil" id="hd_urlperfil" required>
+            <mat-error *ngIf="myError('hd_urlperfil', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('hd_urlperfil', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('hd_urlperfil', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+          <mat-form-field class="hd_nombre">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="" formControlName="hd_nombre" id="hd_nombre" required>
+            <mat-error *ngIf="myError('hd_nombre', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('hd_nombre', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('hd_nombre', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+          <mat-form-field class="hd_profesion">
+            <mat-label>Profesión</mat-label>
+            <input matInput placeholder="" formControlName="hd_profesion" id="hd_profesion" required>
+            <mat-error *ngIf="myError('hd_profesion', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('hd_profesion', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('hd_profesion', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="hd_sobremi">
+            <mat-label>Sobre Mí</mat-label>
+            <textarea matInput placeholder="" formControlName="hd_sobremi" id="hd_sobremi" required></textarea>
+            <mat-error *ngIf="myError('hd_sobremi', 'minlength')">Demasiado corto</mat-error>
+            <mat-error *ngIf="myError('hd_sobremi', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('hd_sobremi', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+          <mat-card-actions>
+            <button  mat-raised-button color="primary">Aceptar</button>
+            <button  mat-raised-button color="primary" [mat-dialog-close]="myForm">Cancelar</button>
+          </mat-card-actions>
+        </form>
+      </mat-card-content>
+      
+      
+  </mat-card>

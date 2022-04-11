@@ -11,23 +11,27 @@
               {{proyecto.proy_descripcion}}
             </p>
           </mat-card-content>
-          <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-            <button mat-button group="project" (ngModel)="proyecto.id" (click)="editarProyecto(proyecto.id)">
+        </mat-card>
+
+        <mat-card class="card" *ngIf="isLoggedIn">
+          <mat-card-actions class="edicion">
+            <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="editarProyecto(proyecto.id)">
               <mat-icon >create</mat-icon>
             </button>
-            <button mat-button group="project" (ngModel)="proyecto.id" (click)="eliminarProyecto(proyecto.id)">
+            <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="eliminarProyecto(proyecto.id)">
               <mat-icon>clear</mat-icon>
             </button>
           </mat-card-actions>
         </mat-card>
   </div>
-
-  <mat-card-actions class="edicion">
-    <button mat-button group="project" (click)="agregarProyecto()">
-      <mat-icon>add</mat-icon>
-    </button>
-
-  </mat-card-actions>
+  
+  <mat-card class="card" *ngIf="isLoggedIn">
+    <mat-card-actions class="edicion">
+      <button mat-mini-fab color="primary" group="project" (click)="agregarProyecto()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>
 
 <p-carousel [value]="proyectos" 
@@ -50,14 +54,6 @@
           {{proyecto.proy_descripcion}}
         </p>
       </mat-card-content>
-      <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-        <button mat-button group="project" (ngModel)="proyecto.id" (click)="editarProyecto(proyecto.id)">
-          <mat-icon >create</mat-icon>
-        </button>
-        <button mat-button group="project" (ngModel)="proyecto.id" (click)="eliminarProyecto(proyecto.id)">
-          <mat-icon>clear</mat-icon>
-        </button>
-      </mat-card-actions>
     </mat-card>
   </ng-template>
 </p-carousel>

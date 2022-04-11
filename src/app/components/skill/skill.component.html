@@ -17,22 +17,25 @@
               </mat-spinner>
             </mat-card-content>
           </mat-card>
-          <mat-card class="card">
-          <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-            <button mat-button group="skill" (ngModel)="skill.id" (click)="editarSkill(skill.id)">
+        <mat-card class="card" *ngIf="isLoggedIn">
+          <mat-card-actions class="edicion">
+            <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="editarSkill(skill.id)">
               <mat-icon>create</mat-icon>
             </button>
-            <button mat-button group="skill" (ngModel)="skill.id" (click)="eliminarSkill(skill.id)">
+            <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="eliminarSkill(skill.id)">
               <mat-icon>clear</mat-icon>
             </button>
           </mat-card-actions>
-          </mat-card>
+      </mat-card>
       </div>
-      <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-        <button mat-button group="skill" (click)="agregarSkill()">
-          <mat-icon>add</mat-icon>
-        </button>
-      </mat-card-actions>
+      
+      <mat-card class="card" *ngIf="isLoggedIn">
+        <mat-card-actions class="edicion" *ngIf="isLoggedIn">
+          <button mat-mini-fab color="primary" group="skill" (click)="agregarSkill()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
     </div>
 </mat-card>
 
