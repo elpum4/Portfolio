@@ -48,7 +48,7 @@
         <mat-card-title>{{proyecto.proy_titulo}}</mat-card-title>
         <mat-card-subtitle>{{proyecto.proy_cliente}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src={{proyecto.proy_urlimg}} alt={{proyecto.proy_titulo}} (click)="mostrarProyecto(proyecto.id)">
+      <img mat-card-image class="link" src={{proyecto.proy_urlimg}} alt={{proyecto.proy_titulo}} (click)="mostrarProyecto(proyecto.id)">
       <mat-card-subtitle>{{proyecto.proy_categoria}}</mat-card-subtitle>
     </mat-card>
   </ng-template>

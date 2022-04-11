@@ -11,7 +11,15 @@ import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 })
 export class ViewProjectComponent implements OnInit {
   
-  arrProject: Project;
+  arrProject: Project = {
+                          id: "",
+                          proy_titulo: "",
+                          proy_descripcion: "",
+                          proy_url: "",
+                          proy_cliente: "",
+                          proy_urlimg: "",
+                          proy_categoria: ""};
+
   constructor(private services: ImportallService, 
     private  dialog:  MatDialog, 
     @Inject(MAT_DIALOG_DATA) private id: any) { }

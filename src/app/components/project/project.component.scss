@@ -22,11 +22,14 @@
             .id{
                 display: none !important;
             }
+        
         }
     }
 }
 
-
+.link{
+  cursor: pointer;
+}
 .p-carousel-prev-icon,
 .pi {
   display: none !important;
