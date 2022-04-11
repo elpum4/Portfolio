@@ -47,7 +47,7 @@ export class EditHeaderComponent implements OnInit {
         var x = document.querySelector(c);
         x.className  = "view";
     }
-}
+  }
 
   public myError = (controlName: string, errorName: string) =>{
     return this.myForm.controls[controlName].hasError(errorName);

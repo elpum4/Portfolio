@@ -49,6 +49,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { EditHeaderComponent } from './edition/edit-header/edit-header.component';
+import { ViewProjectComponent } from './components/view-project/view-project.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { EditHeaderComponent } from './edition/edit-header/edit-header.component
     EditProjectComponent,
     EditSkillComponent,
     EditExpComponent,
-    EditHeaderComponent
+    EditHeaderComponent,
+    ViewProjectComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
 import { ImportallService } from '../../../services/importall.service';
 import { EditProjectComponent } from 'src/app/edition/edit-project/edit-project.component';
+import { ViewProjectComponent } from '../view-project/view-project.component';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -122,5 +123,15 @@ export class ProjectComponent implements OnInit {
 
   logOk() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
+  }
+
+  mostrarProyecto($event: any){
+    this.idProyecto = $event;
+    const dialogRef = this.dialog.open(ViewProjectComponent, {data: {
+      dataKey: this.idProyecto}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
