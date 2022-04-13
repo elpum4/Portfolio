@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { Project } from '../../models/project';
+import { TypeProject} from '../../models/typeproject';
 import { ImportallService } from '../../../services/importall.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 
@@ -18,7 +19,7 @@ export class ViewProjectComponent implements OnInit {
                           proy_url: "",
                           proy_cliente: "",
                           proy_urlimg: "",
-                          project_type: null};
+                          proy_type:{id:"", nombre:""}};
 
   constructor(private services: ImportallService, 
     private  dialog:  MatDialog, 
@@ -37,6 +38,7 @@ export class ViewProjectComponent implements OnInit {
         data => {
           this.arrProject = data;
           console.log(this.arrProject);
+          console.log("esto " + this.arrProject.proy_type);
         },
         err => {
           this.arrProject = JSON.parse(err.error).message;

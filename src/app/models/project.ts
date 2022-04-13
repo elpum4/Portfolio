@@ -1,3 +1,4 @@
+import { TypeProject } from './typeproject'
 export interface Project {
     id: string;
     proy_titulo: string;
@@ -5,6 +6,6 @@ export interface Project {
     proy_url: string;
     proy_cliente: string;
     proy_urlimg: string;
-    project_type: number;
+    proy_type: TypeProject;
     
 }
