@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Header } from '../../models/header'
+import { Profile } from '../../models/profile'
 import { ImportallService } from '../../../services/importall.service';
 import { TokenStorageService } from '../../../services/token-storage.service';
 
-import { EditHeaderComponent } from 'src/app/edition/edit-header/edit-header.component';
-
+import { EditProfileComponent } from 'src/app/edition/edit-profile/edit-profile.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -16,7 +15,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  arrHead: Header[];
+  arrHead: Profile[];
   isLoggedIn = false;
   idHeader="";
   header="";
@@ -38,7 +37,7 @@ export class HeaderComponent implements OnInit {
   	
    
   obtener() {
-    this.services.getAll('header').subscribe(
+    this.services.getAll('profile').subscribe(
       data => {
         this.arrHead = data;
         this.header=this.arrHead[0].hd_urlbanner;
@@ -54,7 +53,7 @@ export class HeaderComponent implements OnInit {
   editar($event: any, section:Array<string>) {
     this.idHeader = $event;
     console.log(this.idHeader);
-    const dialogRef = this.dialog.open(EditHeaderComponent, {data: {
+    const dialogRef = this.dialog.open(EditProfileComponent, {data: {
       dataKey: this.idHeader, seccion: section}
     });
     dialogRef.afterClosed().subscribe(result => {

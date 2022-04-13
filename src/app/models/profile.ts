@@ -1,4 +1,4 @@
-export class Header {
+export class Profile {
     id: string;
     hd_urlbanner: string;
     hd_urlperfil: string;

@@ -1,10 +1,10 @@
 <mat-toolbar>
-  <img class="png-icon" src="https://i.ibb.co/SrzvKXG/argprogr.jpg" style="width: 150px; height:60px">
+  <img class="png-icon link" src="../../../assets/icons/APLogo_i.png" style="width: 70px; height:60px" (click)="onNavigate(3)">
   <span class="spacer"></span>
-    <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="hero">HOME</a>
-    <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="experiencia">EXPERIENCIA</a>
-    <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="skill">SKILLS</a>
-    <a class= "neon" (click)="navigateTo($event)" [routerLink]="''" fragment="proyectos">PROYECTOS</a>
+    <a class= "neon link" (click)="navigateTo($event)" [routerLink]="''" fragment="hero">HOME</a>
+    <a class= "neon link" (click)="navigateTo($event)" [routerLink]="''" fragment="experiencia">EXPERIENCIA</a>
+    <a class= "neon link" (click)="navigateTo($event)" [routerLink]="''" fragment="skill">SKILLS</a>
+    <a class= "neon link" (click)="navigateTo($event)" [routerLink]="''" fragment="proyectos">PROYECTOS</a>
   <button mat-icon-button class="icon favorite-icon" aria-label="GitHub" (click)="onNavigate(1)">
     <mat-icon><img class="png-icon" src="./assets/icons/git.png" style="width: 24px; height: 24px;"></mat-icon>
   </button>
@@ -15,17 +15,17 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="openDialog()" *ngIf="!isLoggedIn">
+    <button mat-menu-item (click)="openDialog()" *ngIf="!isLoggedIn" class="link">
       <mat-icon>account_circle</mat-icon>
       <span>Iniciar Sesion</span>
     </button>
 
-    <button mat-menu-item (click)="logout()" *ngIf="isLoggedIn">
+    <button mat-menu-item (click)="logout()" *ngIf="isLoggedIn" class="link">
       <mat-icon>account_circle</mat-icon>
       <span>Cerrar Sesion</span>
     </button>
 
-    <button mat-menu-item [routerLink]="['/contact']">
+    <button mat-menu-item [routerLink]="['/contact']" class="link">
       <mat-icon>contact_mail</mat-icon>
       <span>Contacto</span>
     </button>

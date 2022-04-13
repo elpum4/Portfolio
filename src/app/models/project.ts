@@ -5,6 +5,6 @@ export interface Project {
     proy_url: string;
     proy_cliente: string;
     proy_urlimg: string;
-    proy_categoria: string;
+    project_type: number;
     
 }

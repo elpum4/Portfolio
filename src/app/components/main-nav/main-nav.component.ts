@@ -70,13 +70,20 @@ export class MainNavComponent implements OnInit {
   }
 
   onNavigate(url){
-    if (url==1){
-      window.open("https://github.com/elpum4", "_blank");
-    }else {
-      window.open("https://www.linkedin.com/in/fcerionie", "_blank");
+    switch (url) {
+      case 1:
+        window.open("https://github.com/elpum4", "_blank");
+        break;
+      
+      case 2:
+        window.open("https://www.linkedin.com/in/fcerionie", "_blank");
+        break;
+
+      case 3:
+        window.open("https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa", "_blank");
+        break;
     }
   }
-
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();

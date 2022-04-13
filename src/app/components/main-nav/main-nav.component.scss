@@ -3,12 +3,15 @@ mat-toolbar{
   position: sticky;
   top: 0;
   z-index: 1;
+  .link{
+    cursor: pointer;
+  }
   .spacer {
     flex: 1 1 auto!important;
   }
   a.neon {
     display: none;
-    $layout-breakpoint-small: 670px;
+    $layout-breakpoint-small: 600px;
     @media (min-width: $layout-breakpoint-small) {
       font-size:65%;
       display:inline-block;
@@ -31,6 +34,8 @@ mat-toolbar{
       }
   }
 }
+
+
 
 
 

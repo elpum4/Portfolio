@@ -9,8 +9,8 @@ import { ReturnStatement } from '@angular/compiler';
   providedIn: 'root'
 })
 export class AuthService {
-  //url = 'http://localhost:8080/api/auth';
-  url = 'https://backapp-elpum4.herokuapp.com/api/auth';
+  url = 'http://localhost:8080/api/auth';
+  //url = 'https://backapp-elpum4.herokuapp.com/api/auth';
 
   currentUserSubject: BehaviorSubject<any>;
 

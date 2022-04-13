@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Header } from '../../models/header';
+import { Profile } from '../../models/profile';
 import { FormGroup, Validators, FormBuilder  } from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
@@ -7,12 +7,12 @@ import { MessageComponent } from '../../components/message/message.component' ;
 
 
 @Component({
-  selector: 'app-edit-header',
-  templateUrl: './edit-header.component.html',
-  styleUrls: ['./edit-header.component.scss']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.scss']
 })
-export class EditHeaderComponent implements OnInit {
-  arrHeader: Header;
+export class EditProfileComponent implements OnInit {
+  arrHeader: Profile;
   myForm: FormGroup;
   section: Array<string>;
   constructor(private services: ImportallService,
@@ -55,7 +55,7 @@ export class EditHeaderComponent implements OnInit {
 
   async buscarHeader(id?:any){
     if (id) {
-      this.services.getById(parseInt(id.dataKey), 'header').subscribe(
+      this.services.getById(parseInt(id.dataKey), 'profile').subscribe(
         data => {
           this.arrHeader = data;
           this.myForm.setValue(data);
@@ -75,7 +75,7 @@ export class EditHeaderComponent implements OnInit {
     .subscribe((confirmado: Boolean) => {
       if (confirmado) {
         console.log(this.myForm.value);
-        this.services.save('header',this.myForm.value).subscribe(
+        this.services.save('profile',this.myForm.value).subscribe(
           data => {
             this.dialog.closeAll();
             window.location.reload();
