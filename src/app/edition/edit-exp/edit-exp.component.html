@@ -53,15 +53,17 @@
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field> 
-       
-          <mat-label>Actual</mat-label>
-          <mat-checkbox formControlName="exp_actual" id="exp_actual" placeholder="Actual"></mat-checkbox>
+          <mat-card>
+            <mat-label>Actual</mat-label>
+            <mat-checkbox formControlName="exp_actual" id="exp_actual" placeholder="Actual"></mat-checkbox>
+          </mat-card>
+
           <mat-form-field>
             <mat-label>Tipo</mat-label>
-            <input matInput placeholder="" formControlName="exp_tipo" id="exp_tipo" required>
-            <mat-error *ngIf="myError('exp_tipo', 'minlength')">Demasiado corto</mat-error>
+            <mat-select formControlName="exp_tipo" id="exp_tipo" required>
+              <mat-option *ngFor="let texp of arrTExp" value={{texp.name}}>{{texp.name}}</mat-option>
+            </mat-select>
             <mat-error *ngIf="myError('exp_tipo', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('exp_tipo', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-card-actions>
             <button  mat-raised-button color="primary">Aceptar</button>

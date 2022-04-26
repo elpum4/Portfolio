@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { Project } from '../../models/project';
+import { TypeProject } from '../../models/typeproject';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
 import { MessageComponent } from '../../components/message/message.component' ;
@@ -12,12 +13,14 @@ import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
 export class EditProjectComponent implements OnInit {
   arrProject: Project;
   myForm: FormGroup;
+  arrTProject:TypeProject[];
 
   constructor(private services: ImportallService, 
               private  dialog:  MatDialog, 
               @Inject(MAT_DIALOG_DATA) private id: any) { }
 
   ngOnInit(): void {
+    this.obtener()
     if (this.id){
       this.buscarProyecto(this.id);
     }
@@ -28,7 +31,7 @@ export class EditProjectComponent implements OnInit {
       proy_url: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]),
       proy_cliente: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
       proy_urlimg: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]),
-      proy_categoria: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]),
+      proy_categoria: new FormControl('', [Validators.required]),
       
     });
   }
@@ -43,13 +46,38 @@ export class EditProjectComponent implements OnInit {
         this.services.getById(parseInt(id.dataKey), 'proyecto').subscribe(
           data => {
             this.arrProject = data;
-            this.myForm.setValue(data);
+            this.myForm.patchValue(data);
           },
           err => {
             this.arrProject = JSON.parse(err.error).message;
           }
         );
       }   
+    }
+
+    async buscarTipoProyecto(id?:any){
+      console.log(id);
+      if (id) {
+        this.services.getById(parseInt(id.dataKey), 'tipoproyecto').subscribe(
+          data => {
+            this.arrTProject = data;
+          },
+          err => {
+            this.arrTProject = JSON.parse(err.error).message;
+          }
+        );
+      }   
+    }
+
+    async obtener() {
+      this.services.getAll('tipoproyecto').subscribe(
+        data => {
+          this.arrTProject = data;
+        },
+        err => {
+          this.arrTProject = JSON.parse(err.error).message;
+        }
+      );
     }
 
   svProject(){

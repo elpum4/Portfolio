@@ -19,7 +19,7 @@ export class ViewProjectComponent implements OnInit {
                           proy_url: "",
                           proy_cliente: "",
                           proy_urlimg: "",
-                          proy_type:{id:"", nombre:""}};
+                          proy_categoria:""};
 
   constructor(private services: ImportallService, 
     private  dialog:  MatDialog, 
@@ -37,8 +37,6 @@ export class ViewProjectComponent implements OnInit {
       this.services.getById(parseInt(id.dataKey), 'proyecto').subscribe(
         data => {
           this.arrProject = data;
-          console.log(this.arrProject);
-          console.log("esto " + this.arrProject.proy_type);
         },
         err => {
           this.arrProject = JSON.parse(err.error).message;

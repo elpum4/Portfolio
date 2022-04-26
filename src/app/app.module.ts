@@ -35,6 +35,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 
 import { authInterceptorProviders } from '../helpers/auth.interceptor';
@@ -98,7 +99,8 @@ import { ViewProjectComponent } from './components/view-project/view-project.com
     MatNativeDateModule,
     CarouselModule,
     ToastModule,
-    ButtonModule
+    ButtonModule,
+    MatSelectModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

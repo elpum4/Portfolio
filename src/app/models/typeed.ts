@@ -1,4 +1,4 @@
-export interface TypeProject {
+export interface TypeEd {
     id: string;
     name: string;    
 }

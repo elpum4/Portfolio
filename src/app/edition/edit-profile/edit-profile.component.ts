@@ -58,7 +58,7 @@ export class EditProfileComponent implements OnInit {
       this.services.getById(parseInt(id.dataKey), 'profile').subscribe(
         data => {
           this.arrHeader = data;
-          this.myForm.setValue(data);
+          this.myForm.patchValue(data);
         },
         err => {
           this.arrHeader = JSON.parse(err.error).message;

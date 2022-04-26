@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { Education } from '../../models/education';
+import { TypeEd } from '../../models/typeed';
 import { FormGroup, Validators, FormBuilder  } from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
@@ -13,6 +14,7 @@ import { MessageComponent } from '../../components/message/message.component' ;
 export class EditEducationComponent implements OnInit {
   arrEducation: Education;
   myForm: FormGroup;
+  arrTEd: TypeEd[];
 
   constructor(private services: ImportallService,
             private  dialog:  MatDialog, 
@@ -20,6 +22,7 @@ export class EditEducationComponent implements OnInit {
             private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.obtener()
     this.buscarEducacion(this.id);
     this.myForm = this.fb.group({
       id: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(40)]],
@@ -30,7 +33,7 @@ export class EditEducationComponent implements OnInit {
       ed_comienzo: ['', [Validators.required]],
       ed_final: ['',],
       ed_actual:['',],
-      ed_tipo:['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
+      ed_tipo:['', [Validators.required]],
       });
 
   }
@@ -47,7 +50,7 @@ export class EditEducationComponent implements OnInit {
         this.services.getById(parseInt(id.dataKey), 'educacion').subscribe(
           data => {
             this.arrEducation = data;
-            this.myForm.setValue(data);
+            this.myForm.patchValue(data);
           },
           err => {
             this.arrEducation = JSON.parse(err.error).message;
@@ -56,7 +59,17 @@ export class EditEducationComponent implements OnInit {
       }   
     }
   }
-  
+  async obtener() {
+    this.services.getAll('tipoeducacion').subscribe(
+      data => {
+        this.arrTEd = data;
+      },
+      err => {
+        this.arrTEd = JSON.parse(err.error).message;
+      }
+    );
+  }
+
   svEducation(){
     const dialogRef = this.dialog.open(MessageComponent, {data: {
     message: "Desea Aplicar los Cambios?", mot: "confirm"}

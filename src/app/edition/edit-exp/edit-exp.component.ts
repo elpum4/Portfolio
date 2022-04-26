@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Exp } from '../../models/exp';
+import { TypeExp } from '../../models/typeexp';
 import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { ImportallService } from '../../../services/importall.service';
 import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
@@ -14,6 +15,7 @@ import { MessageComponent } from '../../components/message/message.component' ;
 export class EditExpComponent implements OnInit {
   arrExp: Exp;
   myForm: FormGroup;
+  arrTExp: TypeExp[];
 
   constructor(private services: ImportallService,
     private  dialog:  MatDialog, 
@@ -21,6 +23,7 @@ export class EditExpComponent implements OnInit {
     private fb: FormBuilder) { }
 
 ngOnInit(): void {
+  this.obtener()
   this.buscarExp(this.id);
   this.myForm = this.fb.group({
     id: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(40)]],
@@ -31,7 +34,7 @@ ngOnInit(): void {
     exp_comienzo: ['', [Validators.required]],
     exp_final: ['',],
     exp_actual:['',],
-    exp_tipo:['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
+    exp_tipo:['', [Validators.required]],
     });
 
   }
@@ -48,7 +51,7 @@ ngOnInit(): void {
       this.services.getById(parseInt(id.dataKey), 'experiencia').subscribe(
         data => {
           this.arrExp = data;
-          this.myForm.setValue(data);
+          this.myForm.patchValue(data);
         },
         err => {
           this.arrExp = JSON.parse(err.error).message;
@@ -56,6 +59,17 @@ ngOnInit(): void {
       );
     }   
   }
+}
+
+async obtener() {
+  this.services.getAll('tipoexperiencia').subscribe(
+    data => {
+      this.arrTExp = data;
+    },
+    err => {
+      this.arrTExp = JSON.parse(err.error).message;
+    }
+  );
 }
   svExp(){
     const dialogRef = this.dialog.open(MessageComponent, {data: {

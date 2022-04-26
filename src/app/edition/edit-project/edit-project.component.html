@@ -46,10 +46,10 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Categoria del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_categoria" id="proy_categoria" required>
-            <mat-error *ngIf="myError('proy_categoria', 'minlength')">Demasiado corto</mat-error>
+            <mat-select formControlName="proy_categoria" id="proy_categoria" required>
+              <mat-option *ngFor="let tproyecto of arrTProject" value={{tproyecto.name}}>{{tproyecto.name}}</mat-option>
+            </mat-select>
             <mat-error *ngIf="myError('proy_categoria', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('proy_categoria', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-card-actions>
             <button  mat-raised-button color="primary">Aceptar</button>

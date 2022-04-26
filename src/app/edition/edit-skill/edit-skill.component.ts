@@ -37,7 +37,7 @@ export class EditSkillComponent implements OnInit {
           this.services.getById(parseInt(id.dataKey), 'skill').subscribe(
             data => {
               this.arrSkill = data;
-              this.myForm.setValue(data);
+              this.myForm.patchValue(data);
             },
             err => {
               this.arrSkill = JSON.parse(err.error).message;
