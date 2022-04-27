@@ -25,12 +25,12 @@ export class EditProjectComponent implements OnInit {
       this.buscarProyecto(this.id);
     }
     this.myForm = new FormGroup({
-      id: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(40)] ),
-      proy_titulo: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(40)] ),
-      proy_descripcion: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]),
-      proy_url: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]),
-      proy_cliente: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
-      proy_urlimg: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]),
+      id: new FormControl('',),
+      proy_titulo: new FormControl('', [Validators.required, Validators.maxLength(40)] ),
+      proy_descripcion: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
+      proy_url: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
+      proy_cliente: new FormControl('', [Validators.required,  Validators.maxLength(100)]),
+      proy_urlimg: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
       proy_categoria: new FormControl('', [Validators.required]),
       
     });

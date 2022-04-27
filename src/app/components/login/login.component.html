@@ -20,7 +20,7 @@
           <mat-error *ngIf="myError('password', 'minlength')">Debe tener mas de 8 dígitos</mat-error>
         </mat-form-field>
         <mat-card-actions>
-          <button  mat-raised-button color="primary">Logueo</button>
+          <button  mat-raised-button color="primary" cdkFocusInitial [disabled]="!myForm.valid">Logueo</button>
         </mat-card-actions>
       </form>
     </mat-card-content>

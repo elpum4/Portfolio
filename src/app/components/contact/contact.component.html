@@ -1,4 +1,5 @@
-<form class="contact" [formGroup]="form" method="POST" (ngSubmit)="onSubmit()">
+<mat-card>
+  <form class="contact" [formGroup]="form" method="POST" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Nombre</mat-label>
       <input matInput [formControl]="name" required>
@@ -21,3 +22,8 @@
       <span>{{responseMessage}}</span>
     </div>
   </form>
+
+  <mat-card-title>Mis datos</mat-card-title>
+  <mat-card-subtitle>Franco Cerioni</mat-card-subtitle>
+  <mat-card-subtitle>franckocer@gmail.com</mat-card-subtitle>
+</mat-card>

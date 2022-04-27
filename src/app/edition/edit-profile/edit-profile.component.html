@@ -12,28 +12,24 @@
         <mat-form-field class="hd_urlbanner">
           <mat-label>URL Banner</mat-label>
           <input matInput placeholder="" formControlName="hd_urlbanner" id="hd_urlbanner" required>
-          <mat-error *ngIf="myError('hd_urlbanner', 'minlength')">Demasiado corto</mat-error>
           <mat-error *ngIf="myError('hd_urlbanner', 'required')">El dato requerido</mat-error>
           <mat-error *ngIf="myError('hd_urlbanner', 'maxlength')">Demasiado largo</mat-error>
         </mat-form-field>
           <mat-form-field class="hd_urlperfil">
             <mat-label>URL Perfil</mat-label>
             <input matInput placeholder="" formControlName="hd_urlperfil" id="hd_urlperfil" required>
-            <mat-error *ngIf="myError('hd_urlperfil', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('hd_urlperfil', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('hd_urlperfil', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field class="hd_nombre">
             <mat-label>Nombre</mat-label>
             <input matInput placeholder="" formControlName="hd_nombre" id="hd_nombre" required>
-            <mat-error *ngIf="myError('hd_nombre', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('hd_nombre', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('hd_nombre', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field class="hd_profesion">
             <mat-label>Profesión</mat-label>
             <input matInput placeholder="" formControlName="hd_profesion" id="hd_profesion" required>
-            <mat-error *ngIf="myError('hd_profesion', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('hd_profesion', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('hd_profesion', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
@@ -41,7 +37,6 @@
           <mat-form-field class="hd_sobremi">
             <mat-label>Sobre Mí</mat-label>
             <textarea matInput placeholder="" formControlName="hd_sobremi" id="hd_sobremi" required></textarea>
-            <mat-error *ngIf="myError('hd_sobremi', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('hd_sobremi', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('hd_sobremi', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>

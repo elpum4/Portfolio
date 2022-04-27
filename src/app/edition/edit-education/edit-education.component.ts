@@ -15,6 +15,7 @@ export class EditEducationComponent implements OnInit {
   arrEducation: Education;
   myForm: FormGroup;
   arrTEd: TypeEd[];
+  disabled = false;
 
   constructor(private services: ImportallService,
             private  dialog:  MatDialog, 
@@ -25,11 +26,11 @@ export class EditEducationComponent implements OnInit {
     this.obtener()
     this.buscarEducacion(this.id);
     this.myForm = this.fb.group({
-      id: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(40)]],
-      ed_titulo:['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      ed_descripcion:['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      ed_institucion: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      ed_urllogo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]],
+      id: ['',],
+      ed_titulo:['', [Validators.required, Validators.maxLength(100)]],
+      ed_descripcion:['', [Validators.required, Validators.maxLength(400)]],
+      ed_institucion: ['', [Validators.required, Validators.maxLength(100)]],
+      ed_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
       ed_comienzo: ['', [Validators.required]],
       ed_final: ['',],
       ed_actual:['',],

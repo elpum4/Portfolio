@@ -12,7 +12,6 @@
           <mat-form-field>
             <mat-label>Skill</mat-label>
             <input matInput placeholder="" formControlName="sk_titulo" id="sk_titulo" required>
-            <mat-error *ngIf="myError('sk_titulo', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('sk_titulo', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('sk_titulo', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
@@ -20,7 +19,7 @@
             <mat-label>Porcentaje de Nivel</mat-label>
             <input matInput placeholder="" formControlName="sk_habilidad" id="sk_habilidad" required>
             <mat-error *ngIf="myError('sk_habilidad', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('sk_habilidad', 'maxlength')">Demasiado largo</mat-error>
+            <mat-error *ngIf="myError('sk_habilidad', 'pattern')">Solo podes poner numeros del 0 al 100</mat-error>
           </mat-form-field>
           <mat-card-actions>
             <button  mat-raised-button color="primary">Aceptar</button>

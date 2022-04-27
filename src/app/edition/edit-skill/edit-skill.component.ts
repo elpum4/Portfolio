@@ -21,9 +21,9 @@ export class EditSkillComponent implements OnInit {
     ngOnInit(): void {
       this.buscarProyecto(this.id);
       this.myForm = new FormGroup({
-        id: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(40)] ),
-        sk_titulo: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(40)] ),
-        sk_habilidad: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]),
+        id: new FormControl('',),
+        sk_titulo: new FormControl('', [Validators.required,Validators.maxLength(40)] ),
+        sk_habilidad: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^100$')]),
       });
     }
   

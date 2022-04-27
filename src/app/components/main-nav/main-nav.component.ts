@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { LoginComponent } from '../login/login.component';
+import { ContactComponent } from '../contact/contact.component';
 import { TokenStorageService } from '../../../services/token-storage.service';
 
 import {MatDialog} from '@angular/material/dialog';
@@ -39,10 +40,6 @@ export class MainNavComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-
-      //this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      //this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
       this.username = user.username;
     }
   }

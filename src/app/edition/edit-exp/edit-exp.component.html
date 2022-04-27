@@ -12,28 +12,24 @@
         <mat-form-field>
           <mat-label>Compañía</mat-label>
           <input matInput placeholder="" formControlName="exp_titulo" id="exp_titulo" required>
-          <mat-error *ngIf="myError('exp_titulo', 'minlength')">Demasiado corto</mat-error>
           <mat-error *ngIf="myError('exp_titulo', 'required')">El dato requerido</mat-error>
           <mat-error *ngIf="myError('exp_titulo', 'maxlength')">Demasiado largo</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Puesto</mat-label>
             <input matInput placeholder="" formControlName="exp_sitio" id="exp_sitio" required>
-            <mat-error *ngIf="myError('exp_sitio', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('exp_sitio', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('exp_sitio', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Tareas del Puesto</mat-label>
             <textarea matInput placeholder="" formControlName="exp_descripcion" id="exp_descripcion" required></textarea>
-            <mat-error *ngIf="myError('exp_descripcion', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('exp_descripcion', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('exp_descripcion', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>URL Logo</mat-label>
             <input matInput placeholder="" formControlName="ex_urllogo" id="ex_urllogo" required>
-            <mat-error *ngIf="myError('ex_urllogo', 'minlength')">Demasiado corto</mat-error>
             <mat-error *ngIf="myError('ex_urllogo', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('ex_urllogo', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
@@ -49,13 +45,13 @@
           
           <mat-form-field>
             <mat-label>Fecha de Finalización</mat-label>
-            <input matInput [matDatepicker]="picker2" placeholder="" formControlName="exp_final" id="exp_final">
+            <input matInput [matDatepicker]="picker2" placeholder="" formControlName="exp_final" id="exp_final" [disabled]="disabled">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field> 
           <mat-card>
             <mat-label>Actual</mat-label>
-            <mat-checkbox formControlName="exp_actual" id="exp_actual" placeholder="Actual"></mat-checkbox>
+            <mat-checkbox formControlName="exp_actual" id="exp_actual" [(ngModel)]="disabled" placeholder="Actual"></mat-checkbox>
           </mat-card>
 
           <mat-form-field>

@@ -16,6 +16,7 @@ export class EditExpComponent implements OnInit {
   arrExp: Exp;
   myForm: FormGroup;
   arrTExp: TypeExp[];
+  disabled = false;
 
   constructor(private services: ImportallService,
     private  dialog:  MatDialog, 
@@ -26,11 +27,11 @@ ngOnInit(): void {
   this.obtener()
   this.buscarExp(this.id);
   this.myForm = this.fb.group({
-    id: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(40)]],
-    exp_titulo:['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-    exp_sitio: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-    exp_descripcion:['', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]],
-    ex_urllogo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]],
+    id: ['',],
+    exp_titulo:['', [Validators.required, Validators.maxLength(100)]],
+    exp_sitio: ['', [Validators.required, Validators.maxLength(100)]],
+    exp_descripcion:['', [Validators.required, Validators.maxLength(400)]],
+    ex_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
     exp_comienzo: ['', [Validators.required]],
     exp_final: ['',],
     exp_actual:['',],

@@ -26,12 +26,12 @@ export class EditProfileComponent implements OnInit {
     this.classView(this.section);
 
     this.myForm = this.fb.group({
-      id: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(40)]],
-      hd_urlbanner:['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      hd_urlperfil:['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      hd_nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      hd_profesion: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]],
-      hd_sobremi: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(400)]],
+      id: ['',],
+      hd_urlbanner:['', [Validators.required, Validators.maxLength(400)]],
+      hd_urlperfil:['', [Validators.required, Validators.maxLength(400)]],
+      hd_nombre: ['', [Validators.required,  Validators.maxLength(100)]],
+      hd_profesion: ['', [Validators.required,  Validators.maxLength(100)]],
+      hd_sobremi: ['', [Validators.required,  Validators.maxLength(2000)]],
     });
   }
 

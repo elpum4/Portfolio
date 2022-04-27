@@ -36,7 +36,7 @@ export class ProjectComponent implements OnInit {
 
                 this.responsiveOptions = [
                   {
-                    breakpoint: '2024px',
+                    breakpoint: '2600px',
                     numVisible: 4,
                     numScroll: 2
                 },
