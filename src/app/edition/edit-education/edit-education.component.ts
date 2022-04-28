@@ -24,18 +24,37 @@ export class EditEducationComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtener()
-    this.buscarEducacion(this.id);
-    this.myForm = this.fb.group({
-      id: ['',],
-      ed_titulo:['', [Validators.required, Validators.maxLength(100)]],
-      ed_descripcion:['', [Validators.required, Validators.maxLength(400)]],
-      ed_institucion: ['', [Validators.required, Validators.maxLength(100)]],
-      ed_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
-      ed_comienzo: ['', [Validators.required]],
-      ed_final: ['',],
-      ed_actual:['',],
-      ed_tipo:['', [Validators.required]],
-      });
+    if (this.id){
+      this.buscarEducacion(this.id);
+      console.log("estoy con id", this.id);
+      this.myForm = this.fb.group({
+        id: ['',],
+        ed_titulo:['', [Validators.required, Validators.maxLength(100)]],
+        ed_descripcion:['', [Validators.required, Validators.maxLength(400)]],
+        ed_institucion: ['', [Validators.required, Validators.maxLength(100)]],
+        ed_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
+        ed_comienzo: ['', [Validators.required]],
+        ed_final: ['',],
+        ed_actual:['',],
+        ed_tipo:['', [Validators.required]],
+        });
+    }
+    else {
+        
+        console.log("estoy sin id", this.id);
+        this.myForm = this.fb.group({
+          ed_titulo:['', [Validators.required, Validators.maxLength(100)]],
+          ed_descripcion:['', [Validators.required, Validators.maxLength(400)]],
+          ed_institucion: ['', [Validators.required, Validators.maxLength(100)]],
+          ed_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
+          ed_comienzo: ['', [Validators.required]],
+          ed_final: ['',],
+          ed_actual:['',],
+          ed_tipo:['', [Validators.required]],
+          });
+
+    }
+    
 
   }
  

@@ -19,12 +19,22 @@ export class EditSkillComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private id: any) { }
 
     ngOnInit(): void {
-      this.buscarProyecto(this.id);
-      this.myForm = new FormGroup({
-        id: new FormControl('',),
-        sk_titulo: new FormControl('', [Validators.required,Validators.maxLength(40)] ),
-        sk_habilidad: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^100$')]),
-      });
+      if (this.id){
+        this.buscarProyecto(this.id);
+        this.myForm = new FormGroup({
+          id: new FormControl('',),
+          sk_titulo: new FormControl('', [Validators.required,Validators.maxLength(40)] ),
+          sk_habilidad: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^100$')]),
+        });
+
+      } else{
+        this.myForm = new FormGroup({
+          id: new FormControl('',),
+          sk_titulo: new FormControl('', [Validators.required,Validators.maxLength(40)] ),
+          sk_habilidad: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^100$')]),
+        });
+      }
+      
     }
   
     public myError = (controlName: string, errorName: string) =>{

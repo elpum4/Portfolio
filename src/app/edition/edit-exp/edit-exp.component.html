@@ -5,10 +5,6 @@
       <mat-card-content>
         <form [formGroup]="myForm" novalidate (ngSubmit)="svExp()"
         fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-        <mat-form-field class="id">
-          <mat-label>Id</mat-label>
-          <input matInput placeholder="" formControlName="id" id="id" required>
-        </mat-form-field>
         <mat-form-field>
           <mat-label>Compañía</mat-label>
           <input matInput placeholder="" formControlName="exp_titulo" id="exp_titulo" required>
@@ -62,7 +58,7 @@
             <mat-error *ngIf="myError('exp_tipo', 'required')">El dato requerido</mat-error>
           </mat-form-field>
           <mat-card-actions>
-            <button  mat-raised-button color="primary">Aceptar</button>
+            <button  mat-raised-button color="primary" [disabled]="!myForm.valid">Aceptar</button>
             <button  mat-raised-button color="primary" [mat-dialog-close]="myForm">Cancelar</button>
           </mat-card-actions>
         </form>

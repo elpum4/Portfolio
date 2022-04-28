@@ -25,18 +25,33 @@ export class EditExpComponent implements OnInit {
 
 ngOnInit(): void {
   this.obtener()
-  this.buscarExp(this.id);
-  this.myForm = this.fb.group({
-    id: ['',],
-    exp_titulo:['', [Validators.required, Validators.maxLength(100)]],
-    exp_sitio: ['', [Validators.required, Validators.maxLength(100)]],
-    exp_descripcion:['', [Validators.required, Validators.maxLength(400)]],
-    ex_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
-    exp_comienzo: ['', [Validators.required]],
-    exp_final: ['',],
-    exp_actual:['',],
-    exp_tipo:['', [Validators.required]],
-    });
+  if(this.id){
+    this.buscarExp(this.id);
+    this.myForm = this.fb.group({
+      id: ['',],
+      exp_titulo:['', [Validators.required, Validators.maxLength(100)]],
+      exp_sitio: ['', [Validators.required, Validators.maxLength(100)]],
+      exp_descripcion:['', [Validators.required, Validators.maxLength(400)]],
+      ex_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
+      exp_comienzo: ['', [Validators.required]],
+      exp_final: ['',],
+      exp_actual:['',],
+      exp_tipo:['', [Validators.required]],
+      });
+
+  }else{
+    this.myForm = this.fb.group({
+      exp_titulo:['', [Validators.required, Validators.maxLength(100)]],
+      exp_sitio: ['', [Validators.required, Validators.maxLength(100)]],
+      exp_descripcion:['', [Validators.required, Validators.maxLength(400)]],
+      ex_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
+      exp_comienzo: ['', [Validators.required]],
+      exp_final: ['',],
+      exp_actual:['',],
+      exp_tipo:['', [Validators.required]],
+      });
+  }
+  
 
   }
 
