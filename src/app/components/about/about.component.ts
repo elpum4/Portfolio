@@ -16,7 +16,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  arrHead: Profile[];
+  arrHead: Profile[] = [];
   isLoggedIn = false;
   idHeader="";
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

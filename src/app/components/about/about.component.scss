@@ -1,6 +1,9 @@
 .container {
     display: flex;
     align-items: center;
+    @media screen and (max-width: 600px) {
+        flex-wrap: wrap;
+      }
 
     /* OPTIONAL: Spacing between items */
     margin: 16px 0;
