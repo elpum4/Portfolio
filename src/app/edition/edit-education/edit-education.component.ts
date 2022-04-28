@@ -26,7 +26,6 @@ export class EditEducationComponent implements OnInit {
     this.obtener()
     if (this.id){
       this.buscarEducacion(this.id);
-      console.log("estoy con id", this.id);
       this.myForm = this.fb.group({
         id: ['',],
         ed_titulo:['', [Validators.required, Validators.maxLength(100)]],
@@ -40,8 +39,6 @@ export class EditEducationComponent implements OnInit {
         });
     }
     else {
-        
-        console.log("estoy sin id", this.id);
         this.myForm = this.fb.group({
           ed_titulo:['', [Validators.required, Validators.maxLength(100)]],
           ed_descripcion:['', [Validators.required, Validators.maxLength(400)]],
@@ -63,20 +60,16 @@ export class EditEducationComponent implements OnInit {
     }
 
   async buscarEducacion(id?:any){
-      console.log(id);
-      if (id) {
-        console.log(id);
-      if (id) {
-        this.services.getById(parseInt(id.dataKey), 'educacion').subscribe(
-          data => {
-            this.arrEducation = data;
-            this.myForm.patchValue(data);
-          },
-          err => {
-            this.arrEducation = JSON.parse(err.error).message;
-          }
-        );
-      }   
+    if (id) {
+      this.services.getById(parseInt(id.dataKey), 'educacion').subscribe(
+        data => {
+          this.arrEducation = data;
+          this.myForm.patchValue(data);
+        },
+        err => {
+          this.arrEducation = JSON.parse(err.error).message;
+        }
+      );
     }
   }
   async obtener() {

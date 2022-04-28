@@ -31,7 +31,7 @@ export class EditProfileComponent implements OnInit {
       hd_urlperfil:['', [Validators.required, Validators.maxLength(400)]],
       hd_nombre: ['', [Validators.required,  Validators.maxLength(100)]],
       hd_profesion: ['', [Validators.required,  Validators.maxLength(100)]],
-      hd_sobremi: ['', [Validators.required,  Validators.maxLength(2000)]],
+      hd_sobremi: ['', [Validators.required,  Validators.maxLength(2500)]],
     });
   }
 
