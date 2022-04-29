@@ -1,53 +1,52 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>MODIFICAR PROYECTO</mat-card-title>
-    </mat-card-header>
-      <mat-card-content>
-        <form [formGroup]="myForm" novalidate (ngSubmit)="svProject()"
-        fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-          <mat-form-field>
-            <mat-label>Titulo del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_titulo" id="proy_titulo" required>
-            <mat-error *ngIf="myError('proy_titulo', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('proy_titulo', 'maxlength')">Demasiado largo</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Descripción del Proyecto</mat-label>
-            <textarea matInput placeholder="" formControlName="proy_descripcion" id="proy_descripcion" required></textarea>
-            <mat-error *ngIf="myError('proy_descripcion', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('proy_descripcion', 'maxlength')">Demasiado largo</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Url del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_url" id="proy_url" required>
-            <mat-error *ngIf="myError('proy_url', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('proy_url', 'maxlength')">Demasiado largo</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Cliente del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_cliente" id="proy_cliente" required>
-            <mat-error *ngIf="myError('proy_cliente', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('proy_cliente', 'maxlength')">Demasiado largo</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Url de la imagen del Proyecto</mat-label>
-            <input matInput placeholder="" formControlName="proy_urlimg" id="proy_urlimg" required>
-            <mat-error *ngIf="myError('proy_urlimg', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('proy_urlimg', 'maxlength')">Demasiado largo</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Categoria del Proyecto</mat-label>
-            <mat-select formControlName="proy_categoria" id="proy_categoria" required>
-              <mat-option *ngFor="let tproyecto of arrTProject" value={{tproyecto.name}}>{{tproyecto.name}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="myError('proy_categoria', 'required')">El dato requerido</mat-error>
-          </mat-form-field>
-          <mat-card-actions>
-            <button  mat-raised-button color="primary" [disabled]="!myForm.valid">Aceptar</button>
-            <button  mat-raised-button color="primary" [mat-dialog-close]="myForm">Cancelar</button>
-          </mat-card-actions>
-        </form>
-      </mat-card-content>
-      
-      
-  </mat-card>
+<mat-card *ngIf="loaded">
+  <mat-card-header>
+      <mat-card-title>MODIFICAR PROYECTO</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="svProject()"
+    fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-form-field>
+        <mat-label>Titulo del Proyecto</mat-label>
+        <input matInput placeholder="" formControlName="proy_titulo" id="proy_titulo" required>
+        <mat-error *ngIf="myError('proy_titulo', 'required')">El dato requerido</mat-error>
+        <mat-error *ngIf="myError('proy_titulo', 'maxlength')">Demasiado largo</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Descripción del Proyecto</mat-label>
+        <textarea matInput placeholder="" formControlName="proy_descripcion" id="proy_descripcion" required></textarea>
+        <mat-error *ngIf="myError('proy_descripcion', 'required')">El dato requerido</mat-error>
+        <mat-error *ngIf="myError('proy_descripcion', 'maxlength')">Demasiado largo</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Url del Proyecto</mat-label>
+        <input matInput placeholder="" formControlName="proy_url" id="proy_url" required>
+        <mat-error *ngIf="myError('proy_url', 'required')">El dato requerido</mat-error>
+        <mat-error *ngIf="myError('proy_url', 'maxlength')">Demasiado largo</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Cliente del Proyecto</mat-label>
+        <input matInput placeholder="" formControlName="proy_cliente" id="proy_cliente" required>
+        <mat-error *ngIf="myError('proy_cliente', 'required')">El dato requerido</mat-error>
+        <mat-error *ngIf="myError('proy_cliente', 'maxlength')">Demasiado largo</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Url de la imagen del Proyecto</mat-label>
+        <input matInput placeholder="" formControlName="proy_urlimg" id="proy_urlimg" required>
+        <mat-error *ngIf="myError('proy_urlimg', 'required')">El dato requerido</mat-error>
+        <mat-error *ngIf="myError('proy_urlimg', 'maxlength')">Demasiado largo</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Categoria del Proyecto</mat-label>
+        <mat-select formControlName="proy_categoria" id="proy_categoria" required>
+          <mat-option *ngFor="let tproyecto of arrTProject" value={{tproyecto.name}}>{{tproyecto.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="myError('proy_categoria', 'required')">El dato requerido</mat-error>
+      </mat-form-field>
+      <mat-card-actions>
+        <button  mat-raised-button color="primary" [disabled]="!myForm.valid">Aceptar</button>
+        <button  mat-raised-button color="primary" [mat-dialog-close]="myForm">Cancelar</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
+<app-spinner *ngIf="!loaded"></app-spinner>

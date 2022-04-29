@@ -1,5 +1,5 @@
-
-<div class="container"*ngFor="let header of arrHead">
+<div *ngIf="loaded">
+  <div class="container"*ngFor="let header of arrHead" >
     <div class="container__image" >
         <img src={{header.hd_urlperfil}}/>
         <mat-card-actions class="edicion" *ngIf="isLoggedIn">
@@ -33,7 +33,9 @@
         </button>
       </mat-card-actions>    
     </div>
+  </div>
 </div>
+
 
 
   

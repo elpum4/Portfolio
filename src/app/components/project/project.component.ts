@@ -4,13 +4,11 @@ import { Project } from '../../models/project';
 import { ImportallService } from '../../../services/importall.service';
 import { EditProjectComponent } from 'src/app/edition/edit-project/edit-project.component';
 import { ViewProjectComponent } from '../view-project/view-project.component';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
-import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
-import { MessageComponent } from '../../components/message/message.component';
+import { MatDialog } from  '@angular/material/dialog';
+import { MessageComponent } from '../message/message.component';
 import { TokenStorageService } from '../../../services/token-storage.service';
+
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -19,18 +17,13 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 export class ProjectComponent implements OnInit {
   idProyecto="";
   isLoggedIn = false;
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  loaded = false;
 
   arrProyectos: Project[];
   proyectos: Project[];
 	responsiveOptions;
 
-  constructor(private breakpointObserver: BreakpointObserver,
-              public dialog: MatDialog, 
+  constructor(public dialog: MatDialog, 
               private services: ImportallService,
               private tokenStorageService: TokenStorageService) {
 
@@ -64,9 +57,11 @@ export class ProjectComponent implements OnInit {
     this.logOk();
   }
   async obtener() {
+    this.loaded = false;
     this.services.getAll('proyecto').subscribe(
       data => {
         this.arrProyectos = data;
+        this.loaded = true;
         this.proyectos =Object.values(data);
       },
       err => {

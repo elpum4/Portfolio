@@ -14,6 +14,7 @@ export class EditProjectComponent implements OnInit {
   arrProject: Project;
   myForm: FormGroup;
   arrTProject:TypeProject[];
+  loaded = false;
 
   constructor(private services: ImportallService, 
               private  dialog:  MatDialog, 
@@ -34,13 +35,14 @@ export class EditProjectComponent implements OnInit {
         
       });
     } else {
-        this.myForm = new FormGroup({
-        proy_titulo: new FormControl('', [Validators.required, Validators.maxLength(40)] ),
-        proy_descripcion: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
-        proy_url: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
-        proy_cliente: new FormControl('', [Validators.required,  Validators.maxLength(100)]),
-        proy_urlimg: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
-        proy_categoria: new FormControl('', [Validators.required]),
+      this.loaded=true;
+      this.myForm = new FormGroup({
+      proy_titulo: new FormControl('', [Validators.required, Validators.maxLength(40)] ),
+      proy_descripcion: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
+      proy_url: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
+      proy_cliente: new FormControl('', [Validators.required,  Validators.maxLength(100)]),
+      proy_urlimg: new FormControl('', [Validators.required,  Validators.maxLength(400)]),
+      proy_categoria: new FormControl('', [Validators.required]),
         
       });
 
@@ -52,12 +54,13 @@ export class EditProjectComponent implements OnInit {
     }
 
   async buscarProyecto(id?:any){
-      console.log(id);
+      this.loaded=false;
       if (id) {
         this.services.getById(parseInt(id.dataKey), 'proyecto').subscribe(
           data => {
             this.arrProject = data;
             this.myForm.patchValue(data);
+            this.loaded=true;
           },
           err => {
             this.arrProject = JSON.parse(err.error).message;

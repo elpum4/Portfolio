@@ -1,9 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
 import { LoginComponent } from '../login/login.component';
-import { ContactComponent } from '../contact/contact.component';
 import { TokenStorageService } from '../../../services/token-storage.service';
 
 import {MatDialog} from '@angular/material/dialog';
@@ -22,17 +18,9 @@ export class MainNavComponent implements OnInit {
   showModeratorBoard = false;
   username?: string;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    public dialog: MatDialog,
-    private tokenStorageService: TokenStorageService
-  ) { }
+  constructor(public dialog: MatDialog,
+              private tokenStorageService: TokenStorageService
+            ) { }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();

@@ -23,7 +23,6 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     this.buscarHeader(this.data);
     this.section = this.data.seccion;
-    this.classView(this.section);
 
     this.myForm = this.fb.group({
       id: ['',],
@@ -35,19 +34,18 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-  classView(clases:Array<string>) {
+  showPage(clases:Array<string>) {
     if(clases.length>1){
       for(let clase of clases){
-        var c = '.'+clase;
-        var x = document.querySelector(c);
-        x.className  = "view";
+        document.getElementById(clase).style.display = "flex";
       }
-    }else {
-      var c = '.'+clases;
-        var x = document.querySelector(c);
-        x.className  = "view";
-    }
+    }else{
+      document.getElementById(clases[0]).style.display = "flex";
+    } 
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("edicion").style.display = "block";
   }
+
 
   public myError = (controlName: string, errorName: string) =>{
     return this.myForm.controls[controlName].hasError(errorName);
@@ -55,10 +53,12 @@ export class EditProfileComponent implements OnInit {
 
   async buscarHeader(id?:any){
     if (id) {
+      document.getElementById("edicion").style.display = "none";
       this.services.getById(parseInt(id.dataKey), 'profile').subscribe(
         data => {
           this.arrHeader = data;
           this.myForm.patchValue(data);
+          this.showPage(this.section);
         },
         err => {
           this.arrHeader = JSON.parse(err.error).message;

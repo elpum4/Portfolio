@@ -1,43 +1,54 @@
-<mat-card>
-    <mat-card-content>
-      <h2 class="tih2">Skills y Hablidades</h2>
-    </mat-card-content>
-
-    <div class="cards">
-      <!-- A card with given width -->
-      <div class="cards__item"*ngFor="let skill of arrSkills">
-          <mat-card class="card">
-            <mat-card-content>
-              <h2 class="tih2">{{skill.sk_titulo}}</h2>
-              <mat-spinner
-                  class="margin"
-                  [color]="color"
-                  [mode]="mode"
-                  value= {{skill.sk_habilidad}} >
-              </mat-spinner>
-            </mat-card-content>
-          </mat-card>
+<div *ngIf="loaded">
+  <div>
+    <mat-card>
+      <mat-card-title-group class="title-general">
+        <mat-card-title>
+          SKILLS Y HABILIDADES
+        </mat-card-title>
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+  <div>
+    <mat-card>
+      <div class="cards">
+        <!-- A card with given width -->
+        <div class="cards__item"*ngFor="let skill of arrSkills">
+            <mat-card class="card">
+              <mat-card-content>
+                <h2 class="tih2">{{skill.sk_titulo}}</h2>
+                <mat-spinner
+                    class="margin"
+                    [color]="color"
+                    [mode]="mode"
+                    value= {{skill.sk_habilidad}} >
+                </mat-spinner>
+              </mat-card-content>
+            </mat-card>
+          <mat-card class="card" *ngIf="isLoggedIn">
+            <mat-card-actions class="edicion">
+              <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="editarSkill(skill.id)">
+                <mat-icon>create</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="eliminarSkill(skill.id)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </mat-card-actions>
+        </mat-card>
+        </div>
+        
         <mat-card class="card" *ngIf="isLoggedIn">
-          <mat-card-actions class="edicion">
-            <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="editarSkill(skill.id)">
-              <mat-icon>create</mat-icon>
-            </button>
-            <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="eliminarSkill(skill.id)">
-              <mat-icon>clear</mat-icon>
+          <mat-card-actions class="edicion" *ngIf="isLoggedIn">
+            <button mat-mini-fab color="primary" group="skill" (click)="agregarSkill()">
+              <mat-icon>add</mat-icon>
             </button>
           </mat-card-actions>
-      </mat-card>
+        </mat-card>
       </div>
-      
-      <mat-card class="card" *ngIf="isLoggedIn">
-        <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-          <button mat-mini-fab color="primary" group="skill" (click)="agregarSkill()">
-            <mat-icon>add</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-</mat-card>
+    </mat-card>
+  </div>
+</div>
+
+  
 
 
 

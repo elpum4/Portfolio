@@ -1,4 +1,4 @@
-<div class="container" [ngStyle]="{'background-image': 'url(' + this.header + ')', 'background-size': 'cover'}">
+<div *ngIf="loaded" class="container" [ngStyle]="{'background-image': 'url(' + this.header + ')', 'background-size': 'cover'}">
     <mat-card-actions class="edicion" *ngIf="isLoggedIn">
         <button mat-mini-fab color="primary"  (click)="editar(this.headerid, ['hd_urlbanner'])">
           <mat-icon>create</mat-icon>

@@ -7,16 +7,14 @@ mat-card{
         width: 90%;
         
     }
-    .id, 
-    .hd_urlbanner,
-    .hd_urlperfil,
-    .hd_nombre,
-    .hd_profesion,
-    .hd_sobremi{
-        display: none !important;
-    }
-    .view{
-        display: flex !important;
+    #id, 
+    #hd_urlbanner,
+    #hd_urlperfil,
+    #hd_nombre,
+    #hd_profesion,
+    #hd_sobremi,
+    #edicion{
+        display: none;
     }
     mat-card-actions{
         text-align: center;

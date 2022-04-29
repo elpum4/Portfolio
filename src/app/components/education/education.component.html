@@ -1,42 +1,46 @@
-<div>
-  <mat-card>
-    <mat-card-title-group class="title-general">
-      <mat-card-title>
-        INSTRUCCION ACADEMICA
-      </mat-card-title>
-    </mat-card-title-group>
-  </mat-card>
-</div>
-<div  *ngFor="let educacion of arrEducacion">
-  <mat-card class="exp-card">
-    <mat-card-title-group>
-      <mat-card-title>
-        {{educacion.ed_titulo}}
-      </mat-card-title>
+<div *ngIf="loaded">
+  <div>
+    <mat-card>
+      <mat-card-title-group class="title-general">
+        <mat-card-title>
+          INSTRUCCION ACADEMICA
+        </mat-card-title>
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+  <div  *ngFor="let educacion of arrEducacion">
+    <mat-card class="exp-card">
+      <mat-card-title-group>
+        <mat-card-title>
+          {{educacion.ed_titulo}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{educacion.ed_institucion}}
+        </mat-card-subtitle>
+        <img mat-card-sm-image src={{educacion.ed_urllogo}} >
+      </mat-card-title-group>
+      <mat-card-content>
+        {{educacion.ed_descripcion}}
+      </mat-card-content>
       <mat-card-subtitle>
-        {{educacion.ed_institucion}}
+          <div  class="fecha" *ngIf=educacion.ed_actual>{{educacion.ed_comienzo |date:"yyyy"}} Actual</div> 
+          <div  class="fecha" *ngIf=!educacion.ed_actual>{{educacion.ed_comienzo |date:"yyyy"}} {{educacion.ed_final |date:"yyyy"}}</div>   
       </mat-card-subtitle>
-      <img mat-card-sm-image src={{educacion.ed_urllogo}} >
-    </mat-card-title-group>
-    <mat-card-content>
-      {{educacion.ed_descripcion}}
-    </mat-card-content>
-    <mat-card-subtitle>
-        <div  class="fecha" *ngIf=educacion.ed_actual>{{educacion.ed_comienzo |date:"yyyy"}} Actual</div> 
-        <div  class="fecha" *ngIf=!educacion.ed_actual>{{educacion.ed_comienzo |date:"yyyy"}} {{educacion.ed_final |date:"yyyy"}}</div>   
-    </mat-card-subtitle>
-    <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-      <button mat-mini-fab color="primary" group="education" (ngModel)="educacion.id" (click)="editarEducacion(educacion.id)">
-        <mat-icon>create</mat-icon>
-      </button>
-      <button mat-mini-fab color="primary" group="education" (ngModel)="educacion.id" (click)="eliminarProyecto(educacion.id)">
-        <mat-icon>clear</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
+      <mat-card-actions class="edicion" *ngIf="isLoggedIn">
+        <button mat-mini-fab color="primary" group="education" (ngModel)="educacion.id" (click)="editarEducacion(educacion.id)">
+          <mat-icon>create</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" group="education" (ngModel)="educacion.id" (click)="eliminarProyecto(educacion.id)">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <mat-card-actions class="edicion" *ngIf="isLoggedIn">
+    <button mat-mini-fab color="primary" group="education" (click)="agregarEducacion()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-actions>
 </div>
-    <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-      <button mat-mini-fab color="primary" group="education" (click)="agregarEducacion()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </mat-card-actions>
+
+

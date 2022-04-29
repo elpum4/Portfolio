@@ -11,7 +11,7 @@ import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
   styleUrls: ['./edit-skill.component.scss']
 })
 export class EditSkillComponent implements OnInit {
-  
+  loaded= false;
   arrSkill: Skill;
   myForm: FormGroup;
   constructor(private services: ImportallService, 
@@ -28,6 +28,7 @@ export class EditSkillComponent implements OnInit {
         });
 
       } else{
+        this.loaded=true;
         this.myForm = new FormGroup({
           id: new FormControl('',),
           sk_titulo: new FormControl('', [Validators.required,Validators.maxLength(40)] ),
@@ -42,12 +43,13 @@ export class EditSkillComponent implements OnInit {
       }
   
     async buscarProyecto(id?:any){
-        console.log(id);
         if (id) {
-          this.services.getById(parseInt(id.dataKey), 'skill').subscribe(
+        this.loaded=false;
+        this.services.getById(parseInt(id.dataKey), 'skill').subscribe(
             data => {
               this.arrSkill = data;
               this.myForm.patchValue(data);
+              this.loaded=true;
             },
             err => {
               this.arrSkill = JSON.parse(err.error).message;

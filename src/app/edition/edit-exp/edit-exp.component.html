@@ -1,68 +1,67 @@
-<mat-card>
+<mat-card *ngIf="loaded">
     <mat-card-header>
         <mat-card-title>MODIFICAR EXPERIENCIA</mat-card-title>
     </mat-card-header>
-      <mat-card-content>
-        <form [formGroup]="myForm" novalidate (ngSubmit)="svExp()"
-        fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-        <mat-form-field>
-          <mat-label>Compañía</mat-label>
-          <input matInput placeholder="" formControlName="exp_titulo" id="exp_titulo" required>
-          <mat-error *ngIf="myError('exp_titulo', 'required')">El dato requerido</mat-error>
-          <mat-error *ngIf="myError('exp_titulo', 'maxlength')">Demasiado largo</mat-error>
+    <mat-card-content>
+      <form [formGroup]="myForm" novalidate (ngSubmit)="svExp()"
+      fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-form-field>
+        <mat-label>Compañía</mat-label>
+        <input matInput placeholder="" formControlName="exp_titulo" id="exp_titulo" required>
+        <mat-error *ngIf="myError('exp_titulo', 'required')">El dato requerido</mat-error>
+        <mat-error *ngIf="myError('exp_titulo', 'maxlength')">Demasiado largo</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>Puesto</mat-label>
+          <input matInput placeholder="" formControlName="exp_sitio" id="exp_sitio" required>
+          <mat-error *ngIf="myError('exp_sitio', 'required')">El dato requerido</mat-error>
+          <mat-error *ngIf="myError('exp_sitio', 'maxlength')">Demasiado largo</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Puesto</mat-label>
-            <input matInput placeholder="" formControlName="exp_sitio" id="exp_sitio" required>
-            <mat-error *ngIf="myError('exp_sitio', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('exp_sitio', 'maxlength')">Demasiado largo</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Tareas del Puesto</mat-label>
-            <textarea matInput placeholder="" formControlName="exp_descripcion" id="exp_descripcion" required></textarea>
-            <mat-error *ngIf="myError('exp_descripcion', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('exp_descripcion', 'maxlength')">Demasiado largo</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>URL Logo</mat-label>
-            <input matInput placeholder="" formControlName="ex_urllogo" id="ex_urllogo" required>
-            <mat-error *ngIf="myError('ex_urllogo', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('ex_urllogo', 'maxlength')">Demasiado largo</mat-error>
-          </mat-form-field>
+          <mat-label>Tareas del Puesto</mat-label>
+          <textarea matInput placeholder="" formControlName="exp_descripcion" id="exp_descripcion" required></textarea>
+          <mat-error *ngIf="myError('exp_descripcion', 'required')">El dato requerido</mat-error>
+          <mat-error *ngIf="myError('exp_descripcion', 'maxlength')">Demasiado largo</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>URL Logo</mat-label>
+          <input matInput placeholder="" formControlName="ex_urllogo" id="ex_urllogo" required>
+          <mat-error *ngIf="myError('ex_urllogo', 'required')">El dato requerido</mat-error>
+          <mat-error *ngIf="myError('ex_urllogo', 'maxlength')">Demasiado largo</mat-error>
+        </mat-form-field>
 
-          <mat-form-field>
-            <mat-label>Fecha de Inicio</mat-label>
-            <input matInput [matDatepicker]="picker" placeholder="" formControlName="exp_comienzo" id="exp_comienzo" required>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="myError('exp_comienzo', 'required')">El dato requerido</mat-error>
-          </mat-form-field>
-    
-          
-          <mat-form-field>
-            <mat-label>Fecha de Finalización</mat-label>
-            <input matInput [matDatepicker]="picker2" placeholder="" formControlName="exp_final" id="exp_final" [disabled]="disabled">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field> 
-          <mat-card>
-            <mat-label>Actual</mat-label>
-            <mat-checkbox formControlName="exp_actual" id="exp_actual" [(ngModel)]="disabled" placeholder="Actual"></mat-checkbox>
-          </mat-card>
+        <mat-form-field>
+          <mat-label>Fecha de Inicio</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="" formControlName="exp_comienzo" id="exp_comienzo" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="myError('exp_comienzo', 'required')">El dato requerido</mat-error>
+        </mat-form-field>
+  
+        
+        <mat-form-field>
+          <mat-label>Fecha de Finalización</mat-label>
+          <input matInput [matDatepicker]="picker2" placeholder="" formControlName="exp_final" id="exp_final" [disabled]="disabled">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field> 
+        <mat-card>
+          <mat-label>Actual</mat-label>
+          <mat-checkbox formControlName="exp_actual" id="exp_actual" [(ngModel)]="disabled" placeholder="Actual"></mat-checkbox>
+        </mat-card>
 
-          <mat-form-field>
-            <mat-label>Tipo</mat-label>
-            <mat-select formControlName="exp_tipo" id="exp_tipo" required>
-              <mat-option *ngFor="let texp of arrTExp" value={{texp.name}}>{{texp.name}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="myError('exp_tipo', 'required')">El dato requerido</mat-error>
-          </mat-form-field>
-          <mat-card-actions>
-            <button  mat-raised-button color="primary" [disabled]="!myForm.valid">Aceptar</button>
-            <button  mat-raised-button color="primary" [mat-dialog-close]="myForm">Cancelar</button>
-          </mat-card-actions>
-        </form>
-      </mat-card-content>
-      
-      
-  </mat-card>
+        <mat-form-field>
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="exp_tipo" id="exp_tipo" required>
+            <mat-option *ngFor="let texp of arrTExp" value={{texp.name}}>{{texp.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="myError('exp_tipo', 'required')">El dato requerido</mat-error>
+        </mat-form-field>
+        <mat-card-actions>
+          <button  mat-raised-button color="primary" [disabled]="!myForm.valid">Aceptar</button>
+          <button  mat-raised-button color="primary" [mat-dialog-close]="myForm">Cancelar</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+</mat-card>
+<app-spinner *ngIf="!loaded"></app-spinner>

@@ -51,7 +51,7 @@ import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { EditProfileComponent } from './edition/edit-profile/edit-profile.component';
 import { ViewProjectComponent } from './components/view-project/view-project.component';
-
+import { SpinnerComponent } from './components/spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +72,8 @@ import { ViewProjectComponent } from './components/view-project/view-project.com
     EditSkillComponent,
     EditExpComponent,
     EditProfileComponent,
-    ViewProjectComponent
+    ViewProjectComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

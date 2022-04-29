@@ -7,9 +7,6 @@ import { ImportallService } from '../../../services/importall.service';
 import { EditSkillComponent } from 'src/app/edition/edit-skill/edit-skill.component'
 
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 import { MessageComponent } from '../../components/message/message.component' ;
 import { TokenStorageService } from '../../../services/token-storage.service';
@@ -22,20 +19,13 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 export class SkillComponent implements OnInit {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'determinate';
-
+  loaded = false;
   idSkill="";
   isLoggedIn = false;
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-  
   arrSkills: Skill[];
-  constructor(private breakpointObserver: BreakpointObserver,
-    public dialog: MatDialog,
-    private services: ImportallService,
-    private tokenStorageService: TokenStorageService) { }
+  constructor( public dialog: MatDialog,
+              private services: ImportallService,
+              private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.obtener();
@@ -43,9 +33,12 @@ export class SkillComponent implements OnInit {
   }
 
   async obtener() {
+    this.loaded = false;
     await this.services.getAll('skill').subscribe(
       data => {
         this.arrSkills = data;
+        this.loaded = true;
+
       },
       err => {
         this.arrSkills = JSON.parse(err.error).message;

@@ -6,9 +6,6 @@ import { ImportallService } from '../../../services/importall.service';
 import { EditEducationComponent } from 'src/app/edition/edit-education/edit-education.component';
 
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MessageComponent } from '../../components/message/message.component' ;
 import { TokenStorageService } from '../../../services/token-storage.service';
 
@@ -18,16 +15,11 @@ import { TokenStorageService } from '../../../services/token-storage.service';
   styleUrls: ['./education.component.scss']
 })
 export class EducationComponent implements OnInit {
+  loaded = false;
   isLoggedIn = false;
   idEducacion="";
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
   arrEducacion: Education[];
-  constructor(private breakpointObserver: BreakpointObserver,
-              public dialog: MatDialog, 
+  constructor(public dialog: MatDialog, 
               private services: ImportallService,
               private tokenStorageService: TokenStorageService) { }
 
@@ -38,8 +30,10 @@ export class EducationComponent implements OnInit {
   }
 
   obtener() {
+    this.loaded= false;
     this.services.getAll('educacion').subscribe(
       data => {
+        this.loaded= true;
         this.arrEducacion = data;
       },
       err => {

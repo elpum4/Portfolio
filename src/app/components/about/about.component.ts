@@ -6,9 +6,7 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 import { EditProfileComponent } from 'src/app/edition/edit-profile/edit-profile.component';
 
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { SpinnerComponent } from '../spinner/spinner.component'
 
 @Component({
   selector: 'app-about',
@@ -17,16 +15,11 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class AboutComponent implements OnInit {
   arrHead: Profile[] = [];
+  loaded = false;
   isLoggedIn = false;
   idHeader="";
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
   constructor(private services: ImportallService,
     private tokenStorageService: TokenStorageService,
-    private breakpointObserver: BreakpointObserver,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -36,9 +29,13 @@ export class AboutComponent implements OnInit {
 
   
   obtener() {
+    this.dialog.open(SpinnerComponent);
+    this.loaded = false;
     this.services.getAll('profile').subscribe(
       data => {
         this.arrHead = data;
+        this.loaded = true;
+        this.dialog.closeAll();
       },
       err => {
         this.arrHead = JSON.parse(err.error).message;
@@ -63,4 +60,6 @@ export class AboutComponent implements OnInit {
   logOk() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
+
+
 }

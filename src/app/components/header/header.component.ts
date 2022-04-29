@@ -6,9 +6,6 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 
 import { EditProfileComponent } from 'src/app/edition/edit-profile/edit-profile.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,14 +17,9 @@ export class HeaderComponent implements OnInit {
   idHeader="";
   header="";
   headerid="";
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  loaded = false;
   constructor(private services: ImportallService,
-    private tokenStorageService: TokenStorageService,
-    private breakpointObserver: BreakpointObserver,
+              private tokenStorageService: TokenStorageService,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -37,12 +29,14 @@ export class HeaderComponent implements OnInit {
   	
    
   obtener() {
+  this.loaded = false;
     this.services.getAll('profile').subscribe(
       data => {
         this.arrHead = data;
         this.header=this.arrHead[0].hd_urlbanner;
         this.headerid=this.arrHead[0].id;
-        console.log(this.headerid);
+        this.loaded = true;
+        
       },
       err => {
         this.arrHead = JSON.parse(err.error).message;

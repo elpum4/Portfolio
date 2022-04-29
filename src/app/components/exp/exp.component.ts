@@ -5,9 +5,6 @@ import { ImportallService } from '../../../services/importall.service';
 import { EditExpComponent } from 'src/app/edition/edit-exp/edit-exp.component';
 
 import {MatDialog} from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MessageComponent } from '../../components/message/message.component';
 import { TokenStorageService } from '../../../services/token-storage.service';
 @Component({
@@ -17,15 +14,10 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 })
 export class ExpComponent implements OnInit {
   idExp="";
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  loaded = false;
   arrExperiencias: Exp[];
   isLoggedIn = false;
-  constructor(private breakpointObserver: BreakpointObserver,
-    public dialog: MatDialog, 
+  constructor(public dialog: MatDialog, 
     private services: ImportallService,
     private tokenStorageService: TokenStorageService) { }
 
@@ -35,9 +27,11 @@ export class ExpComponent implements OnInit {
   }
 
   obtener() {
+    this.loaded = false;
     this.services.getAll('experiencia').subscribe(
       data => {
         this.arrExperiencias = data;
+        this.loaded = true;
       },
       err => {
         this.arrExperiencias = JSON.parse(err.error).message;

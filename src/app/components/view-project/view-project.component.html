@@ -1,4 +1,4 @@
-<div class="cards" >
+<div class="cards" *ngIf="loaded" class="transparent">
     <div class="cards__item">
         <mat-card class="proyecto-card">
             <mat-card-header>
@@ -17,3 +17,6 @@
               </mat-card-header>
           </mat-card>
     </div>
+</div>
+
+    <app-spinner *ngIf="!loaded"></app-spinner>

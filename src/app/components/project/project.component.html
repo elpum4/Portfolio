@@ -1,55 +1,59 @@
-<div class="cards" *ngIf="isLoggedIn">
-  <div class="cards__item" *ngFor="let proyecto of arrProyectos">
-      <mat-card class="proyecto-card">
-          <mat-card-header>
-            <mat-card-title>{{proyecto.proy_titulo}}</mat-card-title>
-            <mat-card-subtitle>{{proyecto.proy_cliente}}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src={{proyecto.proy_urlimg}} alt={{proyecto.proy_titulo}}>
-          <mat-card-content>
-            <p>
-              {{proyecto.proy_descripcion}}
-            </p>
-          </mat-card-content>
-        </mat-card>
 
-        <mat-card class="card" *ngIf="isLoggedIn">
-          <mat-card-actions class="edicion">
-            <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="editarProyecto(proyecto.id)">
-              <mat-icon >create</mat-icon>
-            </button>
-            <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="eliminarProyecto(proyecto.id)">
-              <mat-icon>clear</mat-icon>
-            </button>
-          </mat-card-actions>
-        </mat-card>
-  </div>
-  
-  <mat-card class="card" *ngIf="isLoggedIn">
-    <mat-card-actions class="edicion">
-      <button mat-mini-fab color="primary" group="project" (click)="agregarProyecto()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<div *ngIf="loaded">
+  <div class="cards" *ngIf="isLoggedIn">
+    <div class="cards__item" *ngFor="let proyecto of arrProyectos">
+        <mat-card class="proyecto-card">
+            <mat-card-header>
+              <mat-card-title>{{proyecto.proy_titulo}}</mat-card-title>
+              <mat-card-subtitle>{{proyecto.proy_cliente}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src={{proyecto.proy_urlimg}} alt={{proyecto.proy_titulo}}>
+            <mat-card-content>
+              <p>
+                {{proyecto.proy_descripcion}}
+              </p>
+            </mat-card-content>
+          </mat-card>
 
-<p-carousel [value]="proyectos" 
-            [numVisible]="1" 
-            [numScroll]="1" 
-            [circular]="true" 
-            [responsiveOptions]="responsiveOptions"
-            *ngIf="!isLoggedIn"
-            [showIndicators]="false"
-            >
-  <ng-template let-proyecto pTemplate="item" class="cards__item">
-    <mat-card class="proyecto-card">
-      <mat-card-header>
-        <mat-card-title>{{proyecto.proy_titulo}}</mat-card-title>
-        <mat-card-subtitle>{{proyecto.proy_cliente}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image class="link" src={{proyecto.proy_urlimg}} alt={{proyecto.proy_titulo}} (click)="mostrarProyecto(proyecto.id)">
-      <mat-card-subtitle>{{proyecto.proy_categoria}}</mat-card-subtitle>
+          <mat-card class="card" *ngIf="isLoggedIn">
+            <mat-card-actions class="edicion">
+              <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="editarProyecto(proyecto.id)">
+                <mat-icon >create</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="eliminarProyecto(proyecto.id)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    
+    <mat-card class="card" *ngIf="isLoggedIn">
+      <mat-card-actions class="edicion">
+        <button mat-mini-fab color="primary" group="project" (click)="agregarProyecto()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-actions>
     </mat-card>
-  </ng-template>
-</p-carousel>
+  </div>
+</div>
+<div *ngIf="loaded">
+  <p-carousel [value]="proyectos" 
+              [numVisible]="1" 
+              [numScroll]="1" 
+              [circular]="true" 
+              [responsiveOptions]="responsiveOptions"
+              *ngIf="!isLoggedIn"
+              [showIndicators]="false"
+              >
+    <ng-template let-proyecto pTemplate="item" class="cards__item">
+      <mat-card class="proyecto-card">
+        <mat-card-header>
+          <mat-card-title>{{proyecto.proy_titulo}}</mat-card-title>
+          <mat-card-subtitle>{{proyecto.proy_cliente}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="link" src={{proyecto.proy_urlimg}} alt={{proyecto.proy_titulo}} (click)="mostrarProyecto(proyecto.id)">
+        <mat-card-subtitle>{{proyecto.proy_categoria}}</mat-card-subtitle>
+      </mat-card>
+    </ng-template>
+  </p-carousel>
+</div>
