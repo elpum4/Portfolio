@@ -29,7 +29,10 @@ export class AboutComponent implements OnInit {
 
   
   obtener() {
-    this.dialog.open(SpinnerComponent);
+    this.dialog.open(SpinnerComponent, {
+      panelClass: 'transparent',
+      disableClose: true
+    });
     this.loaded = false;
     this.services.getAll('profile').subscribe(
       data => {
