@@ -10,7 +10,6 @@ import { MatDialog, MAT_DIALOG_DATA } from  '@angular/material/dialog';
   styleUrls: ['./view-project.component.scss']
 })
 export class ViewProjectComponent implements OnInit {
-  loaded = false;
   arrProject: Project = {
                           id: "",
                           proy_titulo: "",
@@ -33,12 +32,10 @@ export class ViewProjectComponent implements OnInit {
   async buscarProyecto(id?:any){
     console.log(id);
     if (id) {
-      this.loaded = false;
       this.services.getById(parseInt(id.dataKey), 'proyecto').subscribe(
     
         data => {
           this.arrProject = data;
-          this.loaded = true;
         },
         err => {
           this.arrProject = JSON.parse(err.error).message;
