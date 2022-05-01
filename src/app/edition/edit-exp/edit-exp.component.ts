@@ -13,7 +13,6 @@ import { MessageComponent } from '../../components/message/message.component' ;
   styleUrls: ['./edit-exp.component.scss']
 })
 export class EditExpComponent implements OnInit {
-  loaded= false;
   arrExp: Exp;
   myForm: FormGroup;
   arrTExp: TypeExp[];
@@ -41,7 +40,6 @@ ngOnInit(): void {
       });
 
   }else{
-    this.loaded=true;
     this.myForm = this.fb.group({
       exp_titulo:['', [Validators.required, Validators.maxLength(100)]],
       exp_sitio: ['', [Validators.required, Validators.maxLength(100)]],
@@ -63,10 +61,8 @@ ngOnInit(): void {
 
   async buscarExp(id?:any){
     if (id) {
-    this.loaded=false;
       this.services.getById(parseInt(id.dataKey), 'experiencia').subscribe(
         data => {
-          this.loaded=true;
           this.arrExp = data;
           this.myForm.patchValue(data);
         },

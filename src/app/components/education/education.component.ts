@@ -15,7 +15,6 @@ import { TokenStorageService } from '../../../services/token-storage.service';
   styleUrls: ['./education.component.scss']
 })
 export class EducationComponent implements OnInit {
-  loaded = false;
   isLoggedIn = false;
   idEducacion="";
   arrEducacion: Education[];
@@ -30,10 +29,8 @@ export class EducationComponent implements OnInit {
   }
 
   obtener() {
-    this.loaded= false;
     this.services.getAll('educacion').subscribe(
       data => {
-        this.loaded= true;
         this.arrEducacion = data;
       },
       err => {

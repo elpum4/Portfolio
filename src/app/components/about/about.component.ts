@@ -15,7 +15,6 @@ import { SpinnerComponent } from '../spinner/spinner.component'
 })
 export class AboutComponent implements OnInit {
   arrHead: Profile[] = [];
-  loaded = false;
   isLoggedIn = false;
   idHeader="";
   constructor(private services: ImportallService,
@@ -29,16 +28,9 @@ export class AboutComponent implements OnInit {
 
   
   obtener() {
-    this.dialog.open(SpinnerComponent, {
-      panelClass: 'transparent',
-      disableClose: true
-    });
-    this.loaded = false;
     this.services.getAll('profile').subscribe(
       data => {
         this.arrHead = data;
-        this.loaded = true;
-        this.dialog.closeAll();
       },
       err => {
         this.arrHead = JSON.parse(err.error).message;

@@ -16,7 +16,6 @@ export class EditEducationComponent implements OnInit {
   myForm: FormGroup;
   arrTEd: TypeEd[];
   disabled = false;
-  loaded = false;
 
   constructor(private services: ImportallService,
             private  dialog:  MatDialog, 
@@ -40,7 +39,6 @@ export class EditEducationComponent implements OnInit {
         });
     }
     else {
-        this.loaded = true;
         this.myForm = this.fb.group({
           ed_titulo:['', [Validators.required, Validators.maxLength(100)]],
           ed_descripcion:['', [Validators.required, Validators.maxLength(400)]],
@@ -63,10 +61,8 @@ export class EditEducationComponent implements OnInit {
 
   async buscarEducacion(id?:any){
     if (id) {
-      this.loaded = false;
       this.services.getById(parseInt(id.dataKey), 'educacion').subscribe(
         data => {
-          this.loaded = true;
           this.arrEducation = data;
           this.myForm.patchValue(data);
         },

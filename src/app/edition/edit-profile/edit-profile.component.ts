@@ -23,6 +23,7 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     this.buscarHeader(this.data);
     this.section = this.data.seccion;
+    this.showPage(this.section);
 
     this.myForm = this.fb.group({
       id: ['',],
@@ -42,8 +43,6 @@ export class EditProfileComponent implements OnInit {
     }else{
       document.getElementById(clases[0]).style.display = "flex";
     } 
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("edicion").style.display = "block";
   }
 
 
@@ -53,12 +52,10 @@ export class EditProfileComponent implements OnInit {
 
   async buscarHeader(id?:any){
     if (id) {
-      document.getElementById("edicion").style.display = "none";
       this.services.getById(parseInt(id.dataKey), 'profile').subscribe(
         data => {
           this.arrHeader = data;
           this.myForm.patchValue(data);
-          this.showPage(this.section);
         },
         err => {
           this.arrHeader = JSON.parse(err.error).message;

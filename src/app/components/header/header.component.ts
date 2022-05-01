@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   idHeader="";
   header="";
   headerid="";
-  loaded = false;
   constructor(private services: ImportallService,
               private tokenStorageService: TokenStorageService,
               public dialog: MatDialog) { }
@@ -29,13 +28,11 @@ export class HeaderComponent implements OnInit {
   	
    
   obtener() {
-  this.loaded = false;
     this.services.getAll('profile').subscribe(
       data => {
         this.arrHead = data;
         this.header=this.arrHead[0].hd_urlbanner;
         this.headerid=this.arrHead[0].id;
-        this.loaded = true;
         
       },
       err => {

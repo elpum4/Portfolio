@@ -14,7 +14,6 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 })
 export class ExpComponent implements OnInit {
   idExp="";
-  loaded = false;
   arrExperiencias: Exp[];
   isLoggedIn = false;
   constructor(public dialog: MatDialog, 
@@ -27,11 +26,9 @@ export class ExpComponent implements OnInit {
   }
 
   obtener() {
-    this.loaded = false;
     this.services.getAll('experiencia').subscribe(
       data => {
         this.arrExperiencias = data;
-        this.loaded = true;
       },
       err => {
         this.arrExperiencias = JSON.parse(err.error).message;
