@@ -43,7 +43,7 @@ export class AuthInterceptor implements HttpInterceptor {
             }
           },
           (error: HttpErrorResponse) =>{
-            this.spinnerService.resetSpinner();
+            //this.spinnerService.resetSpinner();
             throw error;
           }
         )
