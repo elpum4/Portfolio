@@ -49,6 +49,8 @@ import { EditExpComponent } from './edition/edit-exp/edit-exp.component';
 import { CarouselModule } from 'primeng/carousel';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
+import {StyleClassModule} from 'primeng/styleclass';
+
 import { EditProfileComponent } from './edition/edit-profile/edit-profile.component';
 import { ViewProjectComponent } from './components/view-project/view-project.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
@@ -101,7 +103,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     CarouselModule,
     ToastModule,
     ButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    StyleClassModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

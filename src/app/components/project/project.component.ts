@@ -8,6 +8,7 @@ import { ViewProjectComponent } from '../view-project/view-project.component';
 import { MatDialog } from  '@angular/material/dialog';
 import { MessageComponent } from '../message/message.component';
 import { TokenStorageService } from '../../../services/token-storage.service';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-project',
@@ -25,7 +26,8 @@ export class ProjectComponent implements OnInit {
 
   constructor(public dialog: MatDialog, 
               private services: ImportallService,
-              private tokenStorageService: TokenStorageService) {
+              private tokenStorageService: TokenStorageService,
+              private primengConfig: PrimeNGConfig) {
 
                 this.responsiveOptions = [
                   {
@@ -53,6 +55,8 @@ export class ProjectComponent implements OnInit {
               
 
   ngOnInit() {
+    
+    this.primengConfig.ripple = true;
     this.obtener();
     this.logOk();
   }

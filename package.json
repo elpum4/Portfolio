@@ -21,7 +21,8 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "islider.js": "^2.2.5",
-    "primeng": "^13.3.2",
+    "primeicons": "^5.0.0",
+    "primeng": "^13.3.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
