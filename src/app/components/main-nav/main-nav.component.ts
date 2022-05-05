@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 import {MatDialog} from '@angular/material/dialog';
 

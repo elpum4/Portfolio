@@ -3,13 +3,13 @@ import {ThemePalette} from '@angular/material/core';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
 import { Skill } from '../../models/skill'
-import { ImportallService } from '../../../services/importall.service';
-import { EditSkillComponent } from 'src/app/edition/edit-skill/edit-skill.component'
+import { ImportallService } from '../../services/importall.service';
+import { EdicionComponent } from '../edicion/edicion.component'
 
 import { MatDialog } from '@angular/material/dialog';
 
 import { MessageComponent } from '../../components/message/message.component' ;
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-skill',
@@ -48,8 +48,8 @@ export class SkillComponent implements OnInit {
 
   editarSkill($event: any){
     this.idSkill = $event;
-    const dialogRef = this.dialog.open(EditSkillComponent, {data: {
-      dataKey: this.idSkill}
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      id: this.idSkill, dataKey:'skill'}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -83,7 +83,9 @@ export class SkillComponent implements OnInit {
   }
 
   agregarSkill(){
-    const dialogRef = this.dialog.open(EditSkillComponent);
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      dataKey:'skill'}
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

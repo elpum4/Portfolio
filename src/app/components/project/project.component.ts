@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Project } from '../../models/project';
-import { ImportallService } from '../../../services/importall.service';
-import { EditProjectComponent } from 'src/app/edition/edit-project/edit-project.component';
+import { ImportallService } from '../../services/importall.service';
+import { EdicionComponent } from '../edicion/edicion.component';
 import { ViewProjectComponent } from '../view-project/view-project.component';
 
 import { MatDialog } from  '@angular/material/dialog';
 import { MessageComponent } from '../message/message.component';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -76,8 +76,8 @@ export class ProjectComponent implements OnInit {
 
   editarProyecto($event: any){
     this.idProyecto = $event;
-    const dialogRef = this.dialog.open(EditProjectComponent, {data: {
-      dataKey: this.idProyecto}
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      id: this.idProyecto, dataKey:'proyecto'}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -111,7 +111,9 @@ export class ProjectComponent implements OnInit {
   }
 
   agregarProyecto(){
-    const dialogRef = this.dialog.open(EditProjectComponent);
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      dataKey:'proyecto'}
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

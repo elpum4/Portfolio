@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Exp } from '../../models/exp';
-import { ImportallService } from '../../../services/importall.service';
-import { EditExpComponent } from 'src/app/edition/edit-exp/edit-exp.component';
+import { ImportallService } from '../../services/importall.service';
+import { EdicionComponent } from '../../components/edicion/edicion.component';
 
 import {MatDialog} from '@angular/material/dialog';
 import { MessageComponent } from '../../components/message/message.component';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 @Component({
   selector: 'app-exp',
   templateUrl: './exp.component.html',
@@ -39,8 +39,8 @@ export class ExpComponent implements OnInit {
   editarExp($event: any){
     this.idExp = $event;
     console.log(this.idExp);
-    const dialogRef = this.dialog.open(EditExpComponent, {data: {
-      dataKey: this.idExp}
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      id: this.idExp, dataKey:'experiencia'}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -74,7 +74,9 @@ export class ExpComponent implements OnInit {
   }
 
   agregarExp(){
-    const dialogRef = this.dialog.open(EditExpComponent);
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      dataKey:'experiencia'}
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

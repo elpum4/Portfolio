@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from '../../models/profile'
-import { ImportallService } from '../../../services/importall.service';
-import { TokenStorageService } from '../../../services/token-storage.service';
-
-import { EditProfileComponent } from 'src/app/edition/edit-profile/edit-profile.component';
-
+import { ImportallService } from '../../services/importall.service';
+import { TokenStorageService } from '../../services/token-storage.service';
+import { EdicionComponent } from '../edicion/edicion.component';
 import { MatDialog } from '@angular/material/dialog';
-import { SpinnerComponent } from '../spinner/spinner.component'
 
 @Component({
   selector: 'app-about',
@@ -41,8 +38,8 @@ export class AboutComponent implements OnInit {
 
   editar($event: any, section:Array<string>) {
     this.idHeader = $event;
-    const dialogRef = this.dialog.open(EditProfileComponent, {data: {
-      dataKey: this.idHeader, seccion: section}
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      id: this.idHeader, dataKey:'profile', seccion: section}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

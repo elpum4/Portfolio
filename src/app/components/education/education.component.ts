@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { Education } from '../../models/education';
-import { ImportallService } from '../../../services/importall.service';
-import { EditEducationComponent } from 'src/app/edition/edit-education/edit-education.component';
+import { ImportallService } from '../../services/importall.service';
+import { EdicionComponent } from '../../components/edicion/edicion.component';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MessageComponent } from '../../components/message/message.component' ;
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-education',
@@ -42,8 +42,8 @@ export class EducationComponent implements OnInit {
   editarEducacion($event: any){
     this.idEducacion = $event;
     console.log(this.idEducacion);
-    const dialogRef = this.dialog.open(EditEducationComponent, {data: {
-      dataKey: this.idEducacion}
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      id: this.idEducacion, dataKey:'educacion'}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -53,7 +53,7 @@ export class EducationComponent implements OnInit {
   eliminarProyecto($event: any){
     this.idEducacion = $event;
     const dialogRef = this.dialog.open(MessageComponent, {data: {
-    message: "Desea Eliminar el proyecto?", mot: "confirm"}
+    message: "Desea Eliminar Educación?", mot: "confirm"}
     });
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
@@ -77,7 +77,9 @@ export class EducationComponent implements OnInit {
   }
 
   agregarEducacion(){
-    const dialogRef = this.dialog.open(EditEducationComponent);
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      dataKey:'educacion'}
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

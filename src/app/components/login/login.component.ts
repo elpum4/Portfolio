@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service'
+import { AuthService } from '../../services/auth.service'
 import { Router} from '@angular/router';
 import { MatDialogRef, MatDialog } from  '@angular/material/dialog';
 import { MessageComponent } from '../message/message.component' ;
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

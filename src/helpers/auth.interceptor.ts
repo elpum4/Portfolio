@@ -2,8 +2,8 @@ import { HTTP_INTERCEPTORS, HttpEvent, HttpErrorResponse, HttpResponse } from '@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 
-import { TokenStorageService } from '../services/token-storage.service';
-import { SpinnerService } from '../services/spinner.service';
+import { TokenStorageService } from '../app/services/token-storage.service';
+import { SpinnerService } from '../app/services/spinner.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 const TOKEN_HEADER_KEY = 'Authorization';       // for Spring Boot back-end
@@ -43,7 +43,7 @@ export class AuthInterceptor implements HttpInterceptor {
             }
           },
           (error: HttpErrorResponse) =>{
-            //this.spinnerService.resetSpinner();
+            this.spinnerService.resetSpinner();
             throw error;
           }
         )

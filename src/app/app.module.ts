@@ -40,20 +40,15 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { authInterceptorProviders } from '../helpers/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
-import { EditEducationComponent } from './edition/edit-education/edit-education.component';
-import { EditProjectComponent } from './edition/edit-project/edit-project.component';
-import { EditSkillComponent } from './edition/edit-skill/edit-skill.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { EditExpComponent } from './edition/edit-exp/edit-exp.component';
 import { CarouselModule } from 'primeng/carousel';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import {StyleClassModule} from 'primeng/styleclass';
-
-import { EditProfileComponent } from './edition/edit-profile/edit-profile.component';
 import { ViewProjectComponent } from './components/view-project/view-project.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { EdicionComponent } from './components/edicion/edicion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,13 +64,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MessageComponent,
     LoginComponent,
     RegisterComponent,
-    EditEducationComponent,
-    EditProjectComponent,
-    EditSkillComponent,
-    EditExpComponent,
-    EditProfileComponent,
     ViewProjectComponent,
     SpinnerComponent,
+    EdicionComponent,
   ],
   imports: [
     BrowserModule,

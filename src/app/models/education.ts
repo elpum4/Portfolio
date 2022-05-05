@@ -7,7 +7,5 @@ export class Education {
     ed_comienzo: Date;
     ed_final: Date;
     ed_actual: boolean;
-    ed_tipo: String;
-
-    
+    ed_tipo: String;  
 }
