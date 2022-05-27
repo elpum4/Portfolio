@@ -25,6 +25,11 @@
       <span>Cerrar Sesion</span>
     </button>
 
+    <button mat-menu-item (click)="editar(this.arrHead[0].id, ['hd_email', 'hd_urllkd', 'hd_urlgit'])" *ngIf="isLoggedIn" class="link">
+      <mat-icon>assignment_ind</mat-icon>
+      <span>Mi Perfil</span>
+    </button>
+
     <button mat-menu-item [routerLink]="['/contact']" class="link">
       <mat-icon>contact_mail</mat-icon>
       <span>Contacto</span>

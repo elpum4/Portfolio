@@ -193,6 +193,24 @@
             <mat-error *ngIf="myError('hd_sobremi', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('hd_sobremi', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
+          <mat-form-field id="hd_email" *ngIf="section.indexOf('hd_email') > -1">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="" formControlName="hd_email" required>
+            <mat-error *ngIf="myError('hd_email', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('hd_email', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+          <mat-form-field id="hd_urllkd" *ngIf="section.indexOf('hd_urllkd') > -1">
+            <mat-label>Linkedin</mat-label>
+            <input matInput placeholder="" formControlName="hd_urllkd" required>
+            <mat-error *ngIf="myError('hd_urllkd', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('hd_urllkd', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
+          <mat-form-field id="hd_urlgit" *ngIf="section.indexOf('hd_urlgit') > -1">
+            <mat-label>Git Hub</mat-label>
+            <input matInput placeholder="" formControlName="hd_urlgit" required>
+            <mat-error *ngIf="myError('hd_urlgit', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('hd_urlgit', 'maxlength')">Demasiado largo</mat-error>
+          </mat-form-field>
       </div>
     
         <mat-card-actions>

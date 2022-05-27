@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-
+  emailSt:string = ''
   form: FormGroup;
   name: FormControl = new FormControl("", [Validators.required]);
   email: FormControl = new FormControl("", [Validators.required, Validators.email]);
@@ -26,6 +26,8 @@ export class ContactComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    
+    this.emailSt = window.sessionStorage.getItem('emailStorage');
   }
   onSubmit() {
     if (this.form.status == "VALID" && this.honeypot.value == "") {

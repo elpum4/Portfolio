@@ -156,10 +156,12 @@ export class EdicionComponent implements OnInit {
           hd_nombre: ['', [Validators.required,  Validators.maxLength(100)]],
           hd_profesion: ['', [Validators.required,  Validators.maxLength(100)]],
           hd_sobremi: ['', [Validators.required,  Validators.maxLength(2500)]],
+          hd_email:['', [Validators.required, Validators.maxLength(100)]],
+          hd_urllkd:['', [Validators.required, Validators.maxLength(400)]],
+          hd_urlgit:['', [Validators.required, Validators.maxLength(400)]],
         });
         
         this.section = this.data.seccion;
-        //this.showPage(this.section);
 
          break; 
       }
@@ -224,15 +226,6 @@ export class EdicionComponent implements OnInit {
           this.cerrar();
         }
       });
-  }
-  showPage(clases:Array<string>) {
-    if(clases.length>1){
-      for(let clase of clases){
-        document.getElementById(clase).style.display = "flex";
-      }
-    }else{
-      document.getElementById(clases[0]).style.display = "flex";
-    } 
   }
   cerrar(){
      this.dialog.closeAll();

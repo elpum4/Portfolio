@@ -45,7 +45,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
-import {StyleClassModule} from 'primeng/styleclass';
+import { StyleClassModule } from 'primeng/styleclass';
 import { ViewProjectComponent } from './components/view-project/view-project.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { EdicionComponent } from './components/edicion/edicion.component';

@@ -4,5 +4,8 @@ export class Profile {
     hd_urlperfil: string;
     hd_nombre: string;
     hd_profesion: string;
-    hd_sobremi: string;    
+    hd_sobremi: string;
+    hd_email: string
+    hd_urllkd: string
+    hd_urlgit: string    
 }

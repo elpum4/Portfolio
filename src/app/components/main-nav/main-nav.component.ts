@@ -3,6 +3,9 @@ import { LoginComponent } from '../login/login.component';
 import { TokenStorageService } from '../../services/token-storage.service';
 
 import {MatDialog} from '@angular/material/dialog';
+import { Profile } from 'src/app/models/profile';
+import { ImportallService } from 'src/app/services/importall.service';
+import { EdicionComponent } from '../edicion/edicion.component';
 
 
 @Component({
@@ -17,8 +20,11 @@ export class MainNavComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  arrHead: Profile[] = [];
+  idHeader="";
 
-  constructor(public dialog: MatDialog,
+  constructor(private services: ImportallService,
+              public dialog: MatDialog,
               private tokenStorageService: TokenStorageService
             ) { }
 
@@ -30,6 +36,9 @@ export class MainNavComponent implements OnInit {
       this.roles = user.roles;
       this.username = user.username;
     }
+
+    
+    this.obtener();
   }
 
   openDialog() {
@@ -57,11 +66,11 @@ export class MainNavComponent implements OnInit {
   onNavigate(url){
     switch (url) {
       case 1:
-        window.open("https://github.com/elpum4", "_blank");
+        window.open(this.arrHead[0].hd_urlgit, "_blank");
         break;
       
       case 2:
-        window.open("https://www.linkedin.com/in/fcerionie", "_blank");
+        window.open(this.arrHead[0].hd_urllkd, "_blank");
         break;
 
       case 3:
@@ -69,6 +78,36 @@ export class MainNavComponent implements OnInit {
         break;
     }
   }
+
+  obtener() {
+    this.services.getAll('profile').subscribe(
+      data => {
+        this.arrHead = data;
+        console.log(this.arrHead[0].hd_email);
+        window.sessionStorage.setItem('emailStorage', this.arrHead[0].hd_email);
+      },
+      err => {
+        this.arrHead = JSON.parse(err.error).message;
+      }
+    );
+
+    
+  }
+
+  editar($event: any, section:Array<string>) {
+    this.idHeader = $event;
+    const dialogRef = this.dialog.open(EdicionComponent, {data: {
+      id: this.idHeader, dataKey:'profile', seccion: section}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  cerrar(){
+     this.dialog.closeAll();
+  }
+
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();

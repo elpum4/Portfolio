@@ -1,4 +1,3 @@
-import { TypeProject } from './typeproject'
 export interface Project {
     id: string;
     proy_titulo: string;

@@ -1,12 +1,17 @@
 .container {
     display: flex;
     align-items: center;
+    
+    flex-basis: 200px;
     @media screen and (max-width: 600px) {
         flex-wrap: wrap;
       }
 
     /* OPTIONAL: Spacing between items */
     margin: 16px 0;
+    .name{
+        flex-basis: 200px;
+    }
     .container__image {
                 
         display: grid;
@@ -21,6 +26,7 @@
     }
     .container__feature {
         /* Take the remaining width */
+
         margin-left: 30px;
         text-align: justify;
     }
