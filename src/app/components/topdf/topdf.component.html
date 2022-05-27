@@ -2,28 +2,47 @@
     <mat-drawer class="lateral" mode="side" opened>
         <div>
             <div class="container"*ngFor="let header of arrHead" >
-              <div class="container__image" >
-                  <img src={{header.hd_urlperfil}}/>
-                  <mat-card-title-group>
-                    <mat-card-title>
-                      {{header.hd_nombre}}
-                    </mat-card-title>
-                    <mat-card-subtitle>
-                      {{header.hd_profesion}}
-                    </mat-card-subtitle>
-                  </mat-card-title-group>
-              </div>
-              
-              <div class="container__feature">
-                <mat-card-title>
-                    SOBRE MI
-                  </mat-card-title>
-                <div>
-                  <p>{{header.hd_sobremi}}</p>
+                <div class="container__image" >
+                    <img src={{header.hd_urlperfil}}/>
+                    <mat-card-title-group>
+                        <mat-card-title>
+                        {{header.hd_nombre}}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                        {{header.hd_profesion}}
+                        </mat-card-subtitle>
+                    </mat-card-title-group>
                 </div>
-              </div>
+              
+                <div class="container__feature">
+                    <mat-card-title>
+                        SOBRE MI
+                    </mat-card-title>
+                    <div>
+                    <p>{{header.hd_sobremi}}</p>
+                    </div>
+                    <mat-card-title>
+                        ENLACES
+                    </mat-card-title>
+                    <div class="enlace">
+                        <mat-icon> contact_phone</mat-icon>
+                        <p>+54 9 3516673435</p>
+                    </div>
+                    <div class="enlace">
+                        <mat-icon> email</mat-icon>
+                        <p>{{header.hd_email}}</p>
+                    </div>
+                    <div class="enlace">
+                        <mat-icon><img class="png-icon" src="./assets/icons/git.png" style="width: 24px; height: 24px;"></mat-icon>
+                        <p>{{header.hd_urlgit}}</p>
+                    </div>
+                    <div class="enlace">
+                        <mat-icon><img class="png-icon" src="./assets/icons/linkedin.png" style="width: 24px; height: 24px;"></mat-icon>
+                        <p>{{header.hd_urllkd}}</p>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
           
     </mat-drawer>
     <mat-drawer-content>

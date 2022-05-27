@@ -22,6 +22,12 @@
                 text-align: center;
                 margin:30px;
             }
+            .enlace{
+                display: flex;
+                mat-icon{
+                    margin-right: 3px;
+                }
+            }
         }
     }
 }
