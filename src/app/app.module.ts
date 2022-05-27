@@ -36,6 +36,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule}  from '@angular/material/sidenav';
 
 
 import { authInterceptorProviders } from '../helpers/auth.interceptor';
@@ -49,6 +50,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { ViewProjectComponent } from './components/view-project/view-project.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { EdicionComponent } from './components/edicion/edicion.component';
+import { TopdfComponent } from './components/topdf/topdf.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +69,7 @@ import { EdicionComponent } from './components/edicion/edicion.component';
     ViewProjectComponent,
     SpinnerComponent,
     EdicionComponent,
+    TopdfComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,8 @@ import { EdicionComponent } from './components/edicion/edicion.component';
     ToastModule,
     ButtonModule,
     MatSelectModule,
-    StyleClassModule
+    StyleClassModule,
+    MatSidenavModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

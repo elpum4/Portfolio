@@ -1,0 +1,27 @@
+.lateral{
+    width: 30%!important;
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        .container__image { 
+            margin-top: 40px;
+            display: grid;
+            text-align: center;
+            img {
+                    
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;}
+        }
+        .container__feature {
+            /* Take the remaining width */
+            margin: 30px;
+            text-align: justify;
+            mat-card-title{
+                text-align: center;
+                margin:30px;
+            }
+        }
+    }
+}
