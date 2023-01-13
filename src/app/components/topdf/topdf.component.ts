@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Profile } from 'src/app/models/profile';
+import { Project } from 'src/app/models/project';
 
 import { ImportallService } from '../../services/importall.service';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-topdf',
   templateUrl: './topdf.component.html',
@@ -10,10 +13,23 @@ import { ImportallService } from '../../services/importall.service';
 export class TopdfComponent implements OnInit {
 
   arrHead: Profile[] = [];
-  constructor(private services: ImportallService,) { }
+  arrProyectos: Project[];
+  constructor(private services: ImportallService,
+            private  dialog:  MatDialog,) { }
   
   ngOnInit(): void {
     this.obtener();
+    this.obtener_proyecto();
+  }
+  async obtener_proyecto() {
+    this.services.getAll('proyecto').subscribe(
+      data => {
+        this.arrProyectos = data;
+      },
+      err => {
+        this.arrProyectos = JSON.parse(err.error).message;
+      }
+    );
   }
   obtener() {
     this.services.getAll('profile').subscribe(
@@ -25,4 +41,13 @@ export class TopdfComponent implements OnInit {
       }
     );
   }
+
+  public exportHtmlToPDF(){
+
+  
+    this.cerrar();
+  }
+  cerrar(){
+    this.dialog.closeAll();
+ }
 }

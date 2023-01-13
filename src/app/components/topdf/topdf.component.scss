@@ -1,9 +1,14 @@
 .lateral{
+    background-color: rgb(48, 48, 63);
     width: 30%!important;
+    color: whitesmoke;
     .container{
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        mat-card-subtitle{
+            color: whitesmoke !important;
+        }
         .container__image { 
             margin-top: 40px;
             display: grid;
@@ -26,8 +31,21 @@
                 display: flex;
                 mat-icon{
                     margin-right: 3px;
+                    color: black;
                 }
             }
         }
     }
 }
+
+.title-general{
+    justify-content: center !important;
+  }
+  
+  .proyecto-card {
+    margin-bottom: 8px;
+    p {
+      text-align: justify; 
+    }
+  
+  }

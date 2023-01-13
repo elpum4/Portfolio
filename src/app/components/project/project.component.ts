@@ -18,7 +18,6 @@ import { PrimeNGConfig } from 'primeng/api';
 export class ProjectComponent implements OnInit {
   idProyecto="";
   isLoggedIn = false;
-  loaded = false;
 
   arrProyectos: Project[];
   proyectos: Project[];
@@ -61,11 +60,9 @@ export class ProjectComponent implements OnInit {
     this.logOk();
   }
   async obtener() {
-    this.loaded = false;
     this.services.getAll('proyecto').subscribe(
       data => {
         this.arrProyectos = data;
-        this.loaded = true;
         this.proyectos =Object.values(data);
       },
       err => {

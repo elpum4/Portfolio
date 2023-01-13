@@ -1,5 +1,5 @@
 
-<div *ngIf="loaded">
+<div>
   <div class="cards" *ngIf="isLoggedIn">
     <div class="cards__item" *ngFor="let proyecto of arrProyectos">
         <mat-card class="proyecto-card">
@@ -27,7 +27,7 @@
           </mat-card>
     </div>
     
-    <mat-card class="card" *ngIf="isLoggedIn">
+    <mat-card class="card">
       <mat-card-actions class="edicion">
         <button mat-mini-fab color="primary" group="project" (click)="agregarProyecto()">
           <mat-icon>add</mat-icon>
@@ -36,7 +36,7 @@
     </mat-card>
   </div>
 </div>
-<div *ngIf="loaded">
+<div>
   <p-carousel [value]="proyectos" 
               styleClass="custom-carousel"
               [autoplayInterval]="2000"

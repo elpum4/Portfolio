@@ -1,4 +1,5 @@
 <mat-drawer-container class="topdf" id="topdf">
+    
     <mat-drawer class="lateral" mode="side" opened>
         <div>
             <div class="container"*ngFor="let header of arrHead" >
@@ -49,5 +50,43 @@
         <app-education></app-education>
         <app-exp></app-exp>
         <app-skill></app-skill>
+        <div>
+            <mat-card>
+              <mat-card-title-group class="title-general">
+                <mat-card-title>
+                  PROYECTOS Y TRABAJOS
+                </mat-card-title>
+              </mat-card-title-group>
+            </mat-card>
+          </div>
+
+        <div  *ngFor="let proyecto of arrProyectos">
+            <mat-card class="proyecto-card">
+              <mat-card-title-group>
+                <mat-card-title>
+                    {{proyecto.proy_titulo}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{proyecto.proy_cliente}}
+                </mat-card-subtitle>
+                <img mat-card-sm-image src={{proyecto.proy_urlimg}} alt={{proyecto.proy_titulo}}>
+              </mat-card-title-group>
+              <mat-card-content>
+                {{proyecto.proy_descripcion}}
+              </mat-card-content>
+              <mat-card-subtitle>
+                    {{proyecto.proy_categoria}}
+              </mat-card-subtitle>
+            </mat-card>
+          </div>
+        
     </mat-drawer-content>
+
+
 </mat-drawer-container>
+<mat-card-actions>
+    <button  mat-raised-button color="primary"(click)="exportHtmlToPDF()">Guardar PDF</button>
+    <button  mat-raised-button color="primary" (click)="cerrar()">Cancelar</button>
+</mat-card-actions>
+
+<app-spinner></app-spinner>
