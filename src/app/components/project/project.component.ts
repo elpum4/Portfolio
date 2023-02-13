@@ -62,8 +62,8 @@ export class ProjectComponent implements OnInit {
   async obtener() {
     this.services.getAll('proyecto').subscribe(
       data => {
-        this.arrProyectos = data;
-        this.proyectos =Object.values(data);
+        this.arrProyectos = data['response'];
+        this.proyectos =Object.values(data['response']);
       },
       err => {
         this.arrProyectos = JSON.parse(err.error).message;

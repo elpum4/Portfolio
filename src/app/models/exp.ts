@@ -3,7 +3,7 @@ export class Exp {
     exp_titulo: String;
     exp_descripcion: String;
     exp_sitio: String;
-    ex_urllogo: String;
+    exp_urllogo: String;
     exp_comienzo: Date;
     exp_final: Date;
     exp_actual: boolean;

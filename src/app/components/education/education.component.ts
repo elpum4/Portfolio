@@ -31,7 +31,7 @@ export class EducationComponent implements OnInit {
   obtener() {
     this.services.getAll('educacion').subscribe(
       data => {
-        this.arrEducacion = data;
+        this.arrEducacion = data['response'];
       },
       err => {
         this.arrEducacion = JSON.parse(err.error).message;

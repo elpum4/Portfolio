@@ -36,7 +36,7 @@ export class SkillComponent implements OnInit {
     this.loaded = false;
     await this.services.getAll('skill').subscribe(
       data => {
-        this.arrSkills = data;
+        this.arrSkills = data['response'];
         this.loaded = true;
 
       },

@@ -80,9 +80,9 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>URL Logo</mat-label>
-            <input matInput placeholder="" formControlName="ex_urllogo" id="ex_urllogo" required>
-            <mat-error *ngIf="myError('ex_urllogo', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('ex_urllogo', 'maxlength')">Demasiado largo</mat-error>
+            <input matInput placeholder="" formControlName="exp_urllogo" id="exp_urllogo" required>
+            <mat-error *ngIf="myError('exp_urllogo', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('exp_urllogo', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Fecha de Inicio</mat-label>
@@ -193,11 +193,11 @@
             <mat-error *ngIf="myError('hd_sobremi', 'required')">El dato requerido</mat-error>
             <mat-error *ngIf="myError('hd_sobremi', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
-          <mat-form-field id="hd_email" *ngIf="section.indexOf('hd_email') > -1">
+          <mat-form-field id="hd_mail" *ngIf="section.indexOf('hd_mail') > -1">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="" formControlName="hd_email" required>
-            <mat-error *ngIf="myError('hd_email', 'required')">El dato requerido</mat-error>
-            <mat-error *ngIf="myError('hd_email', 'maxlength')">Demasiado largo</mat-error>
+            <input matInput placeholder="" formControlName="hd_mail" required>
+            <mat-error *ngIf="myError('hd_mail', 'required')">El dato requerido</mat-error>
+            <mat-error *ngIf="myError('hd_mail', 'maxlength')">Demasiado largo</mat-error>
           </mat-form-field>
           <mat-form-field id="hd_urllkd" *ngIf="section.indexOf('hd_urllkd') > -1">
             <mat-label>Linkedin</mat-label>

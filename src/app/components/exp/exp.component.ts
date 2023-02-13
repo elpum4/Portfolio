@@ -28,7 +28,7 @@ export class ExpComponent implements OnInit {
   obtener() {
     this.services.getAll('experiencia').subscribe(
       data => {
-        this.arrExperiencias = data;
+        this.arrExperiencias = data['response'];
       },
       err => {
         this.arrExperiencias = JSON.parse(err.error).message;

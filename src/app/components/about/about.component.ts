@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit {
   obtener() {
     this.services.getAll('profile').subscribe(
       data => {
-        this.arrHead = data;
+        this.arrHead = data['response'];
       },
       err => {
         this.arrHead = JSON.parse(err.error).message;

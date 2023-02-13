@@ -76,7 +76,7 @@ export class EdicionComponent implements OnInit {
             exp_titulo:['', [Validators.required, Validators.maxLength(100)]],
             exp_sitio: ['', [Validators.required, Validators.maxLength(100)]],
             exp_descripcion:['', [Validators.required, Validators.maxLength(400)]],
-            ex_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
+            exp_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
             exp_comienzo: ['', [Validators.required]],
             exp_final: ['',],
             exp_actual:['',],
@@ -89,7 +89,7 @@ export class EdicionComponent implements OnInit {
             exp_titulo:['', [Validators.required, Validators.maxLength(100)]],
             exp_sitio: ['', [Validators.required, Validators.maxLength(100)]],
             exp_descripcion:['', [Validators.required, Validators.maxLength(400)]],
-            ex_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
+            exp_urllogo: ['', [Validators.required, Validators.maxLength(400)]],
             exp_comienzo: ['', [Validators.required]],
             exp_final: ['',],
             exp_actual:['',],
@@ -156,7 +156,7 @@ export class EdicionComponent implements OnInit {
           hd_nombre: ['', [Validators.required,  Validators.maxLength(100)]],
           hd_profesion: ['', [Validators.required,  Validators.maxLength(100)]],
           hd_sobremi: ['', [Validators.required,  Validators.maxLength(2500)]],
-          hd_email:['', [Validators.required, Validators.maxLength(100)]],
+          hd_mail:['', [Validators.required, Validators.maxLength(100)]],
           hd_urllkd:['', [Validators.required, Validators.maxLength(400)]],
           hd_urlgit:['', [Validators.required, Validators.maxLength(400)]],
         });
@@ -177,8 +177,8 @@ export class EdicionComponent implements OnInit {
     if (id) {
       this.services.getById(parseInt(id), type).subscribe(
         data => {
-          this.arrAll = data;
-          this.myForm.patchValue(data);
+          this.arrAll = data['response'];
+          this.myForm.patchValue(data['response']);
         },
         err => {
           this.arrAll = JSON.parse(err.error).message;
@@ -190,9 +190,9 @@ export class EdicionComponent implements OnInit {
     this.services.getAll('tipo'+type).subscribe(
       data => {
         switch(type) { 
-          case 'educacion': {this.arrTEd = data;} break;
-          case 'experiencia': {this.arrTExp = data;} break;
-          case 'proyecto': {this.arrTProject = data;} break;
+          case 'educacion': {this.arrTEd = data['response'];} break;
+          case 'experiencia': {this.arrTExp = data['response'];} break;
+          case 'proyecto': {this.arrTProject = data['response'];} break;
         }
       },
       err => {switch(type) { 

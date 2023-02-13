@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   obtener() {
     this.services.getAll('profile').subscribe(
       data => {
-        this.arrHead = data;
+        this.arrHead = data['response'];
         this.header=this.arrHead[0].hd_urlbanner;
         this.headerid=this.arrHead[0].id;
       },

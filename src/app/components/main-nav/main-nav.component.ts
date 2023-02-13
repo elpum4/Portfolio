@@ -82,9 +82,9 @@ export class MainNavComponent implements OnInit {
   obtener() {
     this.services.getAll('profile').subscribe(
       data => {
-        this.arrHead = data;
-        console.log(this.arrHead[0].hd_email);
-        window.sessionStorage.setItem('emailStorage', this.arrHead[0].hd_email);
+        this.arrHead = data['response'];
+        console.log(this.arrHead[0].hd_mail);
+        window.sessionStorage.setItem('emailStorage', this.arrHead[0].hd_mail);
       },
       err => {
         this.arrHead = JSON.parse(err.error).message;
