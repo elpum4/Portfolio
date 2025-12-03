@@ -16,7 +16,7 @@ export class MessageComponent {
       
   }
 
-  public aceptar(){this.dialogRef.close(true);
+  public accept(){this.dialogRef.close(true);
   }
   ngOnInit(): void {
   }

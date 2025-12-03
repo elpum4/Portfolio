@@ -56,22 +56,24 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     
     this.primengConfig.ripple = true;
-    this.obtener();
+    this.get();
     this.logOk();
   }
-  async obtener() {
+  async get() {
     this.services.getAll('proyecto').subscribe(
       data => {
         this.arrProyectos = data['response'];
         this.proyectos =Object.values(data['response']);
       },
       err => {
-        this.arrProyectos = JSON.parse(err.error).message;
+        const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+        console.error('Error retrieving proyecto:', errorMessage);
+        this.arrProyectos = [];
       }
     );
   }
 
-  editarProyecto($event: any){
+  editProject($event: any){
     this.idProyecto = $event;
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
       id: this.idProyecto, dataKey:'proyecto'}
@@ -81,10 +83,10 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  eliminarProyecto($event: any){
+  deleteProject($event: any){
     this.idProyecto = $event;
     const dialogRef = this.dialog.open(MessageComponent, {data: {
-    message: "Desea Eliminar el proyecto?", mot: "confirm"}
+    message: "Do you want to delete the project?", mot: "confirm"}
     });
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
@@ -95,19 +97,20 @@ export class ProjectComponent implements OnInit {
             window.location.reload();
             },
             err => {
-              this.arrProyectos = JSON.parse(err.error).message;
+              const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error deleting');
+              console.error('Error deleting proyecto:', errorMessage);
               }
             );
         } else {
-          this.cerrar();
+          this.close();
         }
       });
   }
-  cerrar(){
+  close(){
      this.dialog.closeAll();
   }
 
-  agregarProyecto(){
+  addProject(){
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
       dataKey:'proyecto'}
     });

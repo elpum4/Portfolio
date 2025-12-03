@@ -20,12 +20,12 @@ export class HeaderComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.obtener();
+    this.get();
     this.logOk();
   }
   	
    
-  obtener() {
+  get() {
     this.services.getAll('profile').subscribe(
       data => {
         this.arrHead = data['response'];
@@ -33,23 +33,25 @@ export class HeaderComponent implements OnInit {
         this.headerid=this.arrHead[0].id;
       },
       err => {
-        this.arrHead = JSON.parse(err.error).message;
+        const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+        console.error('Error retrieving profile:', errorMessage);
+        this.arrHead = [];
       }
     );
   }
 
-  editar($event: any, section:Array<string>) {
+  edit($event: any, section:Array<string>) {
     this.idHeader = $event;
     console.log(this.idHeader);
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
-      id: this.idHeader, dataKey:'profile', seccion: section}
+      id: this.idHeader, dataKey:'profile', section: section}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
-  cerrar(){
+  close(){
      this.dialog.closeAll();
   }
   //mostrar edicion

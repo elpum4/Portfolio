@@ -3,7 +3,7 @@
     <div class="container__image" >
         <img src={{header.hd_urlperfil}}/>
         <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-          <button mat-mini-fab color="primary" (click)="editar(header.id, ['hd_urlperfil'])">
+          <button mat-mini-fab color="primary" (click)="edit(header.id, ['hd_urlperfil'])">
             <mat-icon>create</mat-icon>
           </button>
       </mat-card-actions>
@@ -17,7 +17,7 @@
         </mat-card-title-group>
 
         <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-            <button mat-mini-fab color="primary" (click)="editar(header.id, ['hd_nombre', 'hd_profesion'])">
+            <button mat-mini-fab color="primary" (click)="edit(header.id, ['hd_nombre', 'hd_profesion'])">
               <mat-icon>create</mat-icon>
             </button>
         </mat-card-actions>
@@ -28,7 +28,7 @@
         <p>{{header.hd_sobremi}}</p>
       </div>
       <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-        <button mat-mini-fab color="primary" (click)="editar(header.id, ['hd_sobremi'])">
+        <button mat-mini-fab color="primary" (click)="edit(header.id, ['hd_sobremi'])">
           <mat-icon>create</mat-icon>
         </button>
       </mat-card-actions>    

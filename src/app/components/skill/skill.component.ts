@@ -28,11 +28,11 @@ export class SkillComponent implements OnInit {
               private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.obtener();
+    this.get();
     this.logOk();
   }
 
-  async obtener() {
+  async get() {
     this.loaded = false;
     await this.services.getAll('skill').subscribe(
       data => {
@@ -41,12 +41,14 @@ export class SkillComponent implements OnInit {
 
       },
       err => {
-        this.arrSkills = JSON.parse(err.error).message;
+        const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+        console.error('Error retrieving skill:', errorMessage);
+        this.arrSkills = [];
       }
     );
   }
 
-  editarSkill($event: any){
+  editSkill($event: any){
     this.idSkill = $event;
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
       id: this.idSkill, dataKey:'skill'}
@@ -56,10 +58,10 @@ export class SkillComponent implements OnInit {
     });
   }
 
-  eliminarSkill($event: any){
+  deleteSkill($event: any){
     this.idSkill = $event;
     const dialogRef = this.dialog.open(MessageComponent, {data: {
-    message: "Desea Eliminar el proyecto?", mot: "confirm"}
+    message: "Do you want to delete the skill?", mot: "confirm"}
     });
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
@@ -70,19 +72,20 @@ export class SkillComponent implements OnInit {
             window.location.reload();
             },
             err => {
-              this.arrSkills = JSON.parse(err.error).message;
+              const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error deleting');
+              console.error('Error deleting skill:', errorMessage);
               }
             );
         } else {
-          this.cerrar();
+          this.close();
         }
       });
   }
-  cerrar(){
+  close(){
      this.dialog.closeAll();
   }
 
-  agregarSkill(){
+  addSkill(){
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
       dataKey:'skill'}
     });

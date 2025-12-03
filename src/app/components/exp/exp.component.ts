@@ -21,22 +21,24 @@ export class ExpComponent implements OnInit {
     private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.obtener();
+    this.get();
     this.logOk();
   }
 
-  obtener() {
+  get() {
     this.services.getAll('experiencia').subscribe(
       data => {
         this.arrExperiencias = data['response'];
       },
       err => {
-        this.arrExperiencias = JSON.parse(err.error).message;
+        const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+        console.error('Error retrieving experiencia:', errorMessage);
+        this.arrExperiencias = [];
       }
     );
   }
 
-  editarExp($event: any){
+  editExp($event: any){
     this.idExp = $event;
     console.log(this.idExp);
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
@@ -47,10 +49,10 @@ export class ExpComponent implements OnInit {
     });
   }
 
-  eliminarExp($event: any){
+  deleteExp($event: any){
     this.idExp = $event;
     const dialogRef = this.dialog.open(MessageComponent, {data: {
-    message: "Desea Eliminar el proyecto?", mot: "confirm"}
+    message: "Do you want to delete the experience?", mot: "confirm"}
     });
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
@@ -61,19 +63,20 @@ export class ExpComponent implements OnInit {
             window.location.reload();
             },
             err => {
-              this.arrExperiencias = JSON.parse(err.error).message;
+              const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error deleting');
+              console.error('Error deleting experiencia:', errorMessage);
               }
             );
         } else {
-          this.cerrar();
+          this.close();
         }
       });
   }
-  cerrar(){
+  close(){
      this.dialog.closeAll();
   }
 
-  agregarExp(){
+  addExp(){
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
       dataKey:'experiencia'}
     });

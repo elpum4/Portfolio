@@ -17,10 +17,10 @@
 
           <mat-card class="card" *ngIf="isLoggedIn">
             <mat-card-actions class="edicion">
-              <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="editarProyecto(proyecto.id)">
+              <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="editProject(proyecto.id)">
                 <mat-icon >create</mat-icon>
               </button>
-              <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="eliminarProyecto(proyecto.id)">
+              <button mat-mini-fab color="primary" group="project" (ngModel)="proyecto.id" (click)="deleteProject(proyecto.id)">
                 <mat-icon>clear</mat-icon>
               </button>
             </mat-card-actions>
@@ -29,7 +29,7 @@
     
     <mat-card class="card">
       <mat-card-actions class="edicion">
-        <button mat-mini-fab color="primary" group="project" (click)="agregarProyecto()">
+        <button mat-mini-fab color="primary" group="project" (click)="addProject()">
           <mat-icon>add</mat-icon>
         </button>
       </mat-card-actions>

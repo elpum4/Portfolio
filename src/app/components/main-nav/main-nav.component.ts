@@ -38,7 +38,7 @@ export class MainNavComponent implements OnInit {
     }
 
     
-    this.obtener();
+    this.get();
   }
 
   openDialog() {
@@ -50,7 +50,8 @@ export class MainNavComponent implements OnInit {
         window.location.reload();
         },
         err => {
-          this.arr = JSON.parse(err.error).message;
+          const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+          console.error('Error in dialog:', errorMessage);
           }
         );
 
@@ -79,7 +80,7 @@ export class MainNavComponent implements OnInit {
     }
   }
 
-  obtener() {
+  get() {
     this.services.getAll('profile').subscribe(
       data => {
         this.arrHead = data['response'];
@@ -87,24 +88,26 @@ export class MainNavComponent implements OnInit {
         window.sessionStorage.setItem('emailStorage', this.arrHead[0].hd_mail);
       },
       err => {
-        this.arrHead = JSON.parse(err.error).message;
+        const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+        console.error('Error retrieving profile:', errorMessage);
+        this.arrHead = [];
       }
     );
 
     
   }
 
-  editar($event: any, section:Array<string>) {
+  edit($event: any, section:Array<string>) {
     this.idHeader = $event;
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
-      id: this.idHeader, dataKey:'profile', seccion: section}
+      id: this.idHeader, dataKey:'profile', section: section}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
-  cerrar(){
+  close(){
      this.dialog.closeAll();
   }
 

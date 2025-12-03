@@ -1,16 +1,16 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title *ngIf="entrada=='educacion'">EDUCACION</mat-card-title>
-        <mat-card-title *ngIf="entrada=='experiencia'">EXPERIENCIA</mat-card-title>
-        <mat-card-title *ngIf="entrada=='proyecto'">PROYECTO</mat-card-title>
-        <mat-card-title *ngIf="entrada=='skill'">SKILL</mat-card-title>
-        <mat-card-title *ngIf="entrada=='profile'">PERFIL</mat-card-title>
+        <mat-card-title *ngIf="dataKey=='educacion'">EDUCACION</mat-card-title>
+        <mat-card-title *ngIf="dataKey=='experiencia'">EXPERIENCIA</mat-card-title>
+        <mat-card-title *ngIf="dataKey=='proyecto'">PROYECTO</mat-card-title>
+        <mat-card-title *ngIf="dataKey=='skill'">SKILL</mat-card-title>
+        <mat-card-title *ngIf="dataKey=='profile'">PERFIL</mat-card-title>
     </mat-card-header>
     
     <mat-card-content>
-      <form [formGroup]="myForm" novalidate (ngSubmit)="saveAll(entrada)"
+      <form [formGroup]="myForm" novalidate (ngSubmit)="saveAll(dataKey)"
       fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-      <div *ngIf="entrada=='educacion'">
+      <div *ngIf="dataKey=='educacion'">
         <mat-form-field>
           <mat-label>Titulo</mat-label>
           <input matInput placeholder="" formControlName="ed_titulo" id="ed_titulo" required>
@@ -59,7 +59,7 @@
             <mat-error *ngIf="myError('ed_tipo', 'required')">El dato requerido</mat-error>
           </mat-form-field>
       </div>
-      <div *ngIf="entrada=='experiencia'">
+      <div *ngIf="dataKey=='experiencia'">
         <mat-form-field>
           <mat-label>Compañía</mat-label>
           <input matInput placeholder="" formControlName="exp_titulo" id="exp_titulo" required>
@@ -109,7 +109,7 @@
             <mat-error *ngIf="myError('exp_tipo', 'required')">El dato requerido</mat-error>
           </mat-form-field>
       </div>
-      <div *ngIf="entrada=='proyecto'">
+      <div *ngIf="dataKey=='proyecto'">
         <mat-form-field>
         <mat-label>Titulo del Proyecto</mat-label>
         <input matInput placeholder="" formControlName="proy_titulo" id="proy_titulo" required>
@@ -148,7 +148,7 @@
         <mat-error *ngIf="myError('proy_categoria', 'required')">El dato requerido</mat-error>
       </mat-form-field>
       </div>
-      <div *ngIf="entrada=='skill'">
+      <div *ngIf="dataKey=='skill'">
         <mat-form-field>
         <mat-label>Skill</mat-label>
         <input matInput placeholder="" formControlName="sk_titulo" id="sk_titulo" required>
@@ -162,7 +162,7 @@
         <mat-error *ngIf="myError('sk_habilidad', 'pattern')">Solo podes poner numeros del 0 al 100</mat-error>
       </mat-form-field>
       </div>
-      <div *ngIf="entrada=='profile'">
+      <div *ngIf="dataKey=='profile'">
         <mat-form-field id="hd_urlbanner" *ngIf="section.indexOf('hd_urlbanner') > -1">
           <mat-label>URL Banner</mat-label>
           <input matInput placeholder="" formControlName="hd_urlbanner" required>

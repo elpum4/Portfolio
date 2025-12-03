@@ -8,8 +8,8 @@ export class ImportallService {
   baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'https://backapiflask.onrender.com/api';
-    // this.baseUrl = 'http://localhost:5000/api';
+    // this.baseUrl = 'https://backapiflask.onrender.com/api';
+    this.baseUrl = 'http://localhost:5000/api';
   }
 
   //unificado
@@ -19,7 +19,7 @@ export class ImportallService {
 
     this.httpClient
       .get(this.baseUrl + urlAdd + '/' + pId)
-      .subscribe((datos) => {});
+      .subscribe((data) => {});
     return this.httpClient.get<any>(this.baseUrl + urlAdd + '/' + pId);
   }
 

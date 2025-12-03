@@ -25,9 +25,14 @@
       <span>Cerrar Sesion</span>
     </button>
 
-    <button mat-menu-item (click)="editar(this.arrHead[0].id, ['hd_mail', 'hd_urllkd', 'hd_urlgit'])" *ngIf="isLoggedIn" class="link">
+    <button mat-menu-item (click)="edit(this.arrHead[0].id, ['hd_mail', 'hd_urllkd', 'hd_urlgit'])" *ngIf="isLoggedIn" class="link">
       <mat-icon>assignment_ind</mat-icon>
       <span>Mi Perfil</span>
+    </button>
+
+    <button mat-menu-item [routerLink]="['/topdf']" *ngIf="isLoggedIn" class="link">
+      <mat-icon>picture_as_pdf</mat-icon>
+      <span>Generar PDF</span>
     </button>
 
     <button mat-menu-item [routerLink]="['/contact']" class="link">

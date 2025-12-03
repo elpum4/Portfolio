@@ -21,7 +21,7 @@ export class EdicionComponent implements OnInit {
   arrTExp: TypeExp[];
   arrTProject: TypeProject[];
   disabled = false;
-  entrada:string;
+  dataKey:string;
   section: Array<string>;
 
   constructor(private services: ImportallService,
@@ -30,17 +30,17 @@ export class EdicionComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.entrada=this.data.dataKey;
-    console.log(this.entrada);
+    this.dataKey=this.data.dataKey;
+    console.log(this.dataKey);
     if (this.data.dataKey!='skill') {
       if(this.data.dataKey!='profile'){
-        this.obtener(this.data.dataKey);
+        this.get(this.data.dataKey);
       }
     }
     switch(this.data.dataKey) { 
       case 'educacion': {
         if (this.data.id){
-          this.buscarAll(this.data.dataKey, this.data.id);
+          this.findAll(this.data.dataKey, this.data.id);
           this.myForm = this.fb.group({
             id: ['',],
             ed_titulo:['', [Validators.required, Validators.maxLength(100)]],
@@ -70,7 +70,7 @@ export class EdicionComponent implements OnInit {
       }
       case 'experiencia': {
         if (this.data.id){
-          this.buscarAll(this.data.dataKey, this.data.id);
+          this.findAll(this.data.dataKey, this.data.id);
           this.myForm = this.fb.group({
             id: ['',],
             exp_titulo:['', [Validators.required, Validators.maxLength(100)]],
@@ -101,7 +101,7 @@ export class EdicionComponent implements OnInit {
       }
       case 'proyecto': {
         if (this.data.id){
-          this.buscarAll(this.data.dataKey, this.data.id);
+          this.findAll(this.data.dataKey, this.data.id);
           this.myForm = this.fb.group({
             id: ['',],
             proy_titulo: ['', [Validators.required, Validators.maxLength(40)]],
@@ -129,7 +129,7 @@ export class EdicionComponent implements OnInit {
       }
       case 'skill': {
         if (this.data.id){
-          this.buscarAll(this.data.dataKey, this.data.id);
+          this.findAll(this.data.dataKey, this.data.id);
           this.myForm = this.fb.group({
             id: ['',],
             sk_titulo: ['', [Validators.required,Validators.maxLength(40)]],
@@ -148,7 +148,7 @@ export class EdicionComponent implements OnInit {
       }
       
       case 'profile': {
-        this.buscarAll(this.data.dataKey, this.data.id);
+        this.findAll(this.data.dataKey, this.data.id);
         this.myForm = this.fb.group({
           id: ['',],
           hd_urlbanner:['', [Validators.required, Validators.maxLength(400)]],
@@ -161,7 +161,7 @@ export class EdicionComponent implements OnInit {
           hd_urlgit:['', [Validators.required, Validators.maxLength(400)]],
         });
         
-        this.section = this.data.seccion;
+        this.section = this.data.section;
 
          break; 
       }
@@ -173,7 +173,7 @@ export class EdicionComponent implements OnInit {
     return this.myForm.controls[controlName].hasError(errorName);
     }
 
-  async buscarAll(type: string, id?:any ){
+  async findAll(type: string, id?:any ){
     if (id) {
       this.services.getById(parseInt(id), type).subscribe(
         data => {
@@ -181,12 +181,13 @@ export class EdicionComponent implements OnInit {
           this.myForm.patchValue(data['response']);
         },
         err => {
-          this.arrAll = JSON.parse(err.error).message;
+          const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+          console.error('Error retrieving data:', errorMessage);
         }
       );
     }
   }
-  async obtener(type: string) {
+  async get(type: string) {
     this.services.getAll('tipo'+type).subscribe(
       data => {
         switch(type) { 
@@ -195,19 +196,21 @@ export class EdicionComponent implements OnInit {
           case 'proyecto': {this.arrTProject = data['response'];} break;
         }
       },
-      err => {switch(type) { 
-        case 'educacion': { this.arrTEd = JSON.parse(err.error).message;}break;
-        case 'experiencia': { this.arrTExp = JSON.parse(err.error).message;}break;
-        case 'proyecto': { this.arrTProject = JSON.parse(err.error).message;}break;
-      }
-       
+      err => {
+        const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving types');
+        console.error(`Error retrieving tipo${type}:`, errorMessage);
+        switch(type) { 
+          case 'educacion': { this.arrTEd = [];}break;
+          case 'experiencia': { this.arrTExp = [];}break;
+          case 'proyecto': { this.arrTProject = [];}break;
+        }
       }
     );
   }
 
   saveAll(type: string) {
     const dialogRef = this.dialog.open(MessageComponent, {data: {
-    message: "Desea Aplicar los Cambios?", mot: "confirm"}
+    message: "Do you want to apply the changes?", mot: "confirm"}
     });
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
@@ -219,15 +222,16 @@ export class EdicionComponent implements OnInit {
             window.location.reload();
             },
             err => {
-              this.arrAll = JSON.parse(err.error).message;
+              const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error saving');
+              console.error('Error saving data:', errorMessage);
               }
             );
         } else {
-          this.cerrar();
+          this.close();
         }
       });
   }
-  cerrar(){
+  close(){
      this.dialog.closeAll();
   }
 

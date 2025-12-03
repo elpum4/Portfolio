@@ -25,11 +25,11 @@ export class ViewProjectComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.id){
-      this.buscarProyecto(this.id);
+      this.findProject(this.id);
     }
   }
   
-  async buscarProyecto(id?:any){
+  async findProject(id?:any){
     console.log(id);
     if (id) {
       this.services.getById(parseInt(id.dataKey), 'proyecto').subscribe(
@@ -38,7 +38,8 @@ export class ViewProjectComponent implements OnInit {
           this.arrProject = data;
         },
         err => {
-          this.arrProject = JSON.parse(err.error).message;
+          const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+          console.error('Error retrieving project:', errorMessage);
         }
       );
     }   

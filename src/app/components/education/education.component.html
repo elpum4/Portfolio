@@ -27,17 +27,17 @@
           <div  class="fecha" *ngIf=!educacion.ed_actual>{{educacion.ed_comienzo |date:"yyyy"}} {{educacion.ed_final |date:"yyyy"}}</div>   
       </mat-card-subtitle>
       <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-        <button mat-mini-fab color="primary" group="education" (ngModel)="educacion.id" (click)="editarEducacion(educacion.id)">
+        <button mat-mini-fab color="primary" group="education" (ngModel)="educacion.id" (click)="editEducation(educacion.id)">
           <mat-icon>create</mat-icon>
         </button>
-        <button mat-mini-fab color="primary" group="education" (ngModel)="educacion.id" (click)="eliminarProyecto(educacion.id)">
+        <button mat-mini-fab color="primary" group="education" (ngModel)="educacion.id" (click)="deleteEducation(educacion.id)">
           <mat-icon>clear</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>
   </div>
   <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-    <button mat-mini-fab color="primary" group="education" (click)="agregarEducacion()">
+    <button mat-mini-fab color="primary" group="education" (click)="addEducation()">
       <mat-icon>add</mat-icon>
     </button>
   </mat-card-actions>

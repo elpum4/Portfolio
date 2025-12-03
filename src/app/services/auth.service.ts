@@ -8,8 +8,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  // url = 'http://localhost:5000/api/auth';
-  url = 'https://backapiflask.onrender.com/api/auth';
+  url = 'http://localhost:5000/api/auth';
+  // url = 'https://backapiflask.onrender.com/api/auth';
 
   currentUserSubject: BehaviorSubject<any>;
 

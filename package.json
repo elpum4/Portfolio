@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "jspdf": "^2.5.1",
+    "html2canvas": "^1.4.1",
     "islider.js": "^2.2.5",
     "primeicons": "^5.0.0",
     "primeng": "^13.3.3",

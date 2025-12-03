@@ -26,10 +26,10 @@
             </mat-card>
           <mat-card class="card" *ngIf="isLoggedIn">
             <mat-card-actions class="edicion">
-              <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="editarSkill(skill.id)">
+              <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="editSkill(skill.id)">
                 <mat-icon>create</mat-icon>
               </button>
-              <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="eliminarSkill(skill.id)">
+              <button mat-mini-fab color="primary" group="skill" (ngModel)="skill.id" (click)="deleteSkill(skill.id)">
                 <mat-icon>clear</mat-icon>
               </button>
             </mat-card-actions>
@@ -38,7 +38,7 @@
         
         <mat-card class="card" *ngIf="isLoggedIn">
           <mat-card-actions class="edicion" *ngIf="isLoggedIn">
-            <button mat-mini-fab color="primary" group="skill" (click)="agregarSkill()">
+            <button mat-mini-fab color="primary" group="skill" (click)="addSkill()">
               <mat-icon>add</mat-icon>
             </button>
           </mat-card-actions>

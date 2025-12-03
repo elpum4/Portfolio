@@ -24,22 +24,24 @@ export class EducationComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.obtener();
+    this.get();
     this.logOk();
   }
 
-  obtener() {
+  get() {
     this.services.getAll('educacion').subscribe(
       data => {
         this.arrEducacion = data['response'];
       },
       err => {
-        this.arrEducacion = JSON.parse(err.error).message;
+        const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error retrieving data');
+        console.error('Error retrieving educacion:', errorMessage);
+        this.arrEducacion = [];
       }
     );
   }
 
-  editarEducacion($event: any){
+  editEducation($event: any){
     this.idEducacion = $event;
     console.log(this.idEducacion);
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
@@ -50,10 +52,10 @@ export class EducationComponent implements OnInit {
     });
   }
 
-  eliminarProyecto($event: any){
+  deleteEducation($event: any){
     this.idEducacion = $event;
     const dialogRef = this.dialog.open(MessageComponent, {data: {
-    message: "Desea Eliminar Educación?", mot: "confirm"}
+    message: "Do you want to delete education?", mot: "confirm"}
     });
     dialogRef.afterClosed()
     .subscribe((confirmado: Boolean) => {
@@ -64,19 +66,20 @@ export class EducationComponent implements OnInit {
             window.location.reload();
             },
             err => {
-              this.arrEducacion = JSON.parse(err.error).message;
+              const errorMessage = err.error?.message || (typeof err.error === 'string' ? JSON.parse(err.error).message : 'Error deleting');
+              console.error('Error deleting education:', errorMessage);
               }
             );
         } else {
-          this.cerrar();
+          this.close();
         }
       });
   }
-  cerrar(){
+  close(){
      this.dialog.closeAll();
   }
 
-  agregarEducacion(){
+  addEducation(){
     const dialogRef = this.dialog.open(EdicionComponent, {data: {
       dataKey:'educacion'}
     });
